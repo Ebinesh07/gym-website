@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import About from "./pages/About";
+import About from "./pages/About/About";
 import Gym from "./pages/Gym";
 import SportsAcademy from "./pages/SportsAcademy";
 import Trainers from "./pages/Trainers";
 import Gallery from "./pages/Gallery";
 import FeesOffers from "./pages/FeesOffers";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Contact/Contact";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";

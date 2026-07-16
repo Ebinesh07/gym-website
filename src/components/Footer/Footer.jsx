@@ -5,7 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const Footer = () => {
   return (
     <footer
-      className="pt-20 border-t"
+      className="pt-20 border-t py-4"
       style={{
         backgroundColor: "var(--bg-dark)",
         borderColor: "rgba(255,255,255,0.08)",
@@ -82,11 +82,11 @@ const Footer = () => {
                   },
                   {
                     icon: "instagram",
-                    link: "https://instagram.com",
+                    link: "https://www.instagram.com/ochrefitnesscentre?utm_source=qr",
                   },
                   {
                     icon: "youtube",
-                    link: "https://youtube.com",
+                    link: "https://youtube.com/@ochrefitnesscentresivakasi6017?si=LyqlXWtvBnTAYvXV",
                   },
                 ].map((social) => (
                   <a
@@ -172,7 +172,7 @@ const Footer = () => {
         </div>
 
         {/* Contact + Social */}
-        <div className="flex flex-col items-center lg:items-start">
+        <div className="flex flex-col items-center lg:items-start px-4">
           <h3
             className="text-xl font-bold uppercase"
             style={{ color: "var(--white)" }}
@@ -187,15 +187,16 @@ const Footer = () => {
 
           <div className="space-y-5">
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 ">
               <i
                 className="bi bi-geo-alt-fill text-xl mt-1"
                 style={{ color: "var(--primary-color)" }}
               />
               <p>
-                Chennai, Tamil Nadu
+                OCHRE FITNESS CENTRE: 702b Pandian complex first floor,ganagiri road Sivakasi
                 <br />
-                India - 600001
+                
+                TamilNadu - 626123
               </p>
             </div>
 
@@ -204,7 +205,7 @@ const Footer = () => {
                 className="bi bi-telephone-fill text-xl"
                 style={{ color: "var(--primary-color)" }}
               />
-              <p>+91 95788 52900</p>
+              <p>+91 95788 52900 | 73730 87272</p>
             </div>
 
             <div className="flex gap-4">
@@ -212,7 +213,7 @@ const Footer = () => {
                 className="bi bi-envelope-fill text-xl"
                 style={{ color: "var(--primary-color)" }}
               />
-              <p>info@ochrefitness.com</p>
+              <p>Siva.Murugan24@gmail.com</p>
             </div>
 
             <div className="flex gap-4">
