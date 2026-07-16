@@ -9,18 +9,27 @@ import Gallery from "./pages/Gallery";
 import FeesOffers from "./pages/FeesOffers";
 import Contact from "./pages/Contact";
 
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/gym" element={<Gym />} />
-      <Route path="/sports-academy" element={<SportsAcademy />} />
-      <Route path="/trainers" element={<Trainers />} />
-      <Route path="/gallery" element={<Gallery />} />
-      <Route path="/fees-offers" element={<FeesOffers />} />
-      <Route path="/contact" element={<Contact />} />
-    </Routes>
+    <>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/gym" element={<Gym />} />
+        <Route path="/sports-academy" element={<SportsAcademy />} />
+        <Route path="/trainers" element={<Trainers />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/fees-offers" element={<FeesOffers />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+
+      <Footer />
+    </>
   );
 }
 
