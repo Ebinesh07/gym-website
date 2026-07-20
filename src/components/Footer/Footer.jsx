@@ -172,7 +172,7 @@ const Footer = () => {
         </div>
 
         {/* Contact + Social */}
-        <div className="flex flex-col items-center lg:items-start px-4">
+        <div className="flex flex-col items-center lg:items-start px-2 w-full">
           <h3
             className="text-xl font-bold uppercase"
             style={{ color: "var(--white)" }}
@@ -185,19 +185,18 @@ const Footer = () => {
             style={{ backgroundColor: "var(--primary-color)" }}
           />
 
-          <div className="space-y-5">
+          <div className="space-y-5 w-full">
 
             <div className="flex gap-4 ">
               <i
                 className="bi bi-geo-alt-fill text-xl mt-1"
                 style={{ color: "var(--primary-color)" }}
               />
-              <p>
-                OCHRE FITNESS CENTRE: 702b Pandian complex first floor,ganagiri road Sivakasi
-                <br />
-                
-                TamilNadu - 626123
-              </p>
+              <p className="break-words">
+  OCHRE FITNESS CENTRE: 702B Pandian Complex,
+  First Floor, Ganagiri Road,
+  Sivakasi, Tamil Nadu - 626123
+</p>
             </div>
 
             <div className="flex gap-4">
@@ -205,7 +204,11 @@ const Footer = () => {
                 className="bi bi-telephone-fill text-xl"
                 style={{ color: "var(--primary-color)" }}
               />
-              <p>+91 95788 52900 | 73730 87272</p>
+              <p className="break-words">
+  +91 95788 52900
+  <br />
+  +91 73730 87272
+</p>
             </div>
 
             <div className="flex gap-4">
@@ -213,10 +216,12 @@ const Footer = () => {
                 className="bi bi-envelope-fill text-xl"
                 style={{ color: "var(--primary-color)" }}
               />
-              <p>Siva.Murugan24@gmail.com</p>
+              <p className="break-words">
+  Siva.Murugan24@gmail.com
+</p>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-start">
               <i
                 className="bi bi-clock-fill text-xl"
                 style={{ color: "var(--primary-color)" }}

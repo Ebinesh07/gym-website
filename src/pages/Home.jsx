@@ -12,6 +12,7 @@ import Counter from "../components/Counter/Counter";
 // import Achievements from "../components/Achievements/Achievements";
 import Contact from "./Contact/Contact";
 import CTA from "../components/CTA/CTA";
+import Fees from "./Fees/Fees";
 
 
 function Home() {
@@ -22,6 +23,8 @@ function Home() {
       <Hero />
       <About/>
       <Contact/>
+      <Fees/>
+      
       <Stats />
       <Programs />
       <SportsAcademy />

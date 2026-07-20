@@ -232,6 +232,7 @@ const handleSubmit = (e) => {
                     focus:ring-red-100
                     transition-all duration-300
                     my-3 px-5
+                    ${error.subject ? 'border-red-500' :}
                   "
                 />
                 {errors.subject && (
@@ -248,6 +249,7 @@ const handleSubmit = (e) => {
                 <textarea
                   rows="8"
                   placeholder="Your Message"
+                  name="message"
                    value={formData.message}
   onChange={handleChange}
                   className="
@@ -257,7 +259,7 @@ const handleSubmit = (e) => {
                     rounded-lg
                     pl-16
                     pt-3
-                    pr-
+                    pr-5
                     text-gray-700
                     placeholder:text-gray-400
                     resize-none
@@ -304,14 +306,14 @@ const handleSubmit = (e) => {
           </div>
 
           {/* ================= RIGHT SIDE ================= */}
-          <div className="bg-black text-white px-4 py-5 my-3">
+          <div className="bg-black text-white px-4 py-5 my-3 ">
 
             <h2 className="text-3xl font-black uppercase">
               CONTACT{" "}
               <span className="text-red-600">INFORMATION</span>
             </h2>
 
-            <div className="w-20 h-[4px] bg-red-600 mt-3 mb-10 rounded-full"></div>
+            <div className="w-20 h-[4px] bg-red-600 mt-3 mb-10  rounded-full"></div>
 
             <div className="space-y-8 mt-3">
 

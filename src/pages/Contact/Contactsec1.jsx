@@ -61,12 +61,12 @@ const Contactsec1 = () => {
             </p>
 
             {/* Features */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-10">
 
               {features.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-1"
                 >
                   <i
                     className= {`bi ${item.icon} text-4xl`} 
@@ -74,7 +74,7 @@ const Contactsec1 = () => {
                     
                   ></i>
 
-                  <div>
+                  <div >
                     <h4 className="text-white font-bold text-sm">
                       {item.title}
                     </h4>
