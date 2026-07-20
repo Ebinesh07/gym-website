@@ -8,9 +8,15 @@ import Trainers from "./pages/Trainers";
 import Gallery from "./pages/Gallery";
 import FeesOffers from "./pages/FeesOffers";
 import Contact from "./pages/Contact";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import TopBar from "./components/TopBar/TopBar";
 
 function App() {
   return (
+    <>
+    <TopBar/>
+    <Navbar/>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
@@ -21,6 +27,9 @@ function App() {
       <Route path="/fees-offers" element={<FeesOffers />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>
+    <Footer/>
+    </>
+     
   );
 }
 
