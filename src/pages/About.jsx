@@ -5,8 +5,7 @@ import Footer from "../components/Footer/Footer";
 function About() {
   return (
     <>
-      <TopBar />
-      <Navbar />
+
       <h1>About Page</h1>
       <Footer />
     </>
