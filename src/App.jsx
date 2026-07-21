@@ -9,12 +9,14 @@ import Gallery from "./pages/Gallery";
 import FeesOffers from "./pages/FeesOffers";
 import Contact from "./pages/Contact/Contact";
 
+import TopBar from "./components/TopBar/TopBar";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <>
+      <TopBar />
       <Navbar />
 
       <Routes>

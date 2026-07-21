@@ -5,8 +5,7 @@ import Footer from "../components/Footer/Footer";
 function Trainers() {
   return (
     <>
-      <TopBar />
-      <Navbar />
+
 
       <h1>Trainers Page</h1>
 

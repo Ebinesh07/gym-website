@@ -58,6 +58,7 @@ textarea,
 select {
   font-family: inherit;
 }
+
 :root {
   --primary-color: #C1121F;
   --secondary-color: #111111;
@@ -67,6 +68,7 @@ select {
   --heading-color: #111111;
   --border-color: #E5E5E5;
 }
+
 html,
 body,
 #root {
