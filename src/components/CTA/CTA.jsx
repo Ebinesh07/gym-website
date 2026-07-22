@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./CTA.css";
 
 import athlete from "../../assets/Sportsimages/cta-athlete.png";
