@@ -396,7 +396,7 @@ TamilNadu - 626123
                   </h3>
 
                   <div className="flex gap-4 text-2xl ">
-                    <a href="facebook link"><i className="bi bi-facebook hover:text-red-600 cursor-pointer duration-300 "> </i></a>
+                    <a href="facebook link"><i className="bi bi-whatsapp hover:text-red-600 cursor-pointer duration-300 "> </i></a>
                     <a href="https://www.instagram.com/ochrefitnesscentre?utm_source=qr"><i className="bi bi-instagram hover:text-red-600 cursor-pointer duration-300"></i> </a>
                     <a href="https://youtube.com/@ochrefitnesscentresivakasi6017?si=LyqlXWtvBnTAYvXV"><i className="bi bi-youtube hover:text-red-600 cursor-pointer duration-300"></i> </a>
                   </div>

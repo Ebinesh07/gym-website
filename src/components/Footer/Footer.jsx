@@ -77,7 +77,7 @@ const Footer = () => {
               <div className="flex justify-center lg:justify-start gap-4">
                 {[
                   {
-                    icon: "facebook",
+                    icon: "whatsapp",
                     link: "https://facebook.com",
                   },
                   {
