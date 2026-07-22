@@ -78,7 +78,7 @@ const Footer = () => {
                 {[
                   {
                     icon: "whatsapp",
-                    link: "https://facebook.com",
+                    link: "https://wa.me/919578852900",
                   },
                   {
                     icon: "instagram",
