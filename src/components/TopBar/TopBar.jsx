@@ -12,17 +12,17 @@
 
             <div className="flex items-center gap-2">
               <i className="bi bi-clock text-base"></i>
-              <span>Open Mon - Sat : 5:30 AM - 10:00 PM</span>
+              <span>Open Mon - Sat : 5:30 AM - 10:00 PM </span>
             </div>
 
             <div className="flex items-center gap-2">
               <i className="bi bi-geo-alt-fill text-base"></i>
-              <span>123, Fitness Street, Chennai, Tamil Nadu - 600001</span>
+              <span>702B Pandian Complex, First Floor, Ganagiri Road, Sivakasi, Tamil Nadu - 626123</span>
             </div>
 
             <div className="flex items-center gap-2">
               <i className="bi bi-envelope-fill text-base"></i>
-              <span>info@ochrefitness.com</span>
+              <span>Siva.Murugan24@gmail.com</span>
             </div>
 
           </div>
