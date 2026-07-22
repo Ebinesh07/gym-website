@@ -26,7 +26,7 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
           <div className="absolute inset-0 bg-black/70"></div>
 
           {/* Content */}
-          <div className="absolute inset-0 p-12 flex flex-col justify-between">
+          <div className="absolute inset-0 p-12 flex flex-col justify-between p-5">
 
             <div>
 
@@ -34,15 +34,15 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
                 <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center">
 
-                  <i className="bi bi-barbell text-white text-2xl"></i>
+                  <i className="bi bi-lightning-charge text-white text-2xl"></i> 
 
                 </div>
 
                 <div>
 
-                  <h1 className="text-5xl font-black tracking-widest text-red-600">
-                    OCHRÉ
-                  </h1>
+  <h1 className="text-5xl sm:text-6xl xl:text-7xl font-black tracking-[8px] sm:tracking-[10px] !text-[#c1121f]">
+  OCHRÉ
+</h1>
 
                   <p className="text-white tracking-[5px] text-sm">
                     FITNESS CENTRE
@@ -134,7 +134,7 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
         {/* ================= RIGHT SIDE ================= */}
 
-        <div className="p-8 lg:p-14">
+        <div className="p-4 lg:p-14">
 
           <div className="flex justify-between items-center">
 
@@ -153,12 +153,6 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
             </div>
 
-            <Link
-  to="/login"
-  className="text-red-600 font-semibold hover:underline"
->
-  Login
-</Link>
 
           </div>
 
@@ -395,7 +389,8 @@ w-full
 bg-red-600
 hover:bg-red-700
 text-white
-py-4
+py-3
+mb-2
 rounded-xl
 font-bold
 uppercase
@@ -419,7 +414,7 @@ hover:scale-[1.02]
     Already have an account?
 
 <Link
-  to="/login"
+  to="/admin"
   className="text-red-600 font-semibold hover:underline"
 >
   Login

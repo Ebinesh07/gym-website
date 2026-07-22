@@ -5,106 +5,67 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm border-b">
 
-      <div className="max-w-[1700px] mx-auto px-5 lg:px-8">
+      <div className="w-full px-4 md:px-6 lg:px-8">
 
-        <div className="h-20 flex items-center justify-between">
+        <div className="h-16 md:h-[72px] flex items-center justify-between">
 
           {/* ================= Left ================= */}
+<div className="flex items-center gap-3">
+  <Link to="/admin/dashboard" className="flex items-center gap-2">
 
-          <div className="flex items-center gap-5">
+    <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center">
+      <span className="text-white font-black text-lg">
+        <i class="bi bi-lightning-charge"></i>
+      </span>
+    </div>
 
-            {/* Logo */}
+    <div>
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-red-600">
+        OCHRÉ
+      </h2>
 
-            <Link to="/dashboard" className="flex items-center gap-3">
+      <p className="text-[8px] md:text-[10px] tracking-[4px] uppercase text-gray-500">
+        FITNESS CENTER
+      </p>
+    </div>
 
-              <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center">
-
-                <i className="bi bi-barbell text-white text-2xl"></i>
-
-              </div>
-
-              <div>
-
-                <h2 className="text-3xl font-black tracking-wider text-red-600">
-                  OCHRÉ
-                </h2>
-
-                <p className="text-xs tracking-[4px] text-gray-600 uppercase">
-                  Fitness Center
-                </p>
-
-              </div>
-
-            </Link>
-
-          </div>
+  </Link>
+</div>
 
           {/* ================= Right ================= */}
+<div className="flex items-center gap-3">
 
-          <div className="flex items-center gap-6">
+  {/* Notification */}
 
-            {/* Notification */}
+  <button className="relative w-10 h-10 rounded-lg hover:bg-gray-100 flex items-center justify-center">
 
-            <button className="relative w-11 h-11 rounded-full bg-gray-100 hover:bg-red-600 hover:text-white duration-300 flex items-center justify-center">
+    <i className="bi bi-bell text-lg"></i>
 
-              <i className="bi bi-bell text-xl"></i>
+    <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-600 rounded-full text-white text-[9px] flex items-center justify-center">
+      3
+    </span>
 
-              <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-600 text-white text-[10px] flex items-center justify-center">
-                3
-              </span>
+  </button>
 
-            </button>
+  {/* Profile */}
 
-            {/* Admin */}
+  <div className="w-10 h-10 rounded-full bg-gray-800 border-2 border-red-600 flex items-center justify-center">
 
-            <div className="flex items-center gap-3 cursor-pointer">
+    <i className="bi bi-person-fill text-white"></i>
 
-              <img
-                src="https://i.pravatar.cc/150?img=12"
-                alt="Admin"
-                className="w-11 h-11 rounded-full object-cover border-2 border-red-600"
-              />
+  </div>
 
-              <div className="hidden md:block">
+  {/* Logout */}
 
-                <h4 className="font-semibold">
-                  Admin
-                </h4>
+  <Link
+    to="/login"
+    className="hidden md:flex bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg items-center gap-2"
+  >
+    <i className="bi bi-box-arrow-right"></i>
+    Logout
+  </Link>
 
-                <p className="text-sm text-gray-500">
-                  Super Admin
-                </p>
-
-              </div>
-
-              <i className="bi bi-chevron-down"></i>
-
-            </div>
-
-            {/* Logout */}
-
-            <Link
-              to="/login"
-              className="
-                flex
-                items-center
-                gap-2
-                bg-red-600
-                hover:bg-red-700
-                text-white
-                px-5
-                py-3
-                rounded-lg
-                font-semibold
-                duration-300
-              "
-            >
-              <i className="bi bi-box-arrow-right"></i>
-
-              Logout
-            </Link>
-
-          </div>
+</div>
 
         </div>
 

@@ -37,32 +37,38 @@ const StatsCards = () => {
   ];
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mb-3">
 
       {cards.map((card, index) => (
         <div
           key={index}
           className="
-            bg-white
-            rounded-2xl
-            shadow-sm
-            border
-            border-gray-200
-            p-6
-            hover:shadow-lg
-            duration-300
-          "
+bg-white
+rounded-xl
+border
+border-gray-200
+shadow-sm
+px-2
+py-2
+hover:shadow-md
+transition-all
+duration-300
+hover:-translate-y-1
+hover:shadow-lg
+transition-all
+duration-300
+"
         >
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
 
             {/* Icon */}
 
             <div
               className={`
                 ${card.bg}
-                w-18
-                h-18
+                w-16
+                h-16
                 rounded-2xl
                 flex
                 items-center
@@ -79,15 +85,15 @@ const StatsCards = () => {
 
             <div>
 
-              <p className="text-gray-500 text-sm font-medium">
+            <p className="text-[13px] text-gray-500 font-medium">
                 {card.title}
               </p>
 
-              <h2 className="text-4xl font-black mt-1">
+              <h2 className="text-[38px] font-bold leading-none mt-2 text-gray-900">
                 {card.value}
               </h2>
 
-              <p className={`${card.text} text-sm font-semibold mt-2`}>
+              <p className={`${card.text} text-[13px] font-semibold mt-2`}>
                 {card.growth}
               </p>
 

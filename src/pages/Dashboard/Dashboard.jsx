@@ -1,9 +1,8 @@
-import Navbar from "../../Components/Navbar";
-import StatsCards from "../../Components/StatsCards";
-
-import RegistrationTable from "../../Components/RegestrationTable";
-import ContactTable from "../../Components/ContactTable";
-import Footer from "../../Components/Footer";
+import Navbar from "../../Admin/Navbar";
+import Statscards from "../../Admin/Statscards";
+import RegistrationTable from "../../Admin/RegistrationTable";
+import ContactTable from "../../Admin/ContactTable";
+import Footer from "../../Admin/Footer";
 
 const Dashboard = () => {
   return (
@@ -29,7 +28,7 @@ const Dashboard = () => {
         </div>
 
         {/* Statistics Cards */}
-        <StatsCards />
+        <Statscards />
 
         {/* Registration Table */}
         <div className="mt-8">
