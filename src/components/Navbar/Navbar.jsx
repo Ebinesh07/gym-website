@@ -107,14 +107,14 @@ function Navbar() {
               </ul>
 
             </li>
-
+{/* 
             <li>
 
               <NavLink to="/trainers">
                 Trainers
               </NavLink>
 
-            </li>
+            </li> */}
 
             {/* <li>
 
