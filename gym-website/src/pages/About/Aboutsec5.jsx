@@ -96,7 +96,8 @@ const Aboutsec5 = () => {
               "
             >
               {/* Join Now */}
-         <button
+<a
+  href="#registration"
   className="
     px-3 py-3
     border-2 border-red-300
@@ -116,31 +117,32 @@ const Aboutsec5 = () => {
 >
   JOIN NOW
   <i className="bi bi-arrow-right text-xl"></i>
-</button>
+</a>
 
               {/* Book Trial */}
-              <button
-                className="
-                  w-full
-                  sm:w-auto
-                  min-w-[220px]
-                  px-3 py-3
-                  bg-white
-                  rounded-xl
-                  text-black
-                  font-bold
-                  uppercase
-                  tracking-wide
-                  flex items-center justify-center gap-4
-                  hover:bg-gray-100
-                  hover:scale-105
-                  transition-all duration-300
-                  
-                "
-              >
-                BOOK FREE TRIAL
-                <i className="bi bi-arrow-right text-xl text-red-600"></i>
-              </button>
+             <a
+  href="#registration"
+  className="
+    w-full
+    sm:w-auto
+    min-w-[220px]
+    px-3 py-3
+    bg-white
+    rounded-xl
+    text-black
+    font-bold
+    uppercase
+    tracking-wide
+    flex items-center justify-center gap-4
+    hover:bg-gray-100
+    hover:scale-105
+    transition-all duration-300
+  "
+>
+  BOOK FREE TRIAL
+
+  <i className="bi bi-arrow-right text-xl text-red-600"></i>
+</a>
             </div>
           </div>
 

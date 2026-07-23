@@ -94,13 +94,30 @@ function SportsAcademy() {
 
               </h3>
 
-              <button>
+<a
+  href="#registration"
+  className="
+    inline-flex
+    items-center
+    justify-center
+    gap-3
+    bg-red-600
+    text-white
+    px-6
+    py-3
+    rounded-lg
+    font-bold
+    uppercase
+    hover:bg-red-700
+    hover:scale-105
+    transition-all
+    duration-300
+  "
+>
+  Learn More
 
-                Learn More
-
-                <FaArrowRight />
-
-              </button>
+  <FaArrowRight />
+</a>
 
             </div>
 
@@ -132,13 +149,31 @@ function SportsAcademy() {
 
           </ul>
 
-          <button>
+         <a
+  href="#registration"
+  className="
+    inline-flex
+    items-center
+    justify-center
+    gap-3
+    bg-white
+    !text-red-600
+    px-4
+    py-1
+    rounded-full
+    text-[18px]
+    font-bold
+    no-underline
+    hover:bg-gray-100
+    hover:!text-red-700
+    transition-all
+    duration-300
+  "
+>
+  Explore Academy
 
-            Explore Academy
-
-            <FaArrowRight />
-
-          </button>
+  <FaArrowRight className="text-xl" />
+</a>
 
         </div>
 

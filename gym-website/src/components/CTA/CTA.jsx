@@ -78,28 +78,58 @@ const CTA = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [loading, setLoading] = useState(false);
 
-    if (validate()) {
-      console.log(formData);
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-      alert("Form Submitted Successfully!");
+  if (!validate()) {
+    return;
+  }
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        membership: "",
-        goal: "",
-      });
+  try {
+    setLoading(true);
 
-      setErrors({});
+    const response = await fetch(
+      "http://localhost:5000/api/registrations",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Registration failed");
+      return;
     }
-  };
+
+    alert("Free trial booked successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      membership: "",
+      goal: "",
+    });
+
+    setErrors({});
+  } catch (error) {
+    console.error("Registration Error:", error);
+
+    alert("Unable to connect to server");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
-    <section className="cta">
+    <section className="cta" id="registration">
       <div className="cta-container">
         {/* LEFT */}
 
@@ -282,13 +312,20 @@ const CTA = () => {
             {/* BUTTON */}
 
             <button
-              type="submit"
-              className="cta-btn"
-            >
-              <span>Book Free Trial</span>
+  type="submit"
+  className="cta-btn"
+  disabled={loading}
+>
+  <span>
+    {loading ? "Submitting..." : "Book Free Trial"}
+  </span>
 
-              <FaArrowRight />
-            </button>
+  {loading ? (
+    <i className="bi bi-arrow-repeat animate-spin"></i>
+  ) : (
+    <FaArrowRight />
+  )}
+</button>
           </form>
         </div>
       </div>

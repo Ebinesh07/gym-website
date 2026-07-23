@@ -1,6 +1,7 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
 
+
 const Contactsec2 = () => {
 
     const [formData, setFormData] = useState({
@@ -16,10 +17,15 @@ const [errors, setErrors] = useState({});
 const handleChange = (e) => {
   const { name, value } = e.target;
 
-  setFormData({
-    ...formData,
+  setFormData((prev) => ({
+    ...prev,
     [name]: value,
-  });
+  }));
+
+  setErrors((prev) => ({
+    ...prev,
+    [name]: "",
+  }));
 };
 
 const validateForm = () => {
@@ -63,14 +69,37 @@ const validateForm = () => {
   return Object.keys(newErrors).length === 0;
 };
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if (validateForm()) {
+  // Run your existing validation
+  if (!validateForm()) {
+    return;
+  }
+
+  try {
+const response = await fetch(
+  "http://localhost:5000/api/contacts",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  }
+);
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Something went wrong");
+      return;
+    }
+
+    // Success
     alert("Message sent successfully!");
 
-    console.log(formData);
-
+    // Clear form
     setFormData({
       name: "",
       mobile: "",
@@ -80,6 +109,10 @@ const handleSubmit = (e) => {
     });
 
     setErrors({});
+  } catch (error) {
+    console.error("Contact Form Error:", error);
+
+    alert("Unable to send message. Please try again.");
   }
 };
 
@@ -104,205 +137,292 @@ const handleSubmit = (e) => {
 
             <form className="space-y-5" onSubmit={handleSubmit}>
 
-              {/* Name + Mobile */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+  {/* NAME + MOBILE */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-                {/* Name */}
-                <div className="relative">
-                  <i className="bi bi-person absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 text-xl pointer-events-none"></i>
+    {/* NAME */}
+    <div>
+      <div className="relative">
 
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                     value={formData.name}
-  onChange={handleChange}
-                    className="
-                      w-full
-                      h-14
-                      border border-gray-300
-                      rounded-lg
-                      pl-16
-                      pr-4
-                      text-gray-700
-                      placeholder:text-gray-400
-                      focus:outline-none
-                      focus:border-red-600
-                      focus:ring-2
-                      focus:ring-red-100
-                      transition-all duration-300
-                      my-2 px-5
-                    "
-                  />
+        <i className="
+          bi bi-person
+          absolute
+          left-1
+          top-1/2
+          -translate-y-1/2
+          text-gray-400
+          text-xl
+          pointer-events-none
+        "></i>
 
-                  {errors.name && (
-  <p className="text-red-500 text-sm mt-1">
-    {errors.name}
-  </p>
-)}
-                </div>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={handleChange}
+          className={`
+            w-full h-14
+            border rounded-lg
+            pl-14 pr-4
+            text-gray-700
+            placeholder:text-gray-400
+            focus:outline-none
+            focus:ring-2
+            focus:ring-red-100
+            transition-all duration-300
+            ${
+              errors.name
+                ? "border-red-500"
+                : "border-gray-300 focus:border-red-600"
+            }
+          `}
+        />
 
-                {/* Mobile */}
-                <div className="relative">
-                  <i className="bi bi-telephone absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 text-xl pointer-events-none"></i>
+      </div>
 
-                  <input
-                    type="text"
-                    placeholder="Mobile Number"
-                     value={formData.mobile}
-  onChange={handleChange}
-                    className="
-                      w-full
-                      h-14
-                      border border-gray-300
-                      rounded-lg
-                      pl-16
-                      pr-4
-                      text-gray-700
-                      placeholder:text-gray-400
-                      focus:outline-none
-                      focus:border-red-600
-                      focus:ring-2
-                      focus:ring-red-100
-                      transition-all duration-300
-                      my-3 px-5
-                    "
-                  />
-                  {errors.mobile && (
-  <p className="text-red-500 text-sm mt-1">
-    {errors.mobile}
-  </p>
-)}
-                </div>
-              </div>
+      {errors.name && (
+        <p className="text-red-500 text-sm mt-1">
+          {errors.name}
+        </p>
+      )}
+    </div>
 
-              {/* Email */}
-              <div className="relative">
-                <i className="bi bi-envelope absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 text-xl pointer-events-none"></i>
 
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                   value={formData.email}
-  onChange={handleChange}
-                  className="
-                    w-full
-                    h-14
-                    border border-gray-300
-                    rounded-lg
-                    pl-16
-                    pr-4
-                    text-gray-700
-                    placeholder:text-gray-400
-                    focus:outline-none
-                    focus:border-red-600
-                    focus:ring-2
-                    focus:ring-red-100
-                    transition-all duration-300
-                    my-3 px-5
-                  "
-                />
-                {errors.email && (
-  <p className="text-red-500 text-sm mt-1">
-    {errors.email}
-  </p>
-)}
-              </div>
+    {/* MOBILE */}
+    <div>
+      <div className="relative">
 
-              {/* Subject */}
-              <div className="relative">
-                <i className="bi bi-file-earmark-text absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 text-xl pointer-events-none"></i>
+        <i className="
+          bi bi-telephone
+          absolute
+          left-1
+          top-1/2
+          -translate-y-1/2
+          text-gray-400
+          text-xl
+          pointer-events-none
+        "></i>
 
-                <input
-                  type="text"
-                  placeholder="Subject"
-                   value={formData.subject}
-  onChange={handleChange}
-                  className="
-                    w-full
-                    h-14
-                    border border-gray-300
-                    rounded-lg
-                    pl-16
-                    pr-4
-                    text-gray-700
-                    placeholder:text-gray-400
-                    focus:outline-none
-                    focus:border-red-600
-                    focus:ring-2
-                    focus:ring-red-100
-                    transition-all duration-300
-                    my-3 px-5
-                    ${error.subject ? 'border-red-500' :}
-                  "
-                />
-                {errors.subject && (
-  <p className="text-red-500 text-sm mt-1">
-    {errors.subject}
-  </p>
-)}
-              </div>
+        <input
+          type="tel"
+          name="mobile"
+          placeholder="Mobile Number"
+          value={formData.mobile}
+          onChange={handleChange}
+          className={`
+            w-full h-14
+            border rounded-lg
+            pl-14 pr-4
+            text-gray-700
+            placeholder:text-gray-400
+            focus:outline-none
+            focus:ring-2
+            focus:ring-red-100
+            transition-all duration-300
+            ${
+              errors.mobile
+                ? "border-red-500"
+                : "border-gray-300 focus:border-red-600"
+            }
+          `}
+        />
 
-              {/* Message */}
-              <div className="relative">
-                <i className="bi bi-pencil absolute left-5 top-6 text-gray-400 text-xl pointer-events-none"></i>
+      </div>
 
-                <textarea
-                  rows="8"
-                  placeholder="Your Message"
-                  name="message"
-                   value={formData.message}
-  onChange={handleChange}
-                  className="
-                    w-full
-                
-                    border border-gray-300
-                    rounded-lg
-                    pl-16
-                    pt-3
-                    pr-5
-                    text-gray-700
-                    placeholder:text-gray-400
-                    resize-none
-                    focus:outline-none
-                    focus:border-red-600
-                    focus:ring-2
-                    focus:ring-red-100
-                    transition-all duration-300
-                    my-3 px-5
-                  "
-                ></textarea>
-                {errors.message && (
-  <p className="text-red-500 text-sm mt-1">
-    {errors.message}
-  </p>
-)}
-              </div>
+      {errors.mobile && (
+        <p className="text-red-500 text-sm mt-1">
+          {errors.mobile}
+        </p>
+      )}
+    </div>
 
-              {/* Button */}
-              <button
-              type="submit"
-                className="
-                  w-full
-                  h-14
-                  bg-red-600
-                  hover:bg-black
-                  text-white
-                  font-bold
-                  text-lg
-                  uppercase
-                  rounded-lg
-                  transition-all duration-300
-                  flex
-                  items-center
-                  justify-center
-                  gap-4
-                "
-              >
-                SEND MESSAGE
-                <i className="bi bi-send-fill text-lg"></i>
-              </button>
+  </div>
 
-            </form>
+
+  {/* EMAIL */}
+  <div>
+
+    <div className="relative">
+
+      <i className="
+        bi bi-envelope
+        absolute
+        left-1
+        top-1/2
+        
+        -translate-y-1/2
+        text-gray-400
+        text-xl
+        pointer-events-none
+      "></i>
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        value={formData.email}
+        onChange={handleChange}
+        className={`
+          w-full h-14
+          my-3
+          border rounded-lg
+          pl-14 pr-4
+          text-gray-700
+          placeholder:text-gray-400
+          focus:outline-none
+          focus:ring-2
+          focus:ring-red-100
+          transition-all duration-300
+          ${
+            errors.email
+              ? "border-red-500"
+              : "border-gray-300 focus:border-red-600"
+          }
+        `}
+      />
+
+    </div>
+
+    {errors.email && (
+      <p className="text-red-500 text-sm mt-1">
+        {errors.email}
+      </p>
+    )}
+
+  </div>
+
+
+  {/* SUBJECT */}
+  <div>
+
+    <div className="relative">
+
+      <i className="
+        bi bi-file-earmark-text
+        absolute
+        left-1
+        top-1/2
+        -translate-y-1/2
+        text-gray-400
+        text-xl
+        pointer-events-none
+      "></i>
+
+      <input
+        type="text"
+        name="subject"
+        placeholder="Subject"
+        value={formData.subject}
+        onChange={handleChange}
+        className={`
+          w-full h-14
+          border rounded-lg
+
+          pl-14 pr-4
+          text-gray-700
+          placeholder:text-gray-400
+          focus:outline-none
+          focus:ring-2
+          focus:ring-red-100
+          transition-all duration-300
+          ${
+            errors.subject
+              ? "border-red-500"
+              : "border-gray-300 focus:border-red-600"
+          }
+        `}
+      />
+
+    </div>
+
+    {errors.subject && (
+      <p className="text-red-500 text-sm mt-1">
+        {errors.subject}
+      </p>
+    )}
+
+  </div>
+
+
+  {/* MESSAGE */}
+  <div>
+
+    <div className="relative">
+
+      <i className="
+        bi bi-pencil
+        absolute
+        left-1
+        top-5
+        text-gray-400
+        text-xl
+        pointer-events-none
+      "></i>
+
+      <textarea
+        rows="8"
+        name="message"
+        placeholder="Your Message"
+        value={formData.message}
+        onChange={handleChange}
+        className={`
+          w-full
+          my-3
+          border rounded-lg
+          pl-14 pr-5 pt-4 pb-4
+          text-gray-700
+          placeholder:text-gray-400
+          resize-none
+          focus:outline-none
+          focus:ring-2
+          focus:ring-red-100
+          transition-all duration-300
+          ${
+            errors.message
+              ? "border-red-500"
+              : "border-gray-300 focus:border-red-600"
+          }
+        `}
+      ></textarea>
+
+    </div>
+
+    {errors.message && (
+      <p className="text-red-500 text-sm mt-1">
+        {errors.message}
+      </p>
+    )}
+
+  </div>
+
+
+  {/* SEND BUTTON */}
+  <button
+    type="submit"
+    className="
+      w-full
+      h-14
+      bg-red-600
+      hover:bg-black
+      text-white
+      font-bold
+      text-lg
+      uppercase
+      rounded-lg
+      transition-all duration-300
+      flex
+      items-center
+      justify-center
+      gap-4
+    "
+  >
+    SEND MESSAGE
+
+    <i className="bi bi-send-fill text-lg"></i>
+  </button>
+
+</form>
           </div>
 
           {/* ================= RIGHT SIDE ================= */}

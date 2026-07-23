@@ -1,62 +1,94 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const ContactTable = () => {
+  const [contacts, setContacts] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const contacts = [
-    {
-      id: 1,
-      name: "Rahul Verma",
-      phone: "9876543210",
-      email: "rahulv@gmail.com",
-      message: "I need information about personal training.",
-      submitted: "20 Jul 2026, 11:20 AM",
-    },
-    {
-      id: 2,
-      name: "Anjali Mehta",
-      phone: "8765432109",
-      email: "anjali.m@gmail.com",
-      message: "Membership details please.",
-      submitted: "20 Jul 2026, 10:05 AM",
-    },
-    {
-      id: 3,
-      name: "Vikram Singh",
-      phone: "9658741236",
-      email: "vikram.s@gmail.com",
-      message: "Timing and fees details.",
-      submitted: "19 Jul 2026, 09:50 PM",
-    },
-    {
-      id: 4,
-      name: "Pooja Sharma",
-      phone: "7894561230",
-      email: "pooja.s@gmail.com",
-      message: "Do you have diet plans?",
-      submitted: "19 Jul 2026, 08:40 PM",
-    },
-    {
-      id: 5,
-      name: "Meera Iyer",
-      phone: "7412589630",
-      email: "meera.iyer@gmail.com",
-      message: "Women's batch timing?",
-      submitted: "18 Jul 2026, 07:30 PM",
-    },
-  ];
+  // ==========================================
+  // GET CONTACT DATA FROM MONGODB
+  // ==========================================
 
-  // Search
+  const fetchContacts = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const response = await fetch(
+        "http://localhost:5000/api/contacts"
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Failed to fetch contact enquiries"
+        );
+      }
+
+      // Supports:
+      // res.json({ contacts })
+      // OR
+      // res.json(contacts)
+
+      if (Array.isArray(data)) {
+        setContacts(data);
+      } else {
+        setContacts(data.contacts || []);
+      }
+    } catch (error) {
+      console.error("Contact Fetch Error:", error);
+
+      setError(
+        "Unable to load contact enquiries from server."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ==========================================
+  // LOAD DATA WHEN DASHBOARD OPENS
+  // ==========================================
+
+  useEffect(() => {
+    fetchContacts();
+  }, []);
+
+  // ==========================================
+  // SEARCH
+  // ==========================================
+
   const filteredContacts = contacts.filter((item) => {
     const value = search.toLowerCase();
 
     return (
-      item.name.toLowerCase().includes(value) ||
-      item.phone.includes(value) ||
-      item.email.toLowerCase().includes(value)
+      (item.name || "").toLowerCase().includes(value) ||
+      (item.mobile || item.phone || "")
+        .toString()
+        .includes(value) ||
+      (item.email || "").toLowerCase().includes(value) ||
+      (item.subject || "").toLowerCase().includes(value)
     );
   });
+
+  // ==========================================
+  // DATE FORMAT
+  // ==========================================
+
+  const formatDate = (date) => {
+    if (!date) return "-";
+
+    return new Date(date).toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
 
   return (
     <section className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
@@ -65,13 +97,19 @@ const ContactTable = () => {
 
       <div className="px-4 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
 
-        <h2 className="text-[16px] md:text-[17px] font-bold text-gray-900">
-          Contact Form Submissions
-        </h2>
+        <div>
+          <h2 className="text-[16px] md:text-[17px] font-bold text-gray-900">
+            Contact Form Submissions
+          </h2>
+
+          <p className="text-[11px] text-gray-500 mt-1">
+            Enquiries received from the website contact form
+          </p>
+        </div>
 
         <div className="flex items-center gap-2 w-full md:w-auto">
 
-          {/* Search */}
+          {/* SEARCH */}
 
           <div className="relative flex-1 md:w-[330px]">
 
@@ -111,10 +149,12 @@ const ContactTable = () => {
 
           </div>
 
-          {/* Filter */}
+          {/* REFRESH BUTTON */}
 
           <button
             type="button"
+            onClick={fetchContacts}
+            title="Refresh enquiries"
             className="
               w-9
               h-9
@@ -130,7 +170,11 @@ const ContactTable = () => {
               transition
             "
           >
-            <i className="bi bi-funnel text-sm"></i>
+            <i
+              className={`bi bi-arrow-clockwise text-sm ${
+                loading ? "animate-spin" : ""
+              }`}
+            ></i>
           </button>
 
         </div>
@@ -141,7 +185,7 @@ const ContactTable = () => {
 
       <div className="px-4 overflow-x-auto">
 
-        <table className="w-full min-w-[1000px] border-collapse">
+        <table className="w-full min-w-[1050px] border-collapse">
 
           {/* TABLE HEAD */}
 
@@ -166,6 +210,10 @@ const ContactTable = () => {
               </th>
 
               <th className="px-3 py-2 text-left text-[11px] font-bold text-gray-800">
+                Subject
+              </th>
+
+              <th className="px-3 py-2 text-left text-[11px] font-bold text-gray-800">
                 Message
               </th>
 
@@ -185,101 +233,180 @@ const ContactTable = () => {
 
           <tbody>
 
-            {filteredContacts.map((item) => (
+            {/* LOADING */}
 
-              <tr
-                key={item.id}
-                className="
-                  border-b
-                  border-gray-200
-                  hover:bg-gray-50
-                  transition
-                "
-              >
+            {loading && (
+              <tr>
+                <td
+                  colSpan="8"
+                  className="py-10 text-center"
+                >
+                  <i className="bi bi-arrow-repeat animate-spin text-2xl text-red-600"></i>
 
-                {/* ID */}
-
-                <td className="px-3 py-2 text-[11px] text-gray-800">
-                  {item.id}
+                  <p className="text-sm text-gray-500 mt-2">
+                    Loading contact enquiries...
+                  </p>
                 </td>
+              </tr>
+            )}
 
-                {/* Name */}
+            {/* ERROR */}
 
-                <td className="px-3 py-2 text-[11px] text-gray-800">
-                  {item.name}
-                </td>
+            {!loading && error && (
+              <tr>
+                <td
+                  colSpan="8"
+                  className="py-10 text-center"
+                >
+                  <i className="bi bi-exclamation-circle text-red-600 text-2xl"></i>
 
-                {/* Phone */}
-
-                <td className="px-3 py-2 text-[11px] text-gray-800">
-                  {item.phone}
-                </td>
-
-                {/* Email */}
-
-                <td className="px-3 py-2 text-[11px] text-gray-800">
-                  {item.email}
-                </td>
-
-                {/* Message */}
-
-                <td className="px-3 py-2 text-[11px] text-gray-800">
-                  {item.message}
-                </td>
-
-                {/* Submitted Date */}
-
-                <td className="px-3 py-2 text-[11px] text-gray-800 whitespace-nowrap">
-                  {item.submitted}
-                </td>
-
-                {/* Action */}
-
-                <td className="px-3 py-2 text-center">
+                  <p className="text-sm text-red-600 mt-2">
+                    {error}
+                  </p>
 
                   <button
                     type="button"
-                    title="View enquiry"
+                    onClick={fetchContacts}
                     className="
-                      w-9
-                      h-7
-                      border
-                      border-gray-300
+                      mt-3
+                      bg-red-600
+                      text-white
+                      px-4
+                      py-2
                       rounded-md
-                      inline-flex
-                      items-center
-                      justify-center
-                      text-gray-700
-                      hover:border-red-500
-                      hover:text-red-600
-                      transition
+                      text-xs
+                      hover:bg-red-700
                     "
                   >
-                    <i className="bi bi-eye text-sm"></i>
+                    Try Again
                   </button>
-
                 </td>
-
               </tr>
-
-            ))}
-
-            {/* NO RESULTS */}
-
-            {filteredContacts.length === 0 && (
-
-              <tr>
-
-                <td
-                  colSpan="7"
-                  className="py-8 text-center text-sm text-gray-500"
-                >
-                  No contact enquiries found.
-                </td>
-
-              </tr>
-
             )}
+
+            {/* CONTACT DATA */}
+
+            {!loading &&
+              !error &&
+              filteredContacts.map((item, index) => (
+
+                <tr
+                  key={item._id || index}
+                  className="
+                    border-b
+                    border-gray-200
+                    hover:bg-gray-50
+                    transition
+                  "
+                >
+
+                  {/* NUMBER */}
+
+                  <td className="px-3 py-3 text-[11px] text-gray-800">
+                    {index + 1}
+                  </td>
+
+                  {/* NAME */}
+
+                  <td className="px-3 py-3 text-[11px] font-semibold text-gray-800">
+                    {item.name || "-"}
+                  </td>
+
+                  {/* PHONE */}
+
+                  <td className="px-3 py-3 text-[11px] text-gray-800">
+                    {item.mobile || item.phone || "-"}
+                  </td>
+
+                  {/* EMAIL */}
+
+                  <td className="px-3 py-3 text-[11px] text-gray-800">
+                    {item.email || "-"}
+                  </td>
+
+                  {/* SUBJECT */}
+
+                  <td className="px-3 py-3 text-[11px] text-gray-800">
+                    {item.subject || "-"}
+                  </td>
+
+                  {/* MESSAGE */}
+
+                  <td className="px-3 py-3 text-[11px] text-gray-800 max-w-[250px]">
+
+                    <p
+                      className="truncate"
+                      title={item.message}
+                    >
+                      {item.message || "-"}
+                    </p>
+
+                  </td>
+
+                  {/* DATE */}
+
+                  <td className="px-3 py-3 text-[11px] text-gray-800 whitespace-nowrap">
+                    {formatDate(
+                      item.createdAt ||
+                      item.submittedAt ||
+                      item.date
+                    )}
+                  </td>
+
+                  {/* ACTION */}
+
+                  <td className="px-3 py-3 text-center">
+
+                    <button
+                      type="button"
+                      title="View enquiry"
+                      className="
+                        w-9
+                        h-7
+                        border
+                        border-gray-300
+                        rounded-md
+                        inline-flex
+                        items-center
+                        justify-center
+                        text-gray-700
+                        hover:border-red-500
+                        hover:text-red-600
+                        transition
+                      "
+                    >
+                      <i className="bi bi-eye text-sm"></i>
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              ))}
+
+            {/* NO CONTACTS */}
+
+            {!loading &&
+              !error &&
+              filteredContacts.length === 0 && (
+
+                <tr>
+
+                  <td
+                    colSpan="8"
+                    className="py-10 text-center text-sm text-gray-500"
+                  >
+                    <i className="bi bi-inbox text-3xl text-gray-300"></i>
+
+                    <p className="mt-2">
+                      No contact enquiries found.
+                    </p>
+
+                  </td>
+
+                </tr>
+
+              )}
 
           </tbody>
 
@@ -303,132 +430,53 @@ const ContactTable = () => {
       >
 
         <p className="text-[11px] text-gray-500">
-          Showing 1 to 5 of 24 entries
+
+          Showing{" "}
+          <span className="font-semibold text-gray-700">
+            {filteredContacts.length}
+          </span>{" "}
+          of{" "}
+          <span className="font-semibold text-gray-700">
+            {contacts.length}
+          </span>{" "}
+          enquiries
+
         </p>
 
-        {/* Pagination */}
+        {/* REFRESH */}
 
-        <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={fetchContacts}
+          disabled={loading}
+          className="
+            flex
+            items-center
+            justify-center
+            gap-2
+            border
+            border-gray-300
+            rounded-md
+            px-3
+            py-2
+            text-[11px]
+            text-gray-600
+            hover:border-red-500
+            hover:text-red-600
+            disabled:opacity-50
+            transition
+          "
+        >
 
-          {/* Previous */}
+          <i
+            className={`bi bi-arrow-clockwise ${
+              loading ? "animate-spin" : ""
+            }`}
+          ></i>
 
-          <button
-            type="button"
-            className="
-              w-8
-              h-8
-              border
-              border-gray-300
-              rounded-md
-              text-gray-500
-              hover:bg-gray-100
-            "
-          >
-            <i className="bi bi-chevron-left text-xs"></i>
-          </button>
+          Refresh
 
-          {/* Page 1 */}
-
-          <button
-            type="button"
-            className="
-              w-8
-              h-8
-              rounded-md
-              bg-red-600
-              text-white
-              text-xs
-              font-semibold
-            "
-          >
-            1
-          </button>
-
-          {/* Page 2 */}
-
-          <button
-            type="button"
-            className="
-              w-8
-              h-8
-              border
-              border-gray-300
-              rounded-md
-              text-xs
-              hover:bg-gray-100
-            "
-          >
-            2
-          </button>
-
-          {/* Page 3 */}
-
-          <button
-            type="button"
-            className="
-              w-8
-              h-8
-              border
-              border-gray-300
-              rounded-md
-              text-xs
-              hover:bg-gray-100
-            "
-          >
-            3
-          </button>
-
-          {/* Dots */}
-
-          <button
-            type="button"
-            className="
-              w-8
-              h-8
-              border
-              border-gray-300
-              rounded-md
-              text-xs
-            "
-          >
-            ...
-          </button>
-
-          {/* Page 5 */}
-
-          <button
-            type="button"
-            className="
-              w-8
-              h-8
-              border
-              border-gray-300
-              rounded-md
-              text-xs
-              hover:bg-gray-100
-            "
-          >
-            5
-          </button>
-
-          {/* Next */}
-
-          <button
-            type="button"
-            className="
-              w-8
-              h-8
-              border
-              border-gray-300
-              rounded-md
-              text-gray-500
-              hover:bg-gray-100
-            "
-          >
-            <i className="bi bi-chevron-right text-xs"></i>
-          </button>
-
-        </div>
+        </button>
 
       </div>
 

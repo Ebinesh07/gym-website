@@ -1,12 +1,170 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import signupImg from "../../Asserts/singup.png";
 
+const Signup = () => {
+  const navigate = useNavigate();
 
-    const Signup = () => {
-        const [showPassword, setShowPassword] = useState(false);
-const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    username: "",
+    phone: "",
+    address: "",
+    password: "",
+    confirmPassword: "",
+    role: "",
+    terms: false,
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+  const { name, value, type, checked } = e.target;
+
+  setFormData((prev) => ({
+    ...prev,
+    [name]: type === "checkbox" ? checked : value,
+  }));
+
+  setErrors((prev) => ({
+    ...prev,
+    [name]: "",
+  }));
+};
+
+const validateForm = () => {
+  const newErrors = {};
+
+  if (!formData.name.trim()) {
+    newErrors.name = "Full name is required";
+  } else if (formData.name.trim().length < 3) {
+    newErrors.name = "Name must contain at least 3 characters";
+  }
+
+  if (!formData.email.trim()) {
+    newErrors.email = "Email address is required";
+  } else if (
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+  ) {
+    newErrors.email = "Enter a valid email address";
+  }
+
+  if (!formData.username.trim()) {
+    newErrors.username = "Username is required";
+  } else if (formData.username.trim().length < 4) {
+    newErrors.username =
+      "Username must contain at least 4 characters";
+  }
+
+  if (!formData.phone.trim()) {
+    newErrors.phone = "Phone number is required";
+  } else if (!/^[6-9]\d{9}$/.test(formData.phone.trim())) {
+    newErrors.phone = "Enter a valid 10-digit mobile number";
+  }
+
+  if (!formData.address.trim()) {
+    newErrors.address = "Address is required";
+  }
+
+  if (!formData.password) {
+    newErrors.password = "Password is required";
+  } else if (formData.password.length < 6) {
+    newErrors.password =
+      "Password must contain at least 6 characters";
+  }
+
+  if (!formData.confirmPassword) {
+    newErrors.confirmPassword = "Confirm your password";
+  } else if (
+    formData.password !== formData.confirmPassword
+  ) {
+    newErrors.confirmPassword = "Passwords do not match";
+  }
+
+  if (!formData.role) {
+    newErrors.role = "Please select an admin role";
+  }
+
+  if (!formData.terms) {
+    newErrors.terms =
+      "You must accept the Terms & Conditions";
+  }
+
+  setErrors(newErrors);
+
+  return Object.keys(newErrors).length === 0;
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!validateForm()) {
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    console.log("Sending signup data:", {
+      name: formData.name,
+      email: formData.email,
+      username: formData.username,
+      phone: formData.phone,
+      address: formData.address,
+      role: formData.role,
+    });
+
+    const response = await fetch(
+      "http://localhost:5000/api/admin/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          username: formData.username,
+          phone: formData.phone,
+          address: formData.address,
+          password: formData.password,
+          role: formData.role,
+        }),
+      }
+    );
+
+    console.log("Response status:", response.status);
+
+    const data = await response.json();
+
+    console.log("Server response:", data);
+
+    if (!response.ok) {
+      alert(data.message || "Unable to create account");
+      return;
+    }
+
+    alert("Admin account created successfully!");
+
+    navigate("/admin");
+  } catch (error) {
+    console.error("SIGNUP ERROR:", error);
+
+    alert(`Signup Error: ${error.message}`);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+
+
   return (
     <section className="min-h-screen bg-[#111111] flex items-center justify-center py-10 px-4">
 
@@ -158,7 +316,11 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
           {/* ================= FORM STARTS HERE ================= */}
 
-          <form className="mt-10 space-y-6">
+          <form
+  className="mt-10 space-y-6"
+  onSubmit={handleSubmit}
+  noValidate
+>
 
             {/* Part 2 Starts Here */}
 
@@ -177,10 +339,19 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
       <i className="bi bi-person-fill text-red-600 text-xl mr-3"></i>
 
       <input
-        type="text"
-        placeholder="Enter full name"
-        className="w-full outline-none bg-transparent"
-      />
+  type="text"
+  name="name"
+  placeholder="Enter full name"
+  value={formData.name}
+  onChange={handleChange}
+  className="w-full outline-none bg-transparent"
+/>
+
+{errors.name && (
+  <p className="text-red-600 text-sm mt-1">
+    {errors.name}
+  </p>
+)}
 
     </div>
   </div>
@@ -195,11 +366,20 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
       <i className="bi bi-envelope-fill text-red-600 text-xl mr-3"></i>
 
-      <input
-        type="email"
-        placeholder="Enter email"
-        className="w-full outline-none bg-transparent"
-      />
+     <input
+  type="email"
+  name="email"
+  placeholder="Enter email"
+  value={formData.email}
+  onChange={handleChange}
+  className="w-full outline-none bg-transparent"
+/>
+
+{errors.email && (
+  <p className="text-red-600 text-sm mt-1">
+    {errors.email}
+  </p>
+)}
 
     </div>
   </div>
@@ -214,11 +394,20 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
       <i className="bi bi-person-badge-fill text-red-600 text-xl mr-3"></i>
 
-      <input
-        type="text"
-        placeholder="Create username"
-        className="w-full outline-none bg-transparent"
-      />
+     <input
+  type="text"
+  name="username"
+  placeholder="Create username"
+  value={formData.username}
+  onChange={handleChange}
+  className="w-full outline-none bg-transparent"
+/>
+
+{errors.username && (
+  <p className="text-red-600 text-sm mt-1">
+    {errors.username}
+  </p>
+)}
 
     </div>
   </div>
@@ -233,11 +422,21 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
       <i className="bi bi-telephone-fill text-red-600 text-xl mr-3"></i>
 
-      <input
-        type="tel"
-        placeholder="+91 98765 43210"
-        className="w-full outline-none bg-transparent"
-      />
+    <input
+  type="tel"
+  name="phone"
+  placeholder="9876543210"
+  value={formData.phone}
+  onChange={handleChange}
+  maxLength="10"
+  className="w-full outline-none bg-transparent"
+/>
+
+{errors.phone && (
+  <p className="text-red-600 text-sm mt-1">
+    {errors.phone}
+  </p>
+)}
 
     </div>
   </div>
@@ -256,12 +455,20 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     <i className="bi bi-geo-alt-fill text-red-600 text-xl mr-3 mt-1"></i>
 
-    <textarea
-      rows="3"
-      placeholder="Enter address..."
-      className="w-full outline-none resize-none"
-    ></textarea>
+<textarea
+  name="address"
+  rows="3"
+  placeholder="Enter address..."
+  value={formData.address}
+  onChange={handleChange}
+  className="w-full outline-none resize-none"
+></textarea>
 
+{errors.address && (
+  <p className="text-red-600 text-sm mt-1">
+    {errors.address}
+  </p>
+)}
   </div>
 
 </div>
@@ -280,11 +487,20 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
       <i className="bi bi-lock-fill text-red-600 text-xl mr-3"></i>
 
-    <input
+<input
   type={showPassword ? "text" : "password"}
+  name="password"
   placeholder="Create Password"
+  value={formData.password}
+  onChange={handleChange}
   className="w-full outline-none bg-transparent"
 />
+
+{errors.password && (
+  <p className="text-red-600 text-sm mt-1">
+    {errors.password}
+  </p>
+)}
 
 <i
   className={`bi ${
@@ -309,9 +525,18 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
       <i className="bi bi-shield-lock-fill text-red-600 text-xl mr-3"></i>
 <input
   type={showConfirmPassword ? "text" : "password"}
+  name="confirmPassword"
   placeholder="Confirm Password"
+  value={formData.confirmPassword}
+  onChange={handleChange}
   className="w-full outline-none bg-transparent"
 />
+
+{errors.confirmPassword && (
+  <p className="text-red-600 text-sm mt-1">
+    {errors.confirmPassword}
+  </p>
+)}
 
 <i
   className={`bi ${
@@ -340,19 +565,29 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     <i className="bi bi-person-workspace text-red-600 text-xl mr-3"></i>
 
-    <select
-      className="w-full outline-none bg-transparent cursor-pointer"
-      defaultValue=""
-    >
-      <option value="" disabled>
-        Select Admin Role
-      </option>
+   <select
+  name="role"
+  value={formData.role}
+  onChange={handleChange}
+  className="w-full outline-none bg-transparent cursor-pointer"
+>
+  <option value="" disabled>
+    Select Admin Role
+  </option>
 
-      <option>Admin</option>
+  <option value="Admin">
+    Admin
+  </option>
 
-      <option>Super Admin</option>
-
-    </select>
+  <option value="Super Admin">
+    Super Admin
+  </option>
+</select>
+{errors.role && (
+  <p className="text-red-600 text-sm mt-1">
+    {errors.role}
+  </p>
+)}
 
   </div>
 
@@ -363,9 +598,17 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 <div className="flex items-start gap-3">
 
   <input
-    type="checkbox"
-    className="mt-1 accent-red-600"
-  />
+  type="checkbox"
+  name="terms"
+  checked={formData.terms}
+  onChange={handleChange}
+  className="mt-1 accent-red-600"
+/>
+{errors.terms && (
+  <p className="text-red-600 text-sm">
+    {errors.terms}
+  </p>
+)}
 
   <p className="text-gray-600 text-sm leading-6">
     I agree to the
@@ -384,25 +627,36 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 <button
   type="submit"
-className="
-w-full
-bg-red-600
-hover:bg-red-700
-text-white
-py-3
-mb-2
-rounded-xl
-font-bold
-uppercase
-tracking-wider
-transition-all
-duration-300
-hover:shadow-xl
-hover:scale-[1.02]
-"
+  disabled={loading}
+  className="
+    w-full
+    bg-red-600
+    hover:bg-red-700
+    text-white
+    py-3
+    mb-2
+    rounded-xl
+    font-bold
+    uppercase
+    tracking-wider
+    transition-all
+    duration-300
+    hover:shadow-xl
+    disabled:opacity-60
+    disabled:cursor-not-allowed
+  "
 >
-  <i className="bi bi-person-plus-fill mr-2"></i>
-  Create Admin Account
+  {loading ? (
+    <>
+      <i className="bi bi-arrow-repeat animate-spin mr-2"></i>
+      Creating Account...
+    </>
+  ) : (
+    <>
+      <i className="bi bi-person-plus-fill mr-2"></i>
+      Create Admin Account
+    </>
+  )}
 </button>
 
 {/* ================= LOGIN LINK ================= */}

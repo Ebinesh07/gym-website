@@ -206,8 +206,8 @@ className="
       </p>
 
     </div>
-<button
-  onClick={() => navigate("/register")}
+<a
+  href="#registration"
   className="
     w-full
     py-3
@@ -235,8 +235,9 @@ className="
   "
 >
   JOIN NOW
-  <i className="bi bi-arrow-right "></i>
-</button>
+
+  <i className="bi bi-arrow-right"></i>
+</a>
 
 
 

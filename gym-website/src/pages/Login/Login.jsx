@@ -11,24 +11,68 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-    if (!email || !password) {
-      alert("Please fill all fields");
+  // Basic validation
+  if (!email.trim()) {
+    alert("Please enter your email");
+    return;
+  }
+
+  if (!password) {
+    alert("Please enter your password");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const response = await fetch(
+      "http://localhost:5000/api/admin/login",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          email: email.trim(),
+          password: password,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    console.log("Login Response:", data);
+
+    // WRONG EMAIL / PASSWORD
+    if (!response.ok) {
+      alert(data.message || "Invalid email or password");
       return;
     }
 
-    setLoading(true);
+    // LOGIN SUCCESS
+    localStorage.setItem("adminToken", data.token);
 
-    setTimeout(() => {
-      setLoading(false);
+    localStorage.setItem(
+      "admin",
+      JSON.stringify(data.admin)
+    );
 
-      alert("Login Successful!");
+    alert(`Welcome ${data.admin.name}!`);
 
-      navigate("/admin/dashboard");
-    }, 1500);
-  };
+    navigate("/admin/dashboard");
+  } catch (error) {
+    console.error("Login Error:", error);
+
+    alert("Unable to connect to server");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <section className="min-h-screen bg-[#0d0d0d] flex items-center justify-center p-0 lg:p-8">
@@ -205,9 +249,9 @@ const Login = () => {
               </p>
 
               <form
-                onSubmit={handleLogin}
-                className="mt-10 space-y-6"
-              >
+  onSubmit={handleLogin}
+  className="mt-10 space-y-6"
+>
                               {/* ================= EMAIL ================= */}
 
               <div>
@@ -220,13 +264,13 @@ const Login = () => {
 
                   <i className="bi bi-envelope text-red-600 text-xl mr-3"></i>
 
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full outline-none bg-transparent text-gray-700 placeholder:text-gray-400"
-                  />
+                 <input
+  type="email"
+  placeholder="Enter your email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  className="w-full outline-none bg-transparent"
+/>
 
                 </div>
 
@@ -244,29 +288,30 @@ const Login = () => {
 
                   <i className="bi bi-lock text-red-600 text-xl mr-3"></i>
 
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full outline-none bg-transparent text-gray-700 placeholder:text-gray-400"
-                  />
+<div className="flex items-center w-full">
+  <input
+    type={showPassword ? "text" : "password"}
+    placeholder="Enter your password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    className="w-full outline-none bg-transparent"
+  />
 
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="text-gray-500 hover:text-red-600 transition"
-                  >
+  <button
+    type="button"
+    onClick={() => setShowPassword((prev) => !prev)}
+    className="ml-3 text-gray-500 hover:text-red-600 transition"
+    aria-label={showPassword ? "Hide password" : "Show password"}
+  >
+    <i
+      className={`bi ${
+        showPassword ? "bi-eye-slash-fill" : "bi-eye-fill"
+      } text-xl`}
+    ></i>
+  </button>
+</div>
 
-                    <i
-                      className={`bi ${
-                        showPassword
-                          ? "bi-eye-slash"
-                          : "bi-eye"
-                      } text-lg`}
-                    ></i>
 
-                  </button>
 
                 </div>
 
@@ -300,25 +345,42 @@ const Login = () => {
 
               {/* ================= LOGIN BUTTON ================= */}
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full h-14 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wide transition-all flex justify-center items-center gap-3 disabled:opacity-70 border"
-              >
-
-                {loading ? (
-                  <>
-                    <i className="bi bi-arrow-repeat animate-spin"></i>
-                    Logging In...
-                  </>
-                ) : (
-                  <>
-                    <i className="bi bi-box-arrow-in-right"></i>
-                    LOGIN TO DASHBOARD
-                  </>
-                )}
-
-              </button>
+                             <button
+  type="submit"
+  disabled={loading}
+  className="
+    w-full
+    h-14
+    rounded-xl
+    bg-red-600
+    hover:bg-red-700
+    text-white
+    font-bold
+    uppercase
+    tracking-wider
+    text-lg
+    transition-all
+    duration-300
+    flex
+    justify-center
+    items-center
+    gap-3
+    disabled:opacity-60
+    disabled:cursor-not-allowed
+  "
+>
+  {loading ? (
+    <>
+      <i className="bi bi-arrow-repeat animate-spin"></i>
+      Checking...
+    </>
+  ) : (
+    <>
+      <i className="bi bi-box-arrow-in-right"></i>
+      Login To Dashboard
+    </>
+  )}
+</button>
 
               {/* ================= DIVIDER ================= */}
 

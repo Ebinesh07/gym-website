@@ -2,6 +2,7 @@ import "./Navbar.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
 
@@ -107,22 +108,7 @@ function Navbar() {
               </ul>
 
             </li>
-{/* 
-            <li>
 
-              <NavLink to="/trainers">
-                Trainers
-              </NavLink>
-
-            </li> */}
-
-            {/* <li>
-
-              <NavLink to="/gallery">
-                Gallery
-              </NavLink>
-
-            </li> */}
                         <li>
 
               <NavLink to="/fees">
@@ -177,13 +163,10 @@ function Navbar() {
 
           </div>
 
-          <button className="join-btn">
-
-            JOIN NOW
-
-            <i className="bi bi-arrow-right"></i>
-
-          </button>
+        <Link to="/cta" className="join-btn">
+  JOIN NOW
+  <i className="bi bi-arrow-right"></i>
+</Link>
 
         </div>
 

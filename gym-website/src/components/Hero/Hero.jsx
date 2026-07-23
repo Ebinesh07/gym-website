@@ -2,6 +2,7 @@ import "./Hero.css";
 import heroDesktop from "../../assets/hero-bg.jpg";
 import heroMobile from "../../assets/hero-mobile.jpg";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Hero() {
 
@@ -75,12 +76,17 @@ function Hero() {
 
                     <div className="hero-buttons">
 
-                        <button className="primary-btn">
-                            Join Now
-                        </button>
+                        <Link to="/cta" className="join-btn">
+  JOIN NOW
+  <i className="bi bi-arrow-right"></i>
+</Link>
+                        <Link to="/cta" className="join-btn">
+  Book Free Trial
+  <i className="bi bi-arrow-right"></i>
+</Link>
 
                         <button className="secondary-btn">
-                            Book Free Trial
+                            
                         </button>
 
                     </div>
@@ -108,9 +114,10 @@ function Hero() {
                         OFF ON ALL MEMBERSHIPS
                     </p>
 
-                    <button className="offer-btn">
-                        Join Today
-                    </button>
+                                           <Link to="/cta" className="join-btn">
+  JOIN TODAY
+  <i className="bi bi-arrow-right"></i>
+</Link>
 
                 </div>
 

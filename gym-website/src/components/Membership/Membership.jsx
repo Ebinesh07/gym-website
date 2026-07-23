@@ -122,13 +122,10 @@ function Membership() {
 
               </ul>
 
-              <button>
-
-                Join Now
-
-                <BsArrowRight />
-
-              </button>
+             <a href="#registration" className="join-btn">
+  Join Now
+  <BsArrowRight />
+</a>
 
             </div>
 

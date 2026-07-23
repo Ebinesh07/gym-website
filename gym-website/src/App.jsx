@@ -1,11 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
+
 // ================= USER PAGES =================
 import Home from "./pages/Home";
 import About from "./pages/About/About";
 import Gym from "./pages/Gym";
 import SportsAcademy from "./pages/SportsAcademy";
 import Contact from "./pages/Contact/Contact";
+import Fees from "./pages/Fees/Fees";
+import CTA from "./components/CTA/CTA";
 
 // ================= ADMIN PAGES =================
 import Login from "./pages/Login/Login";
@@ -80,6 +83,19 @@ function App() {
             <Contact />
           </UserLayout>
         }
+      />
+      <Route
+        path="/fees"
+        element={
+          <UserLayout>
+            <Fees />
+          </UserLayout>
+        }
+      />
+
+        <Route
+        path="/cta"
+        element={<CTA />}
       />
 
       {/* ================= ADMIN ================= */}

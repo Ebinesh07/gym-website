@@ -113,27 +113,29 @@ const Fees1 = () => {
                 On Yearly Plans
               </p>
 
-              <button
-                className="
-                  w-full
-                  bg-red-600
-                  hover:bg-gray-700
-                  text-white
-                  font-bold
-                  py-3
-                  rounded-3
-                  mt-4 
-                  
-                  uppercase
-                  flex
-                  items-center
-                  justify-center
-                  gap-3
-                "
-              >
-                Join Now
-                <i className="bi bi-arrow-right"></i>
-              </button>
+            <a
+  href="#registration"
+  className="
+    w-full
+    bg-red-600
+    hover:bg-gray-700
+    text-white
+    font-bold
+    py-3
+    rounded-lg
+    mt-4
+    uppercase
+    flex
+    items-center
+    justify-center
+    gap-3
+    transition-all
+    duration-300
+  "
+>
+  Join Now
+  <i className="bi bi-arrow-right"></i>
+</a>
 
               
             </div>

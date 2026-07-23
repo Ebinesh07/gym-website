@@ -58,7 +58,7 @@ const Navbar = () => {
   {/* Logout */}
 
   <Link
-    to="/login"
+    to="/admin"
     className="hidden md:flex bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg items-center gap-2"
   >
     <i className="bi bi-box-arrow-right"></i>

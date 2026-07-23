@@ -173,8 +173,8 @@ cursor-pointer
                 </div>
 
                 {/* Button */}
-       <button
-  onClick={() => navigate("/register")}
+<a
+  href="#registration"
   className={`
     w-full
     mt-3
@@ -187,11 +187,16 @@ cursor-pointer
     duration-300
     hover:scale-105
     hover:shadow-lg
+    flex
+    items-center
+    justify-center
+    gap-2
     ${plan.button}
   `}
 >
   Join Now
-</button>
+  <i className="bi bi-arrow-right"></i>
+</a>
               </div>
             </div>
           ))}
