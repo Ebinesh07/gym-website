@@ -160,7 +160,7 @@ cursor-pointer
                   / Month
                 </p>
 
-                <div className="mt-8 space-y-4">
+                <div className="mt-8 space-y-4 px-2">
                   {plan.features.map((feature, i) => (
                     <div
                       key={i}

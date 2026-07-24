@@ -23,8 +23,8 @@ const Fees1 = () => {
   ];
 
   return (
-    <section className="bg-black py-16 overflow-hidden ">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="bg-black py-16 overflow-hidden  ">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 ">
 
         <div className="grid lg:grid-cols-2 items-center gap-12">
 
