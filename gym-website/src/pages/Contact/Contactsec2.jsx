@@ -79,7 +79,7 @@ const handleSubmit = async (e) => {
 
   try {
 const response = await fetch(
-  "http://localhost:5000/api/contacts",
+  `${import.meta.env.VITE_API_URL}/api/contacts`,
   {
     method: "POST",
     headers: {

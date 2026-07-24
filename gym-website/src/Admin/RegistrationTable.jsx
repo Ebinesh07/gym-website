@@ -16,9 +16,9 @@ const RegistrationTable = () => {
       setLoading(true);
       setError("");
 
-      const response = await fetch(
-        "http://localhost:5000/api/registrations"
-      );
+const response = await fetch(
+  `${import.meta.env.VITE_API_URL}/api/registrations`
+);
 
       const data = await response.json();
 

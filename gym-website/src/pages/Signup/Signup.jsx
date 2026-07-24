@@ -121,23 +121,23 @@ const handleSubmit = async (e) => {
     });
 
     const response = await fetch(
-      "http://localhost:5000/api/admin/signup",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          username: formData.username,
-          phone: formData.phone,
-          address: formData.address,
-          password: formData.password,
-          role: formData.role,
-        }),
-      }
-    );
+  `${import.meta.env.VITE_API_URL}/api/admin/signup`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: formData.name,
+      email: formData.email,
+      username: formData.username,
+      phone: formData.phone,
+      address: formData.address,
+      password: formData.password,
+      role: formData.role,
+    }),
+  }
+);
 
     console.log("Response status:", response.status);
 

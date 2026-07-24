@@ -36,11 +36,11 @@ const StatsCards = () => {
     try {
       setLoading(true);
 
-      const [registrationResponse, contactResponse] =
-        await Promise.all([
-          fetch("http://localhost:5000/api/registrations"),
-          fetch("http://localhost:5000/api/contacts"),
-        ]);
+    const [registrationResponse, contactResponse] =
+  await Promise.all([
+    fetch(`${import.meta.env.VITE_API_URL}/api/registrations`),
+    fetch(`${import.meta.env.VITE_API_URL}/api/contacts`),
+  ]);
 
       if (!registrationResponse.ok) {
         throw new Error("Failed to fetch registrations");
