@@ -4,14 +4,18 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Footer = () => {
   return (
-    <footer
-      className="pt-20 border-t py-4"
-      style={{
-        backgroundColor: "var(--bg-dark)",
-        borderColor: "rgba(255,255,255,0.08)",
-        color: "var(--text-color)",
-      }}
-    >
+  <footer
+  className="
+    pt-20
+    py-4
+    border-t
+    bg-[#0f0f0f]
+    text-gray-400
+  "
+  style={{
+    borderColor: "rgba(255,255,255,0.08)",
+  }}
+>
     <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 text-center lg:text-left">
 
         {/* Logo Section */}
