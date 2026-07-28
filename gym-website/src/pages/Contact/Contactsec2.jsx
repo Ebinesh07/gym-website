@@ -1,6 +1,6 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
-
+// require('dotenv').config()
 
 const Contactsec2 = () => {
 
@@ -73,13 +73,16 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   // Run your existing validation
-  if (!validateForm()) {
-    return;
-  }
+  
 
   try {
+    if (!validateForm()) {
+    console.log(formData);
+    return;
+  }
 const response = await fetch(
   `${import.meta.env.VITE_API_URL}/api/contacts`,
+  // `https://gym-website-8y7a.onrender.com/api/contacts`,
   {
     method: "POST",
     headers: {
@@ -91,7 +94,7 @@ const response = await fetch(
 
     const data = await response.json();
 
-    if (!response.ok) {
+    if (!data.ok) {
       alert(data.message || "Something went wrong");
       return;
     }
