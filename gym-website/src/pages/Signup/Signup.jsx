@@ -104,13 +104,15 @@ const validateForm = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if (!validateForm()) {
-    return;
-  }
+  
 
   setLoading(true);
 
   try {
+if (!validateForm()) {
+    return;
+  }
+
     console.log("Sending signup data:", {
       name: formData.name,
       email: formData.email,
@@ -122,6 +124,8 @@ const handleSubmit = async (e) => {
 
     const response = await fetch(
   `${import.meta.env.VITE_API_URL}/api/admin/signup`,
+  //  `${import.meta.env.VITE_API_URL}/api/contacts`,
+  //  `https://gym-website-8y7a.onrender.com/api/admin/signup`,
   {
     method: "POST",
     headers: {
@@ -145,7 +149,7 @@ const handleSubmit = async (e) => {
 
     console.log("Server response:", data);
 
-    if (!response.ok) {
+    if (!data.ok) {
       alert(data.message || "Unable to create account");
       return;
     }
