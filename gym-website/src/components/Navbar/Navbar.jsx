@@ -88,11 +88,11 @@ function Navbar() {
               </ul>
             </li>
 
-            <li>
+            {/* <li>
               <NavLink to="/trainers" onClick={closeMenu}>
                 Trainers
               </NavLink>
-            </li>
+            </li> */}
 
             <li>
               <NavLink to="/fees" onClick={closeMenu}>
