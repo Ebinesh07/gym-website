@@ -104,68 +104,49 @@ const validateForm = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  
+  if (!validateForm()) {
+    return;
+  }
 
   setLoading(true);
 
   try {
-if (!validateForm()) {
-    return;
-  }
-
-    console.log("Sending signup data:", {
-      name: formData.name,
-      email: formData.email,
-      username: formData.username,
-      phone: formData.phone,
-      address: formData.address,
-      role: formData.role,
-    });
-
     const response = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/admin/signup`,
-  //  `${import.meta.env.VITE_API_URL}/api/contacts`,
-  //  `https://gym-website-8y7a.onrender.com/api/admin/signup`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: formData.name,
-      email: formData.email,
-      username: formData.username,
-      phone: formData.phone,
-      address: formData.address,
-      password: formData.password,
-      role: formData.role,
-    }),
-  }
-);
-
-    console.log("Response status:", response.status);
+      `${import.meta.env.VITE_API_URL}/api/admin/signup`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          username: formData.username,
+          phone: formData.phone,
+          address: formData.address,
+          password: formData.password,
+          role: formData.role,
+        }),
+      }
+    );
 
     const data = await response.json();
 
-    console.log("Server response:", data);
-
-    if (!data.ok) {
+    if (!response.ok) {
       alert(data.message || "Unable to create account");
       return;
     }
 
     alert("Admin account created successfully!");
-
     navigate("/admin");
+
   } catch (error) {
     console.error("SIGNUP ERROR:", error);
-
     alert(`Signup Error: ${error.message}`);
   } finally {
     setLoading(false);
   }
 };
-
 
 
 
