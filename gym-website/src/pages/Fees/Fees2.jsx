@@ -1,9 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Fees2 = () => {
-  const navigate = useNavigate();
-
   const plans = [
     {
       title: "LADIES",
@@ -26,7 +23,7 @@ const Fees2 = () => {
       price: "₹2,500",
       color: "bg-black",
       button: "bg-black hover:bg-gray-800",
-      iconColor: "text-gray-700",
+      iconColor: "text-gray-800",
       features: [
         "Access to Gym",
         "Cardio & Strength Training",
@@ -42,7 +39,6 @@ const Fees2 = () => {
       color: "bg-red-500",
       button: "bg-red-600 hover:bg-red-700",
       iconColor: "text-red-600",
-      badge: true,
       subtitle: "(HUSBAND & WIFE)",
       features: [
         "Access to Gym",
@@ -86,88 +82,181 @@ const Fees2 = () => {
   ];
 
   return (
-    <section className="bg-white py-5 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white py-12 sm:py-16 lg:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center items-center gap-4 mb-3">
-            <div className="w-12 h-[2px] bg-red-600"></div>
+        {/* ================= HEADING ================= */}
+        <div className="text-center mb-10 lg:mb-14">
 
-            <h2 className="text-4xl font-black uppercase">
-              Membership
-              <span className="text-red-600"> Plans</span>
+          <div className="flex items-center justify-center gap-3 sm:gap-4">
+            <div className="hidden sm:block w-10 lg:w-14 h-[2px] bg-red-600" />
+
+            <h2
+              className="
+                text-3xl
+                sm:text-4xl
+                lg:text-5xl
+                font-black
+                uppercase
+                leading-tight
+                m-0
+              "
+            >
+              Membership{" "}
+              <span className="text-red-600">
+                Plans
+              </span>
             </h2>
 
-            <div className="w-12 h-[2px] bg-red-600"></div>
+            <div className="hidden sm:block w-10 lg:w-14 h-[2px] bg-red-600" />
           </div>
 
-          <p className="text-gray-500">
+          <div className="w-16 h-1 bg-red-600 mx-auto mt-4 sm:hidden" />
+
+          <p className="text-gray-500 mt-4 mb-0 text-sm sm:text-base">
             Choose the plan that suits your fitness journey
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
+        {/* ================= CARDS ================= */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            xl:grid-cols-5
+            gap-6
+            items-stretch
+          "
+        >
           {plans.map((plan, index) => (
             <div
               key={index}
-             className="
-group
-border border-gray-200
-rounded-xl
-overflow-hidden
-bg-white
-relative
-shadow-md
-transition-all
-duration-500
-hover:-translate-y-4
-hover:shadow-2xl
-hover:scale-105
-hover:border-red-500
-cursor-pointer
-">
-              
+              className="
+                group
+                bg-white
+                border
+                border-gray-200
+                rounded-2xl
+                overflow-hidden
+                shadow-md
+                flex
+                flex-col
+                h-full
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:shadow-xl
+                hover:border-red-500
+              "
+            >
 
-              {/* Header */}
-              <div className={`${plan.color} text-white p-4 text-center `}>
-                <i className={`bi ${plan.icon} text-5xl mb-3 block`}></i>
+              {/* ================= CARD HEADER ================= */}
+              <div
+                className={`
+                  ${plan.color}
+                  text-white
+                  px-4
+                  py-6
+                  text-center
+                  min-h-[170px]
+                  flex
+                  flex-col
+                  items-center
+                  justify-center
+                `}
+              >
+                <i
+                  className={`
+                    bi
+                    ${plan.icon}
+                    text-4xl
+                    sm:text-5xl
+                    mb-3
+                  `}
+                />
 
-                <h3 className="font-black text-2xl">
+                <h3 className="font-black text-xl sm:text-2xl m-0">
                   {plan.title}
                 </h3>
 
-                {plan.subtitle && (
-                  <p className="text-xs mt-1">
-                    {plan.subtitle}
-                  </p>
-                )}
+                {/* Fixed subtitle area */}
+                <div className="h-6 flex items-center justify-center">
+                  {plan.subtitle && (
+                    <p className="text-xs mt-1 mb-0 font-medium">
+                      {plan.subtitle}
+                    </p>
+                  )}
+                </div>
               </div>
 
-              {/* Body */}
-              <div className="p-6">
-                <p className="text-gray-400 text-sm uppercase text-center">
-                  Starting From
-                </p>
 
-                <h2 className={`text-5xl font-black mt-3 text-center ${plan.iconColor}`}>
-                  {plan.price}
-                </h2>
+              {/* ================= CARD BODY ================= */}
+              <div
+                className="
+                  p-3
+                  flex
+                  flex-col
+                  flex-1
+                "
+              >
 
-                <p className="text-center text-gray-500 mt-1">
-                  / Month
-                </p>
+                {/* PRICE */}
+                <div className="text-center min-h-[125px]">
+                  <p className="text-gray-400 text-xs sm:text-sm uppercase mb-0">
+                    Starting From
+                  </p>
 
-                <div className="mt-8 space-y-4 px-2">
+                  <h2
+                    className={`
+                      text-4xl
+                      xl:text-[38px]
+                      font-black
+                      mt-3
+                      mb-0
+                      leading-none
+                      ${plan.iconColor}
+                    `}
+                  >
+                    {plan.price}
+                  </h2>
+
+                  <p className="text-gray-500 mt-2 mb-0 text-sm">
+                    / Month
+                  </p>
+                </div>
+
+
+                {/* ================= FEATURES ================= */}
+                <div className="mt-1 space-y-4 flex-1">
                   {plan.features.map((feature, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-3 text-gray-700"
+                      className="
+                        flex
+                        items-start
+                        gap-3
+                        text-gray-700
+                        text-sm
+                        leading-5
+                      "
                     >
-                      <i className={`bi bi-check-circle-fill ${plan.iconColor}`}></i>
-                      <span>{feature}</span>
+                      <i
+                        className={`
+                          bi
+                          bi-check-circle-fill
+                          ${plan.iconColor}
+                          text-base
+                          mt-[2px]
+                          shrink-0
+                        `}
+                      />
+
+                      <span className="flex-1">
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -193,7 +282,7 @@ cursor-pointer
     gap-2
     ${plan.button}
   `}
- onClick={() => navigate("/cta")}>
+>
   Join Now
   <i className="bi bi-arrow-right"></i>
 </a>

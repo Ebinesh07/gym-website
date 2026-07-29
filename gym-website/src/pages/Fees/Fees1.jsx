@@ -1,10 +1,7 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
-
-import f1 from '../../Asserts/f1.png'
-import { useNavigate } from "react-router-dom";
+import f1 from "../../Asserts/f1.png";
 
 const Fees1 = () => {
-  const navigate = useNavigate();
   const features = [
     {
       icon: "bi-shield-check",
@@ -24,124 +21,326 @@ const Fees1 = () => {
     },
   ];
 
+  // Reusable Offer Card
+  const OfferCard = () => (
+    <div
+      className="
+        w-full
+        bg-black
+        text-center
+        border
+        border-white/40
+        rounded-2xl
+        p-4
+        sm:p-5
+        shadow-2xl
+      "
+    >
+      {/* Offer Badge */}
+      <div
+        className="
+          w-full
+          bg-red-600
+          text-white
+          text-[11px]
+          sm:text-xs
+          font-bold
+          uppercase
+          py-2.5
+          px-3
+          rounded-full
+        "
+      >
+        Limited Time Offer
+      </div>
+
+      {/* Up To */}
+      <p
+        className="
+          text-white
+          text-base
+          sm:text-lg
+          font-black
+          uppercase
+          mt-5
+          mb-2
+        "
+      >
+        Up To
+      </p>
+
+      {/* Discount */}
+      <div className="flex items-end justify-center gap-1">
+        <span
+          className="
+            text-white
+            text-6xl
+            sm:text-7xl
+            font-black
+            leading-none
+          "
+        >
+          20
+        </span>
+
+        <span
+          className="
+            text-red-600
+            text-3xl
+            sm:text-4xl
+            font-black
+            leading-none
+            mb-1
+          "
+        >
+          %
+        </span>
+
+        <span
+          className="
+            text-white
+            text-xl
+            sm:text-2xl
+            font-black
+            leading-none
+            mb-1
+          "
+        >
+          OFF
+        </span>
+      </div>
+
+      {/* Plan */}
+      <p
+        className="
+          text-white
+          text-xs
+          sm:text-sm
+          font-semibold
+          uppercase
+          mt-4
+          mb-0
+        "
+      >
+        On Yearly Plans
+      </p>
+
+      {/* Button */}
+      <a
+        href="#registration"
+        className="
+          w-full
+          h-12
+          mt-5
+          bg-red-600
+          hover:!bg-red-700
+          text-white
+          hover:!text-white
+          no-underline
+          text-sm
+          font-bold
+          uppercase
+          rounded-lg
+          flex
+          items-center
+          justify-center
+          gap-3
+          transition-all
+          duration-300
+        "
+      >
+        Join Now
+        <i className="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  );
+
   return (
-    <section className="bg-black py-16 overflow-hidden  ">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 ">
+    <section className="bg-[#0f0f0f] overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
 
-        <div className="grid lg:grid-cols-2 items-center gap-12">
+        {/* ================= LEFT CONTENT ================= */}
+        <div
+          className="
+            flex
+            items-center
+            px-4
+            sm:px-6
+            lg:pl-8
+            xl:pl-[max(2rem,calc((100vw-1280px)/2))]
+            lg:pr-10
+            xl:pr-14
+            py-10
+            sm:py-12
+            lg:py-14
+          "
+        >
+          <div className="w-full max-w-2xl">
 
-          {/* LEFT CONTENT */}
-          <div>
-
-            <h1 className="text-4xl md:text-6xl font-black uppercase leading-tight text-white">
+            {/* Heading */}
+            <h1
+              className="
+                m-0
+                text-3xl
+                sm:text-4xl
+                md:text-5xl
+                lg:text-[44px]
+                xl:text-5xl
+                font-black
+                uppercase
+                leading-[1.1]
+                text-white
+              "
+            >
               BEST FACILITIES.
               <br />
+
               <span className="text-red-600">
                 AFFORDABLE PRICES.
               </span>
+
               <br />
+
               GREAT RESULTS.
             </h1>
 
-            <p className="text-gray-300 text-lg mt-8 leading-8 max-w-xl">
+            {/* Description */}
+            <p
+              className="
+                max-w-xl
+                mt-5
+                lg:mt-6
+                mb-0
+                text-gray-300
+                text-base
+                sm:text-lg
+                leading-7
+              "
+            >
               Choose the membership that fits your goals and start your
-              transformation journey with Ochré Fitness Center.
+              transformation journey with OCHRÉ Fitness Centre.
             </p>
 
-            {/* FEATURES */}
-            <div className="grid grid-cols-2 gap-6 mt-10">
-
+            {/* Features */}
+            <div
+              className="
+                grid
+                grid-cols-1
+                sm:grid-cols-2
+                gap-x-6
+                gap-y-4
+                sm:gap-y-5
+                mt-7
+                lg:mt-8
+              "
+            >
               {features.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-3 sm:gap-4"
                 >
-                  <div className="w-14 h-14 rounded-full border-2 border-red-600 flex items-center justify-center text-red-600 text-2xl">
+                  {/* Icon */}
+                  <div
+                    className="
+                      w-11
+                      h-11
+                      sm:w-12
+                      sm:h-12
+                      shrink-0
+                      rounded-full
+                      border-2
+                      border-red-600
+                      flex
+                      items-center
+                      justify-center
+                      text-red-600
+                      text-lg
+                      sm:text-xl
+                    "
+                  >
                     <i className={`bi ${item.icon}`}></i>
                   </div>
 
-                  <h3 className="text-white font-bold text-sm md:text-base">
+                  {/* Text */}
+                  <h3
+                    className="
+                      m-0
+                      text-white
+                      font-bold
+                      text-sm
+                      sm:text-base
+                      leading-5
+                    "
+                  >
                     {item.text}
                   </h3>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
 
+        {/* ================= RIGHT SIDE ================= */}
+        <div className="w-full">
+
+          {/* Image */}
+          <div
+            className="
+              relative
+              w-full
+              h-[300px]
+              sm:h-[420px]
+              lg:h-full
+              lg:min-h-[520px]
+            "
+          >
+            <img
+              src={f1}
+              alt="OCHRÉ Fitness Centre training"
+              className="
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+                object-center
+              "
+            />
+
+            {/* Image Overlay */}
+            <div className="absolute inset-0 bg-black/10" />
+
+            {/* Desktop Offer Card */}
+            <div
+              className="
+                hidden
+                lg:block
+                absolute
+                top-1/2
+                -translate-y-1/2
+                right-7
+                xl:right-10
+                w-[270px]
+              "
+            >
+              <OfferCard />
             </div>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="relative mb-5">
-
-            <img
-              src={f1}
-              alt="img"
-              className="w-full h-[650px] object-cover rounded-3xl"
-            />
-
-            {/* OFFER CARD */}
-            <div
-              className="
-                absolute
-                right-5
-                top-10
-                bg-black/95
-                border-2
-                border-gray-700
-                rounded-2xl
-                p-2
-                mb-5
-                
-                w-[280px]
-                text-center
-                shadow-2xl
-              "
-            >
-              <div className="bg-red-600 text-white text-sm font-bold py-2 rounded-full uppercase">
-                Limited Time Offer
-              </div>
-
-              <h3 className="text-white text-3xl font-black mt-6 uppercase">
-                Upto
-              </h3>
-
-              <h1 className="text-white text-8xl font-black leading-none mt-2">
-                20 % OFF
-           
-              </h1>
-
-             
-
-              <p className="text-white font-semibold mt-3 uppercase">
-                On Yearly Plans
-              </p>
-
-            <a
-  href="#registration"
-  className="
-    w-full
-    bg-red-600
-    hover:bg-gray-700
-    text-white
-    font-bold
-    py-3
-    rounded-lg
-    mt-4
-    uppercase
-    flex
-    items-center
-    justify-center
-    gap-3
-    transition-all
-    duration-300
-  "
- onClick={() => navigate("/cta")}>
-  Join Now
-  <i className="bi bi-arrow-right"></i>
-</a>
-
-              
+          {/* ================= MOBILE OFFER CARD ================= */}
+          <div
+            className="
+              lg:hidden
+              bg-[#0f0f0f]
+              px-4
+              sm:px-6
+              py-5
+              sm:py-6
+            "
+          >
+            <div className="w-full max-w-[360px] mx-auto">
+              <OfferCard />
             </div>
-
           </div>
 
         </div>

@@ -17,7 +17,7 @@
 
             <div className="flex items-center gap-2">
               <i className="bi bi-geo-alt-fill text-base"></i>
-              <span>702B Pandian Complex, First Floor, Ganagiri Road, Sivakasi, Tamil Nadu - 626123</span>
+              <span>702 B Pandian Complex, First Floor, Ganagiri Road, Sivakasi, Tamil Nadu - 626189</span>
             </div>
 
             <div className="flex items-center gap-2">

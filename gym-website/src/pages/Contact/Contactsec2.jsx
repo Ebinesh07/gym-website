@@ -121,21 +121,21 @@ const response = await fetch(
 
   return (
     <section className="bg-[#f5f5f5] py-10  lg:py-20">
-      <div className="max-w-10xl sm:px-6 lg:px-8 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="grid lg:grid-cols-[2fr_1fr] rounded-[24px] overflow-hidden shadow-2xl">
 
           {/* ================= LEFT SIDE ================= */}
-          <div className="bg-white px-5 py-5  sm:px-8 lg:px-12  lg:py-10 ">
+          <div className="bg-white px-4 py-5  sm:px-8 lg:px-12  lg:py-10 ">
 
             {/* Heading */}
-            <div className="mb-8">
+            <div className="mb-2">
               <h2 className="text-3xl sm:text-4xl font-black uppercase text-black">
                 SEND US A{" "}
                 <span className="text-red-600">MESSAGE</span>
               </h2>
 
-              <div className="w-20 h-[4px] bg-red-600 mt-4 rounded-full"></div>
+              <div className="w-20 h-[4px] bg-red-600 mt-2 rounded-full"></div>
             </div>
 
             <form className="space-y-5" onSubmit={handleSubmit}>
@@ -145,96 +145,93 @@ const response = await fetch(
 
     {/* NAME */}
     <div>
-      <div className="relative">
+      <label
+        htmlFor="name"
+        className="block mb-2 text-sm font-semibold text-gray-700"
+      >
+        Name
+      </label>
 
-        <i className="
-          bi bi-person
-          absolute
-          left-1
-          top-1/2
-          -translate-y-1/2
-          text-gray-400
-          text-xl
-          pointer-events-none
-        "></i>
-
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          className={`
-            w-full h-14
-            border rounded-lg
-            pl-14 pr-4
-            text-gray-700
-            placeholder:text-gray-400
-            focus:outline-none
-            focus:ring-2
-            focus:ring-red-100
-            transition-all duration-300
-            ${
-              errors.name
-                ? "border-red-500"
-                : "border-gray-300 focus:border-red-600"
-            }
-          `}
-        />
-
-      </div>
+      <input
+        id="name"
+        type="text"
+        name="name"
+        placeholder="Enter your name"
+        value={formData.name}
+        onChange={handleChange}
+        className={`
+          block
+          w-full
+          h-14
+          px-4
+          bg-white
+          text-gray-800
+          text-base
+          placeholder:text-gray-400
+          border
+          rounded-lg
+          outline-none
+          transition-all duration-300
+          focus:ring-2
+          focus:ring-red-100
+          ${
+            errors.name
+              ? "border-red-500"
+              : "border-gray-300 focus:border-red-600"
+          }
+        `}
+      />
 
       {errors.name && (
-        <p className="text-red-500 text-sm mt-1">
+        <p className="mt-1.5 mb-0 text-sm text-red-500">
           {errors.name}
         </p>
       )}
     </div>
 
-
     {/* MOBILE */}
     <div>
-      <div className="relative">
+      <label
+        htmlFor="mobile"
+        className="block mb-2 text-sm font-semibold text-gray-700"
+      >
+        Mobile Number
+      </label>
 
-        <i className="
-          bi bi-telephone
-          absolute
-          left-1
-          top-1/2
-          -translate-y-1/2
-          text-gray-400
-          text-xl
-          pointer-events-none
-        "></i>
-
-        <input
-          type="tel"
-          name="mobile"
-          placeholder="Mobile Number"
-          value={formData.mobile}
-          onChange={handleChange}
-          className={`
-            w-full h-14
-            border rounded-lg
-            pl-14 pr-4
-            text-gray-700
-            placeholder:text-gray-400
-            focus:outline-none
-            focus:ring-2
-            focus:ring-red-100
-            transition-all duration-300
-            ${
-              errors.mobile
-                ? "border-red-500"
-                : "border-gray-300 focus:border-red-600"
-            }
-          `}
-        />
-
-      </div>
+      <input
+        id="mobile"
+        type="tel"
+        name="mobile"
+        placeholder="Enter your mobile number"
+        value={formData.mobile}
+        onChange={handleChange}
+        maxLength={10}
+        inputMode="numeric"
+        className={`
+          block
+          w-full
+          h-14
+          px-4
+          bg-white
+          text-gray-800
+          text-base
+          placeholder:text-gray-400
+          border
+          rounded-lg
+          outline-none
+          transition-all duration-300
+          focus:ring-2
+          focus:ring-red-100
+          ${
+            errors.mobile
+              ? "border-red-500"
+              : "border-gray-300 focus:border-red-600"
+          }
+        `}
+      />
 
       {errors.mobile && (
-        <p className="text-red-500 text-sm mt-1">
+        <p className="mt-1.5 mb-0 text-sm text-red-500">
           {errors.mobile}
         </p>
       )}
@@ -242,292 +239,545 @@ const response = await fetch(
 
   </div>
 
-
   {/* EMAIL */}
   <div>
+    <label
+      htmlFor="email"
+      className="block mb-2 text-sm font-semibold text-gray-700"
+    >
+      Email Address
+    </label>
 
-    <div className="relative">
-
-      <i className="
-        bi bi-envelope
-        absolute
-        left-1
-        top-1/2
-        
-        -translate-y-1/2
-        text-gray-400
-        text-xl
-        pointer-events-none
-      "></i>
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Email Address"
-        value={formData.email}
-        onChange={handleChange}
-        className={`
-          w-full h-14
-          my-3
-          border rounded-lg
-          pl-14 pr-4
-          text-gray-700
-          placeholder:text-gray-400
-          focus:outline-none
-          focus:ring-2
-          focus:ring-red-100
-          transition-all duration-300
-          ${
-            errors.email
-              ? "border-red-500"
-              : "border-gray-300 focus:border-red-600"
-          }
-        `}
-      />
-
-    </div>
+    <input
+      id="email"
+      type="email"
+      name="email"
+      placeholder="Enter your email address"
+      value={formData.email}
+      onChange={handleChange}
+      className={`
+        block
+        w-full
+        h-14
+        px-4
+        bg-white
+        text-gray-800
+        text-base
+        placeholder:text-gray-400
+        border
+        rounded-lg
+        outline-none
+        transition-all duration-300
+        focus:ring-2
+        focus:ring-red-100
+        ${
+          errors.email
+            ? "border-red-500"
+            : "border-gray-300 focus:border-red-600"
+        }
+      `}
+    />
 
     {errors.email && (
-      <p className="text-red-500 text-sm mt-1">
+      <p className="mt-1.5 mb-0 text-sm text-red-500">
         {errors.email}
       </p>
     )}
-
   </div>
-
 
   {/* SUBJECT */}
   <div>
+    <label
+      htmlFor="subject"
+      className="block mb-2 text-sm font-semibold text-gray-700"
+    >
+      Subject
+    </label>
 
-    <div className="relative">
-
-      <i className="
-        bi bi-file-earmark-text
-        absolute
-        left-1
-        top-1/2
-        -translate-y-1/2
-        text-gray-400
-        text-xl
-        pointer-events-none
-      "></i>
-
-      <input
-        type="text"
-        name="subject"
-        placeholder="Subject"
-        value={formData.subject}
-        onChange={handleChange}
-        className={`
-          w-full h-14
-          border rounded-lg
-
-          pl-14 pr-4
-          text-gray-700
-          placeholder:text-gray-400
-          focus:outline-none
-          focus:ring-2
-          focus:ring-red-100
-          transition-all duration-300
-          ${
-            errors.subject
-              ? "border-red-500"
-              : "border-gray-300 focus:border-red-600"
-          }
-        `}
-      />
-
-    </div>
+    <input
+      id="subject"
+      type="text"
+      name="subject"
+      placeholder="Enter subject"
+      value={formData.subject}
+      onChange={handleChange}
+      className={`
+        block
+        w-full
+        h-14
+        px-4
+        bg-white
+        text-gray-800
+        text-base
+        placeholder:text-gray-400
+        border
+        rounded-lg
+        outline-none
+        transition-all duration-300
+        focus:ring-2
+        focus:ring-red-100
+        ${
+          errors.subject
+            ? "border-red-500"
+            : "border-gray-300 focus:border-red-600"
+        }
+      `}
+    />
 
     {errors.subject && (
-      <p className="text-red-500 text-sm mt-1">
+      <p className="mt-1.5 mb-0 text-sm text-red-500">
         {errors.subject}
       </p>
     )}
-
   </div>
-
 
   {/* MESSAGE */}
   <div>
+    <label
+      htmlFor="message"
+      className="block mb-2 text-sm font-semibold text-gray-700"
+    >
+      Message
+    </label>
 
-    <div className="relative">
-
-      <i className="
-        bi bi-pencil
-        absolute
-        left-1
-        top-5
-        text-gray-400
-        text-xl
-        pointer-events-none
-      "></i>
-
-      <textarea
-        rows="8"
-        name="message"
-        placeholder="Your Message"
-        value={formData.message}
-        onChange={handleChange}
-        className={`
-          w-full
-          my-3
-          border rounded-lg
-          pl-14 pr-5 pt-4 pb-4
-          text-gray-700
-          placeholder:text-gray-400
-          resize-none
-          focus:outline-none
-          focus:ring-2
-          focus:ring-red-100
-          transition-all duration-300
-          ${
-            errors.message
-              ? "border-red-500"
-              : "border-gray-300 focus:border-red-600"
-          }
-        `}
-      ></textarea>
-
-    </div>
+    <textarea
+      id="message"
+      name="message"
+      rows="6"
+      placeholder="Enter your message"
+      value={formData.message}
+      onChange={handleChange}
+      className={`
+        block
+        w-full
+        min-h-[160px]
+        px-4
+        py-3
+        bg-white
+        text-gray-800
+        text-base
+        placeholder:text-gray-400
+        border
+        rounded-lg
+        outline-none
+        resize-none
+        transition-all duration-300
+        focus:ring-2
+        focus:ring-red-100
+        ${
+          errors.message
+            ? "border-red-500"
+            : "border-gray-300 focus:border-red-600"
+        }
+      `}
+    />
 
     {errors.message && (
-      <p className="text-red-500 text-sm mt-1">
+      <p className="mt-1.5 mb-0 text-sm text-red-500">
         {errors.message}
       </p>
     )}
-
   </div>
 
-
-  {/* SEND BUTTON */}
+  {/* SUBMIT BUTTON */}
   <button
     type="submit"
     className="
       w-full
       h-14
+      mt-3
+      rounded-lg
       bg-red-600
       hover:bg-black
       text-white
+      text-base
+      sm:text-lg
       font-bold
-      text-lg
       uppercase
-      rounded-lg
-      transition-all duration-300
       flex
       items-center
       justify-center
-      gap-4
+      gap-3
+      transition-all duration-300
     "
   >
-    SEND MESSAGE
+    Send Message
 
-    <i className="bi bi-send-fill text-lg"></i>
+    <i className="bi bi-send-fill"></i>
   </button>
 
 </form>
           </div>
 
           {/* ================= RIGHT SIDE ================= */}
-          <div className="bg-black text-white px-4 py-5 my-3 ">
+          {/* ================= RIGHT SIDE ================= */}
+<div
+  className="
+    bg-[#0f0f0f]
+    text-white
+    p-3
+    sm:p-8
+    lg:p-10
+    h-full
+  "
+>
+  {/* HEADING */}
+  <div className="mb-8">
+    <h2
+      className="
+        text-2xl
+        sm:text-3xl
+        font-black
+        uppercase
+        leading-tight
+        m-0
+      "
+    >
+      CONTACT{" "}
+      <span className="text-red-600">
+        INFORMATION
+      </span>
+    </h2>
 
-            <h2 className="text-3xl font-black uppercase">
-              CONTACT{" "}
-              <span className="text-red-600">INFORMATION</span>
-            </h2>
+    <div className="w-16 h-1 bg-red-600 mt-3 rounded-full"></div>
+  </div>
 
-            <div className="w-20 h-[4px] bg-red-600 mt-3 mb-10  rounded-full"></div>
 
-            <div className="space-y-8 mt-3">
+  {/* ================= CONTACT DETAILS ================= */}
+  <div>
 
-              {/* Address */}
-              <div className="flex gap-5 border-b border-gray-800 pb-6">
-                <div className="min-w-[40px] h-[40px] rounded-full bg-red-600 flex items-center justify-center text-2xl">
-                  <i className="bi bi-geo-alt-fill"></i>
-                </div>
+    {/* ADDRESS */}
+    <div
+      className="
+        flex
+        items-start
+        gap-2
+        py-2
+        border-b
+        border-gray-800
+      "
+    >
+      <div
+        className="
+          w-11
+          h-11
+          min-w-11
+          rounded-full
+          bg-red-600
+          flex
+          items-center
+          justify-center
+          shrink-0
+        "
+      >
+        <i className="bi bi-geo-alt-fill text-lg"></i>
+      </div>
 
-                <div>
-                  <h3 className="font-bold text-xl uppercase">ADDRESS</h3>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-bold text-lg uppercase mb-2 m-0">
+          Address
+        </h3>
 
-                  <p className="text-gray-300 mt-2 leading-7">
-                    OCHRE FITNESS CENTRE: 702b Pandian complex first floor,ganagiri road Sivakasi
-TamilNadu - 626123
-                  </p>
-                </div>
-              </div>
+        <p
+          className="
+            text-gray-300
+            text-sm
+            sm:text-base
+            leading-7
+            m-0
+          "
+        >
+          OCHRÉ Fitness Centre
+          <br />
+          702B Pandian Complex, First Floor
+          <br />
+          Ganagiri Road, Sivakasi
+          <br />
+          Tamil Nadu - 626123
+        </p>
+      </div>
+    </div>
 
-              {/* Phone */}
-              <div className="flex gap-5 border-b border-gray-800 pb-6 ">
-                <div className="min-w-[40px] h-[40px] rounded-full bg-red-600 flex items-center justify-center text-2xl">
-                  <i className="bi bi-telephone-fill"></i>
-                </div>
 
-                <div>
-                  <h3 className="font-bold text-xl uppercase">PHONE</h3>
+    {/* PHONE */}
+    <div
+      className="
+        flex
+        items-start
+        gap-2
+        py-2
+        border-b
+        border-gray-800
+      "
+    >
+      <div
+        className="
+          w-11
+          h-11
+          min-w-11
+          rounded-full
+          bg-red-600
+          flex
+          items-center
+          justify-center
+          shrink-0
+        "
+      >
+        <i className="bi bi-telephone-fill text-lg"></i>
+      </div>
 
-                  <p className="text-gray-300 mt-2 leading-7">
-                    +91 95788 52900
-                    <br />
-                    +91 73730 87272
-                  </p>
-                </div>
-              </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-bold text-lg uppercase mb-2 m-0">
+          Phone
+        </h3>
 
-              {/* Email */}
-              <div className="flex gap-5 border-b border-gray-800 pb-6">
-                <div className="min-w-[40px] h-[40px] rounded-full bg-red-600 flex items-center justify-center text-2xl">
-                  <i className="bi bi-envelope-fill"></i>
-                </div>
+        <div className="text-gray-300 text-sm sm:text-base leading-7">
+          <a
+            href="tel:+919578852900"
+            className="
+              text-gray-300
+              no-underline
+              hover:!text-red-500
+              transition-colors
+            "
+          >
+            +91 95788 52900
+          </a>
 
-                <div>
-                  <h3 className="font-bold text-xl uppercase">EMAIL</h3>
+          <br />
 
-                  <p className="text-gray-300 mt-2">
-                   Siva.Murugan24@gmail.com
-                  </p>
-                </div>
-              </div>
+          <a
+            href="tel:+917373087272"
+            className="
+              text-gray-300
+              no-underline
+              hover:!text-red-500
+              transition-colors
+            "
+          >
+            +91 73730 87272
+          </a>
+        </div>
+      </div>
+    </div>
 
-              {/* Hours */}
-              <div className="flex gap-5 border-b border-gray-800 pb-6">
-                <div className="min-w-[40px] h-[40px] rounded-full bg-red-600 flex items-center justify-center text-2xl">
-                  <i className="bi bi-clock-fill"></i>
-                </div>
 
-                <div>
-                  <h3 className="font-bold text-xl uppercase">
-                    OPENING HOURS
-                  </h3>
+    {/* EMAIL */}
+    <div
+      className="
+        flex
+        items-start
+        gap-2
+        py-2
+        border-b
+        border-gray-800
+      "
+    >
+      <div
+        className="
+          w-11
+          h-11
+          min-w-11
+          rounded-full
+          bg-red-600
+          flex
+          items-center
+          justify-center
+          shrink-0
+        "
+      >
+        <i className="bi bi-envelope-fill text-lg"></i>
+      </div>
 
-                  <p className="text-gray-300 mt-2 leading-7">
-                    Mon - Sat : 5:30 AM - 10:00 PM
-                    <br />
-                    Sunday : 6:00 AM - 12:00 PM
-                  </p>
-                </div>
-              </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-bold text-lg uppercase mb-2 m-0">
+          Email
+        </h3>
 
-              {/* Social */}
-              <div className="flex gap-5 mt-4">
-                <div className="min-w-[40px] h-[40px] rounded-full bg-red-600 flex items-center justify-center text-2xl">
-                  <i className="bi bi-people-fill"></i>
-                </div>
+        <a
+          href="mailto:Siva.Murugan24@gmail.com"
+          className="
+            block
+            text-gray-300
+            text-sm
+            sm:text-base
+            no-underline
+            break-all
+            hover:!text-red-500
+            transition-colors
+          "
+        >
+          Siva.Murugan24@gmail.com
+        </a>
+      </div>
+    </div>
 
-                <div className="p-3">
-                  <h3 className="font-bold text-xl uppercase mb-4">
-                    FOLLOW US
-                  </h3>
 
-                  <div className="flex gap-4 text-2xl ">
-                    <a href="facebook link"><i className="bi bi-whatsapp hover:text-red-600 cursor-pointer duration-300 "> </i></a>
-                    <a href="https://www.instagram.com/ochrefitnesscentre?utm_source=qr"><i className="bi bi-instagram hover:text-red-600 cursor-pointer duration-300"></i> </a>
-                    <a href="https://youtube.com/@ochrefitnesscentresivakasi6017?si=LyqlXWtvBnTAYvXV"><i className="bi bi-youtube hover:text-red-600 cursor-pointer duration-300"></i> </a>
-                  </div>
-                </div>
-              </div>
+    {/* OPENING HOURS */}
+    <div
+      className="
+        flex
+        items-start
+        gap-2
+        py-2
+        border-b
+        border-gray-800
+      "
+    >
+      <div
+        className="
+          w-11
+          h-11
+          min-w-11
+          rounded-full
+          bg-red-600
+          flex
+          items-center
+          justify-center
+          shrink-0
+        "
+      >
+        <i className="bi bi-clock-fill text-lg"></i>
+      </div>
 
-            </div>
-          </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-bold text-lg uppercase mb-2 m-0">
+          Opening Hours
+        </h3>
+
+        <p
+          className="
+            text-gray-300
+            text-sm
+            sm:text-base
+            leading-7
+            m-0
+          "
+        >
+          Mon - Sat: 5:30 AM - 10:00 PM
+          <br />
+          Sunday: 6:00 AM - 12:00 PM
+        </p>
+      </div>
+    </div>
+
+
+    {/* FOLLOW US */}
+    <div
+      className="
+        flex
+        items-start
+        gap-2
+        pt-2
+      "
+    >
+      <div
+        className="
+          w-11
+          h-11
+          min-w-11
+          rounded-full
+          bg-red-600
+          flex
+          items-center
+          justify-center
+          shrink-0
+        "
+      >
+        <i className="bi bi-people-fill text-lg"></i>
+      </div>
+
+      <div className="flex-1 min-w-0">
+        <h3 className="font-bold text-lg uppercase mb-2 m-0">
+          Follow Us
+        </h3>
+
+        <div className="flex items-center gap-3">
+
+          {/* WHATSAPP */}
+          <a
+            href="https://wa.me/919578852900"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="
+              w-10
+              h-10
+              rounded-full
+              border
+              border-red-600
+              flex
+              items-center
+              justify-center
+              text-white
+              no-underline
+              hover:!bg-red-600
+              hover:!text-white
+              transition-all
+              duration-300
+            "
+          >
+            <i className="bi bi-whatsapp"></i>
+          </a>
+
+          {/* INSTAGRAM */}
+          <a
+            href="https://www.instagram.com/ochrefitnesscentre?utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="
+              w-10
+              h-10
+              rounded-full
+              border
+              border-red-600
+              flex
+              items-center
+              justify-center
+              text-white
+              no-underline
+              hover:!bg-red-600
+              hover:!text-white
+              transition-all
+              duration-300
+            "
+          >
+            <i className="bi bi-instagram"></i>
+          </a>
+
+          {/* YOUTUBE */}
+          <a
+            href="https://youtube.com/@ochrefitnesscentresivakasi6017?si=LyqlXWtvBnTAYvXV"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            className="
+              w-10
+              h-10
+              rounded-full
+              border
+              border-red-600
+              flex
+              items-center
+              justify-center
+              text-white
+              no-underline
+              hover:!bg-red-600
+              hover:!text-white
+              transition-all
+              duration-300
+            "
+          >
+            <i className="bi bi-youtube"></i>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
         </div>
 

@@ -1,8 +1,9 @@
 import "./Hero.css";
 import heroDesktop from "../../assets/hero-bg.jpg";
 import heroMobile from "../../assets/hero-mobile.jpg";
-import { useEffect, useState } from "react";
+import { useEffect, useState,Link } from "react";
 import { useNavigate } from "react-router-dom";
+
 
 function Hero() {
     
@@ -77,21 +78,19 @@ function Hero() {
                     </p>
 
                     <div className="hero-buttons">
-                    <button
-                        className="join-btn"
-                        onClick={() => navigate("/cta")}
-                    >
-                    JOIN NOW
-                    <i className="bi bi-arrow-right"></i>
-                    </button>
-                    <button
-                    className="join-btn"
-                    onClick={() => navigate("/cta")}
-                >
 
-                    Book Free Trial
+                        <Link to="/cta" className="join-btn">
+  JOIN NOW
+  <i className="bi bi-arrow-right"></i>
+</Link>
+                        <Link to="/cta" className="join-btn">
+  Book Free Trial
+  <i className="bi bi-arrow-right"></i>
+</Link>
 
-                    </button>
+                        <button className="secondary-btn">
+                            
+                        </button>
 
                         {/* <button className="secondary-btn">
                             

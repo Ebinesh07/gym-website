@@ -45,7 +45,7 @@ const features = [
 
 const Aboutsec4 = () => {
   return (
-    <section className="py-20 bg-white relative overflow-hidden pb-5 pt-3">
+    <section className="py-20 bg-white relative overflow-hidden pb-5 pt-3  px-4">
 
       {/* Heading */}
       <div className="max-w-7xl mx-auto px-6 text-center">

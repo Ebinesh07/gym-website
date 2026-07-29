@@ -1,272 +1,297 @@
-
 import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Footer = () => {
+  const socialLinks = [
+    {
+      icon: "bi-whatsapp",
+      link: "https://wa.me/919578852900",
+      label: "WhatsApp",
+    },
+    {
+      icon: "bi-instagram",
+      link: "https://www.instagram.com/ochrefitnesscentre",
+      label: "Instagram",
+    },
+    {
+      icon: "bi-youtube",
+      link: "https://youtube.com/@ochrefitnesscentresivakasi6017",
+      label: "YouTube",
+    },
+  ];
+
+  const quickLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/about" },
+    { name: "Gym", path: "/gym" },
+    { name: "Sports Academy", path: "/sports-academy" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Contact Us", path: "/contact" },
+  ];
+
+  const programs = [
+    "Weight Training",
+    "Cardio Fitness",
+    "CrossFit",
+    "Yoga",
+    "Sports Academy",
+  ];
+
   return (
-  <footer
-  className="
-    pt-20
-    py-4
-    border-t
-    bg-[#0f0f0f]
-    text-gray-400
-  "
-  style={{
-    borderColor: "rgba(255,255,255,0.08)",
-  }}
->
-    <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 text-center lg:text-left">
+    <footer className="bg-[#0f0f0f] text-gray-400">
 
-        {/* Logo Section */}
-        <div className="lg:col-span-2 flex flex-col items-center lg:items-start">
-          <div className="flex items-center justify-center lg:justify-start gap-4">
-            <div
-              className="text-5xl"
-              style={{ color: "var(--primary-color)" }}
-            >
-              <i className="bi bi-barbell"></i>
+      {/* MAIN FOOTER */}
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          px-5 sm:px-6 lg:px-8
+          py-3 lg:py-16
+        "
+      >
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-4
+            gap-10 lg:gap-12
+          "
+        >
+
+          {/* BRAND */}
+          <div className="sm:col-span-2 lg:col-span-1">
+
+            <div className="flex items-center gap-3">
+              <i className="bi bi-barbell text-red-600 text-4xl"></i>
+
+              <div>
+                <h2 className="text-red-600 text-3xl font-bold tracking-[4px] m-0">
+                  OCHRÉ
+                </h2>
+
+                <p className="text-white text-[11px] tracking-[4px] m-0 mt-1">
+                  FITNESS CENTRE
+                </p>
+              </div>
             </div>
 
-            <div>
-              <h2
-                className="text-4xl font-bold tracking-[6px]"
-                style={{ color: "var(--primary-color)" }}
-              >
-                OCHRÉ
-              </h2>
+            {/* SINCE */}
+            <div className="flex items-center gap-3 mt-6">
+              <span className="w-10 h-[2px] bg-red-600"></span>
 
-              <p
-                className="text-sm tracking-[5px]"
-                style={{ color: "var(--white)" }}
-              >
-                FITNESS CENTRE
-              </p>
+              <span className="text-red-600 text-sm font-semibold">
+                SINCE 2012
+              </span>
+
+              <span className="w-10 h-[2px] bg-red-600"></span>
             </div>
-          </div>
 
-          {/* Since */}
-          <div className="flex items-center justify-center lg:justify-start gap-3 mt-6">
-            <div
-              className="w-12 h-[2px]"
-              style={{ backgroundColor: "var(--primary-color)" }}
-            />
+            <p className="mt-6 text-sm leading-7 max-w-sm">
+              We build champions on the field and in life through
+              training, discipline, dedication and determination.
+            </p>
 
-            <span
-              className="font-semibold"
-              style={{ color: "var(--primary-color)" }}
-            >
-              SINCE 2012
-            </span>
-
-            <div
-              className="w-12 h-[2px]"
-              style={{ backgroundColor: "var(--primary-color)" }}
-            />
-          </div>
-
-          <p className="mt-8 leading-8 max-w-md mx-auto lg:mx-0">
-            We build champions on the field and in life through training,
-            discipline, dedication and determination.
-          </p>
-                      {/* Follow Us */}
-            <div className="pt-6">
-              <h4
-                className="font-bold mb-4 uppercase"
-                style={{ color: "var(--white)" }}
-              >
+            {/* SOCIAL */}
+            <div className="mt-7">
+              <h4 className="text-white font-bold uppercase text-sm mb-4">
                 Follow Us
               </h4>
 
-              <div className="flex justify-center lg:justify-start gap-4">
-                {[
-                  {
-                    icon: "whatsapp",
-                    link: "https://wa.me/919578852900",
-                  },
-                  {
-                    icon: "instagram",
-                    link: "https://www.instagram.com/ochrefitnesscentre?utm_source=qr",
-                  },
-                  {
-                    icon: "youtube",
-                    link: "https://youtube.com/@ochrefitnesscentresivakasi6017?si=LyqlXWtvBnTAYvXV",
-                  },
-                ].map((social) => (
+              <div className="flex items-center gap-3">
+                {socialLinks.map((social) => (
                   <a
-                    key={social.icon}
+                    key={social.label}
                     href={social.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.label}
                     className="
-                      w-12 h-12
-                      rounded-full
+                      w-10 h-10
                       flex items-center justify-center
-                      border
-                      transition-all duration-300
+                      rounded-full
+                      border border-red-600
+                      text-white
+                      no-underline
+                      hover:!bg-red-600
+                      hover:!text-white
                       hover:scale-110
+                      transition-all duration-300
                     "
-                    style={{
-                      borderColor: "var(--primary-color)",
-                      color: "var(--white)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor =
-                        "var(--primary-color)";
-                      e.currentTarget.style.boxShadow =
-                        "0 0 20px rgba(193,18,31,.5)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "transparent";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
                   >
-                    <i className={`bi bi-${social.icon} text-lg`} />
+                    <i className={`bi ${social.icon}`}></i>
                   </a>
                 ))}
               </div>
             </div>
-        </div>
-
-        {/* Quick Links */}
-        <div className="flex flex-col items-center lg:items-start">
-          <h3
-            className="text-xl font-bold uppercase"
-            style={{ color: "var(--white)" }}
-          >
-            Quick Links
-          </h3>
-
-          <div
-            className="w-12 h-1 mt-3 mb-8 rounded"
-            style={{ backgroundColor: "var(--primary-color)" }}
-          />
-
-          <ul className="space-y-4">
-            <li><Link to="/" className="hover:text-red-500 duration-300">Home</Link></li>
-            <li><Link to="/about" className="hover:text-red-500 duration-300">About Us</Link></li>
-            <li><Link to="/gym" className="hover:text-red-500 duration-300">Gym</Link></li>
-            <li><Link to="/sports-academy" className="hover:text-red-500 duration-300">Sports Academy</Link></li>
-            <li><Link to="/gallery" className="hover:text-red-500 duration-300">Gallery</Link></li>
-            <li><Link to="/contact" className="hover:text-red-500 duration-300">Contact Us</Link></li>
-          </ul>
-        </div>
-
-        {/* Programs */}
-        <div className="flex flex-col items-center lg:items-start">
-          <h3
-            className="text-xl font-bold uppercase"
-            style={{ color: "var(--white)" }}
-          >
-            Programs
-          </h3>
-
-          <div
-            className="w-12 h-1 mt-3 mb-8 rounded"
-            style={{ backgroundColor: "var(--primary-color)" }}
-          />
-
-          <ul className="space-y-4">
-            <li>Weight Training</li>
-            <li>Cardio Fitness</li>
-            <li>CrossFit</li>
-            <li>Yoga</li>
-            <li>Sports Academy</li>
-          </ul>
-        </div>
-
-        {/* Contact + Social */}
-        <div className="flex flex-col items-center lg:items-start px-2 w-full">
-          <h3
-            className="text-xl font-bold uppercase"
-            style={{ color: "var(--white)" }}
-          >
-            Contact Us
-          </h3>
-
-          <div
-            className="w-12 h-1 mt-3 mb-8 rounded"
-            style={{ backgroundColor: "var(--primary-color)" }}
-          />
-
-          <div className="space-y-5 w-full">
-
-            <div className="flex gap-4 ">
-              <i
-                className="bi bi-geo-alt-fill text-xl mt-1"
-                style={{ color: "var(--primary-color)" }}
-              />
-              <p className="break-words">
-  OCHRE FITNESS CENTRE: 702B Pandian Complex,
-  First Floor, Ganagiri Road,
-  Sivakasi, Tamil Nadu - 626123
-</p>
-            </div>
-
-            <div className="flex gap-4">
-              <i
-                className="bi bi-telephone-fill text-xl"
-                style={{ color: "var(--primary-color)" }}
-              />
-              <p className="break-words">
-  +91 95788 52900
-  <br />
-  +91 73730 87272
-</p>
-            </div>
-
-            <div className="flex gap-4">
-              <i
-                className="bi bi-envelope-fill text-xl"
-                style={{ color: "var(--primary-color)" }}
-              />
-              <p className="break-words">
-  Siva.Murugan24@gmail.com
-</p>
-            </div>
-
-            <div className="flex gap-4 items-start">
-              <i
-                className="bi bi-clock-fill text-xl"
-                style={{ color: "var(--primary-color)" }}
-              />
-              <div>
-                <p>Mon - Sat : 5:30 AM - 10:00 PM</p>
-                <p>Sun : 6:00 AM - 12:00 PM</p>
-              </div>
-            </div>
-
-
 
           </div>
+
+          {/* QUICK LINKS */}
+          <div>
+            <FooterHeading title="Quick Links" />
+
+            <ul className="list-none p-0 m-0 space-y-3 mt-2">
+              {quickLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.path}
+                    className="
+                      text-gray-400
+                      no-underline
+                      text-sm
+                      hover:!text-red-500
+                      transition-colors duration-300
+                    "
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* PROGRAMS */}
+          <div>
+            <FooterHeading title="Programs" />
+
+            <ul className="list-none p-0 m-0 space-y-3 mt-2">
+              {programs.map((program) => (
+                <li
+                  key={program}
+                  className="text-gray-400 text-sm"
+                >
+                  {program}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CONTACT */}
+          <div>
+            <FooterHeading title="Contact Us" />
+
+            <div className="space-y-5 mt-2">
+
+              {/* ADDRESS */}
+              <div className="flex items-start gap-3">
+                <i className="bi bi-geo-alt-fill text-red-600 text-lg mt-1 shrink-0"></i>
+
+                <p className="text-sm leading-6 m-0">
+                  Ochre Fitness Center
+                  <br />
+                  702 B Pandian Complex,
+                  <br />
+                  First Floor, Ganagiri Road,
+                  <br />
+                  Sivakasi, Tamil Nadu - 626189
+                </p>
+              </div>
+
+              {/* PHONE */}
+              <div className="flex items-start gap-3">
+                <i className="bi bi-telephone-fill text-red-600 text-lg shrink-0"></i>
+
+                <div className="text-sm leading-6">
+                  <a
+                    href="tel:+919578852900"
+                    className="text-gray-400 no-underline hover:!text-red-500"
+                  >
+                    +91 95788 52900
+                  </a>
+
+                  <br />
+
+                  <a
+                    href="tel:+917373087272"
+                    className="text-gray-400 no-underline hover:!text-red-500"
+                  >
+                    +91 73730 87272
+                  </a>
+                </div>
+              </div>
+
+              {/* EMAIL */}
+              <div className="flex items-start gap-3">
+                <i className="bi bi-envelope-fill text-red-600 text-lg shrink-0"></i>
+
+                <a
+                  href="mailto:Siva.Murugan24@gmail.com"
+                  className="
+                    text-gray-400
+                    no-underline
+                    hover:!text-red-500
+                    text-sm
+                    break-all
+                  "
+                >
+                  Siva.Murugan24@gmail.com
+                </a>
+              </div>
+
+              {/* TIME */}
+              <div className="flex items-start gap-3">
+                <i className="bi bi-clock-fill text-red-600 text-lg shrink-0"></i>
+
+                <div className="text-sm leading-6">
+                  <p className="m-0">
+                    Mon - Sat: 5:30 AM - 10:00 PM
+                  </p>
+
+                  <p className="m-0">
+                    Sun: 6:00 AM - 10:00 AM
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div
-        className="border-t mt-16 py-6 text-center px-4"
-        style={{
-          borderColor: "rgba(255,255,255,0.08)",
-        }}
-      >
-        <p style={{ color: "var(--text-color)" }}>
-          © 2026 OCHRÉ Fitness Centre. All Rights Reserved.
-        </p>
+      {/* BOTTOM FOOTER */}
+      <div className="border-t border-white/10 mt-3">
+        <div
+          className="
+            max-w-7xl
+            mx-auto
+            px-5 sm:px-6 lg:px-8
+            py-3
+            flex
+            flex-col md:flex-row
+            items-center
+            justify-between
+            gap-3
+            text-center md:text-left
+          "
+        >
+          <p className="m-0 text-sm text-gray-500">
+            © 2026 OCHRÉ Fitness Centre. All Rights Reserved.
+          </p>
 
-        <p className="mt-3 text-sm">
-          <span style={{ color: "var(--text-color)" }}>
+          <p className="m-0 text-sm text-gray-500">
             Designed & Developed by{" "}
-          </span>
-
-          <span
-            className="font-bold tracking-wider"
-            style={{ color: "var(--primary-color)" }}
-          >
-            WEBNIQO
-          </span>
-        </p>
+            <span className="text-red-600 font-bold tracking-wider">
+              WEBNIQO
+            </span>
+          </p>
+        </div>
       </div>
+
     </footer>
+  );
+};
+
+const FooterHeading = ({ title }) => {
+  return (
+    <div className="mb-6">
+      <h3 className="text-white text-lg font-bold uppercase m-0">
+        {title}
+      </h3>
+
+      <div className="w-10 h-[3px] bg-red-600 mt-3 rounded-full"></div>
+    </div>
   );
 };
 

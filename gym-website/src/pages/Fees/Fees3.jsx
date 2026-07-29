@@ -1,5 +1,5 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
-import shaker from '../../Asserts/f2.jpeg';
+import shaker from "../../Asserts/f2.jpeg";
 
 const Fees3 = () => {
   const tableData = [
@@ -19,7 +19,7 @@ const Fees3 = () => {
     },
     {
       icon: "bi-people",
-      color: "text-red-700",
+      color: "text-red-600",
       plan: "COUPLES",
       sub: "(H&W)",
       prices: ["₹ 3,000", "₹ 8,000", "₹ 16,000", "₹ 21,000"],
@@ -40,189 +40,432 @@ const Fees3 = () => {
     },
   ];
 
+  const benefits = [
+    {
+      icon: "bi-clipboard2-check",
+      text: "Free Fitness Assessment",
+    },
+    {
+      icon: "bi-people",
+      text: "Personalized Workout Plan",
+    },
+    {
+      icon: "bi-journal-check",
+      text: "Diet & Nutrition Guidance",
+    },
+    {
+      icon: "bi-graph-up-arrow",
+      text: "Regular Progress Tracking",
+    },
+    {
+      icon: "bi-headset",
+      text: "Priority Support",
+    },
+    {
+      icon: "bi-building",
+      text: "Access to All Facilities",
+    },
+  ];
+
   return (
-    <section className="py-5 bg-white">
-      <div className="max-w-7xl mx-auto px-2">
+    <section className="bg-white py-5 sm:py-10 lg:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid lg:grid-cols-4 gap-4">
+      <div
+  className="
+    grid
+    grid-cols-1
+    lg:grid-cols-[minmax(0,3fr)_minmax(300px,1fr)]
+    gap-5
+    lg:gap-8
+    items-stretch
+  "
+>
+          {/* =====================================================
+              LEFT - PRICING TABLE
+          ===================================================== */}
+          <div className="w-full min-w-0 lg:flex lg:items-center">
 
-          {/* TABLE */}
+          <div
+  className="
+    w-full
+    overflow-x-auto
+    rounded-xl
+    border
+    border-gray-300
+    shadow-sm
+  "
+>
+              <table
+                className="
+                  w-full
+                  min-w-[760px]
+                  table-fixed
+                  border-collapse
+                  bg-white
+                "
+              >
 
-          <div className="lg:col-span-3 overflow-x-auto">
+                {/* HEADER */}
+                <thead>
+                  <tr className="bg-[#111] text-white">
 
-            <table className="w-full border border-gray-300 border-collapse mt-4 ">
+                    <th
+                      className="
+                        w-[28%]
+                        border-r
+                        border-gray-700
+                        px-4
+                        py-3
+                        text-left
+                        text-sm
+                        lg:text-base
+                        font-bold
+                        uppercase
+                        whitespace-nowrap
+                      "
+                    >
+                      Plan Duration
+                    </th>
 
-              <thead>
-
-                <tr className="bg-[#111] text-white">
-
-                  <th className="border border-gray-700 py-3 px-2 text-left text-lg font-bold uppercase">
-                    Plan Duration
-                  </th>
-
-                  <th className="border border-gray-700 py-3 px-2 text-lg font-bold uppercase">
-                    1 Month
-                  </th>
-
-                  <th className="border border-gray-700 py-3 px-2 text-lg font-bold uppercase">
-                    3 Months
-                  </th>
-
-                  <th className="border border-gray-700 py-3 px-2 text-lg font-bold uppercase">
-                    6 Months
-                  </th>
-
-                  <th className="border border-gray-700 py-3 px-2 text-lg font-bold uppercase">
-                    12 Months
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody>
-
-                {tableData.map((item, index) => (
-
-                  <tr
-                    key={index}
-                    className="hover:bg-gray-50 transition"
-                  >
-
-                    <td className="border border-gray-300 py-2 px-2">
-
-                      <div className="flex items-center gap-3">
-
-                        <i
-                          className={`bi ${item.icon} text-3xl ${item.color}`}
-                        ></i>
-
-                        <div>
-
-                          <h3
-                            className={`font-bold text-xl ${item.color}`}
-                          >
-                            {item.plan}
-                          </h3>
-
-                          {item.sub && (
-                            <p className="text-sm">
-                              {item.sub}
-                            </p>
-                          )}
-
-                        </div>
-
-                      </div>
-
-                    </td>
-
-                    {item.prices.map((price, i) => (
-
-                      <td
-                        key={i}
-                        className="border border-gray-300 text-center font-bold text-xl py-3"
-                      >
-                        {price}
-                      </td>
-
-                    ))}
+                    {["1 Month", "3 Months", "6 Months", "12 Months"].map(
+                      (duration) => (
+                        <th
+                          key={duration}
+                          className="
+                            w-[18%]
+                            border-r
+                            last:border-r-0
+                            border-gray-700
+                            px-2
+                            py-3
+                            text-center
+                            text-sm
+                            lg:text-base
+                            font-bold
+                            uppercase
+                            whitespace-nowrap
+                          "
+                        >
+                          {duration}
+                        </th>
+                      )
+                    )}
 
                   </tr>
+                </thead>
 
-                ))}
+                {/* BODY */}
+                <tbody>
 
-              </tbody>
+                  {tableData.map((item, index) => (
+                    <tr
+                      key={index}
+                      className="
+                        bg-white
+                        hover:bg-gray-50
+                        transition-colors
+                        duration-200
+                      "
+                    >
 
-            </table>
+                      {/* PLAN */}
+                      <td
+                        className="
+                          border-t
+                          border-r
+                          border-gray-300
+                          px-4
+                          py-3
+                          align-middle
+                        "
+                      >
+                        <div className="flex items-center gap-3">
+
+                          {/* ICON */}
+                          <div
+                            className={`
+                              w-9
+                              h-9
+                              shrink-0
+                              rounded-full
+                              bg-gray-100
+                              flex
+                              items-center
+                              justify-center
+                              ${item.color}
+                            `}
+                          >
+                            <i
+                              className={`
+                                bi
+                                ${item.icon}
+                                text-lg
+                              `}
+                            />
+                          </div>
+
+                          {/* PLAN NAME */}
+                          <div className="min-w-0">
+
+                            <h3
+                              className={`
+                                ${item.color}
+                                text-base
+                                lg:text-lg
+                                font-bold
+                                leading-tight
+                                m-0
+                              `}
+                            >
+                              {item.plan}
+                            </h3>
+
+                            {item.sub && (
+                              <p
+                                className="
+                                  text-[11px]
+                                  text-gray-500
+                                  leading-tight
+                                  mt-0.5
+                                  mb-0
+                                "
+                              >
+                                {item.sub}
+                              </p>
+                            )}
+
+                          </div>
+
+                        </div>
+                      </td>
+
+                      {/* PRICES */}
+                      {item.prices.map((price, i) => (
+                        <td
+                          key={i}
+                          className="
+                            border-t
+                            border-r
+                            last:border-r-0
+                            border-gray-300
+                            px-2
+                            py-3
+                            text-center
+                            align-middle
+                            text-base
+                            lg:text-lg
+                            text-gray-800
+                            font-bold
+                            whitespace-nowrap
+                          "
+                        >
+                          {price}
+                        </td>
+                      ))}
+
+                    </tr>
+                  ))}
+
+                </tbody>
+              </table>
+            </div>
 
           </div>
 
-          {/* Membership Benefits Box goes here in Part 2 */}
 
-          {/* MEMBERSHIP BENEFITS */}
+          {/* =====================================================
+              RIGHT - MEMBERSHIP BENEFITS
+          ===================================================== */}
+          <div
+            className="
+              w-full
+              bg-[#111]
+              rounded-xl
+              overflow-hidden
+              shadow-lg
+            "
+          >
 
-<div
-  className="
-    bg-[#111]
-    rounded-xl
-    overflow-hidden
-    shadow-lg
-    h-fit
-    flex
-    p-1
-    flex-col
-    justify-between
-  "
->
+            {/* BENEFITS CONTENT */}
+            <div className="p-5 lg:p-5">
 
-  {/* Heading */}
+              {/* TITLE */}
+              <h2
+                className="
+                  text-2xl
+                  lg:text-[26px]
+                  font-black
+                  uppercase
+                  text-white
+                  leading-tight
+                  m-0
+                "
+              >
+                Membership
+                <span className="text-red-600">
+                  {" "}Benefits
+                </span>
+              </h2>
 
-  <div className="p-4">
+              {/* TITLE LINE */}
+              <div
+                className="
+                  w-12
+                  h-[3px]
+                  bg-red-600
+                  mt-3
+                  mb-3
+                "
+              />
 
-    <h2 className="text-3xl font-black uppercase text-white mb-6">
-      Membership
-      <span className="text-red-600"> Benefits</span>
-    </h2>
+              {/* BENEFITS LIST */}
+              <div className="space-y-3">
 
-    <div className="space-y-4">
+                {benefits.map((benefit, index) => (
+                  <div
+                    key={index}
+                    className="
+                      flex
+                      items-start
+                      gap-2
+                    "
+                  >
 
-      <div className="flex items-center gap-3 text-white">
-        <i className="bi bi-clipboard2-check text-gray-300"></i>
-        <span>Free Fitness Assessment</span>
-      </div>
+                    {/* ICON */}
+                    <div
+                      className="
+                        w-7
+                        h-7
+                        shrink-0
+                        rounded-full
+                        bg-red-600/15
+                        flex
+                        items-center
+                        justify-center
+                      "
+                    >
+                      <i
+                        className={`
+                          bi
+                          ${benefit.icon}
+                          text-red-600
+                          text-sm
+                        `}
+                      />
+                    </div>
 
-      <div className="flex items-center gap-3 text-white">
-        <i className="bi bi-people text-gray-300"></i>
-        <span>Personalized Workout Plan</span>
-      </div>
+                    {/* TEXT */}
+                    <p
+                      className="
+                        text-gray-200
+                        text-sm
+                        leading-7
+                        m-0
+                      "
+                    >
+                      {benefit.text}
+                    </p>
 
-      <div className="flex items-center gap-3 text-white">
-        <i className="bi bi-journal-check text-gray-300"></i>
-        <span>Diet & Nutrition Guidance</span>
-      </div>
+                  </div>
+                ))}
 
-      <div className="flex items-center gap-3 text-white">
-        <i className="bi bi-graph-up-arrow text-gray-300"></i>
-        <span>Regular Progress Tracking</span>
-      </div>
 
-      <div className="flex items-center gap-3 text-white">
-        <i className="bi bi-headset text-gray-300"></i>
-        <span>Priority Support</span>
-      </div>
+                {/* ENERGY DRINK */}
+                <div
+                  className="
+                    flex
+                    items-start
+                    gap-3
+                  "
+                >
 
-      <div className="flex items-center gap-3 text-white">
-        <i className="bi bi-building text-gray-300"></i>
-        <span>Access to All Facilities</span>
-      </div>
+                  <div
+                    className="
+                      w-7
+                      h-7
+                      shrink-0
+                      rounded-full
+                      bg-red-600/15
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
+                    <i
+                      className="
+                        bi
+                        bi-cup-straw
+                        text-red-600
+                        text-sm
+                      "
+                    />
+                  </div>
 
-      <div className="flex items-center gap-3 text-white">
-        <i className="bi bi-cup-straw text-gray-300"></i>
-        <span>
-          365 Days Energy Drink Complimentary
-          <br />
-          <small>(One per day)</small>
-        </span>
-      </div>
+                  <div className="min-w-0">
 
-    </div>
+                    <p
+                      className="
+                        text-gray-200
+                        text-sm
+                        leading-5
+                        m-0
+                      "
+                    >
+                      365 Days Energy Drink Complimentary
+                    </p>
 
-  </div>
+                    <p
+                      className="
+                        text-gray-500
+                        text-xs
+                        mt-1
+                        mb-0
+                      "
+                    >
+                      One per day
+                    </p>
 
-  {/* Bottom Image */}
+                  </div>
 
-  <div className="p-2 ">
+                </div>
 
-    <img
-      src={shaker}
-      alt="Membership Benefits"
-      className="w-full h-44 object-cover"
-    />
+              </div>
 
-  </div>
+            </div>
 
-</div>
+
+            {/* =================================================
+                BOTTOM IMAGE
+            ================================================= */}
+            <div className="px-3 pb-3">
+
+              <div
+                className="
+                  w-full
+                  h-[140px]
+                  sm:h-[180px]
+                  lg:h-[135px]
+                  overflow-hidden
+                  rounded-lg
+                "
+              >
+                <img
+                  src={shaker}
+                  alt="OCHRÉ Membership Benefits"
+                  className="
+                    w-full
+                    h-full
+                    object-cover
+                    object-center
+                    block
+                  "
+                />
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
