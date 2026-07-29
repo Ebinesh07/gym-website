@@ -7,7 +7,6 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [programOpen, setProgramOpen] = useState(false);
 
-  // Close mobile menu after clicking a navigation link
   const closeMenu = () => {
     setMenuOpen(false);
     setProgramOpen(false);
@@ -19,10 +18,7 @@ function Navbar() {
 
         {/* Logo */}
         <NavLink to="/" className="logo" onClick={closeMenu}>
-          <img
-            src={logo}
-            alt="NextGoal Fitness"
-          />
+          <img src={logo} alt="NextGoal Fitness" />
         </NavLink>
 
         {/* Navigation Menu */}
@@ -52,11 +48,8 @@ function Navbar() {
 
             {/* Programs Dropdown */}
             <li className="dropdown">
-              <span
-                onClick={() => setProgramOpen(!programOpen)}
-              >
+              <span onClick={() => setProgramOpen(!programOpen)}>
                 Programs
-
                 <i
                   className={`bi ${
                     programOpen

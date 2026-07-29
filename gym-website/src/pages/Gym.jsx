@@ -13,9 +13,11 @@ import {
 import AboutImage from "../assets/gympage/about.jpg";
 import Programs from "../components/Programs/Programs";
 
-
+import { useNavigate } from "react-router-dom";
 
 function Gym() {
+
+     const navigate = useNavigate();
   return (
     <>
       {/*=========================================
@@ -62,22 +64,21 @@ HERO SECTION
 
             <div className="hero-buttons">
 
-                <button className="primary-btn">
-
+                <button
+                    className="primary-btn"
+                    onClick={() => navigate("/cta")}
+                >
                     Join Now
-
                     <FaArrowRight />
-
                 </button>
 
-                <button className="secondary-btn">
-
+                <button
+                    className="secondary-btn"
+                    onClick={() => navigate("/cta")}
+                >
                     <FaPlay />
-
-                    Explore Gym
-
+                    Book Free Trial
                 </button>
-
             </div>
 
             <div className="hero-stats">
@@ -186,9 +187,11 @@ HERO SECTION
 
 </section>
 
-<div className="programsec">
-  <Programs/>
-</div>
+<section className="program">
+    <div className="programsec">
+        <Programs/>
+    </div>
+</section>
 
 {/*=========================================
 ABOUT SECTION
@@ -312,13 +315,13 @@ ABOUT SECTION
 
             </div>
 
-            <button className="about-btn">
-
-                Learn More
-
-                <FaArrowRight />
-
-            </button>
+                <button
+                    className="about-btn"
+                    onClick={() => navigate("/cta")}
+                >
+                    Join Today
+                    <FaArrowRight />
+                </button>
 
         </div>
 

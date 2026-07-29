@@ -15,7 +15,11 @@ import academyImage from "../assets/Sportsimages/academy.jpg";
 import Navbar from "../components/Navbar/Navbar";
 import TopBar from "../components/TopBar/TopBar";
 
+import { useNavigate } from "react-router-dom";
+
 function SportsAcademy() {
+
+    const navigate = useNavigate();
 
     const sports = [
 
@@ -114,7 +118,10 @@ description:"Professional shuttle coaching with tournament practice."
 
             <div className="hero-buttons">
 
-                <button className="primary-btn">
+                <button className="primary-btn"
+                
+                 onClick={() => navigate("/cta")}
+                 >
 
                     Join Academy
 
@@ -240,7 +247,9 @@ description:"Professional shuttle coaching with tournament practice."
 
                         </p>
 
-                        <button>
+                        <button  
+                         onClick={() => navigate("/cta")}
+                         >
 
                             Learn More
 
@@ -332,7 +341,9 @@ description:"Professional shuttle coaching with tournament practice."
 
             </div>
 
-            <button>
+            <button
+              onClick={() => navigate("/cta")}
+              >
 
                 Join Academy
 

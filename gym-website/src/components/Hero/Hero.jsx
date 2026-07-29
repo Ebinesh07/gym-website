@@ -2,9 +2,11 @@ import "./Hero.css";
 import heroDesktop from "../../assets/hero-bg.jpg";
 import heroMobile from "../../assets/hero-mobile.jpg";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+    
+    const navigate = useNavigate();
 
     const [heroImage, setHeroImage] = useState(heroDesktop);
 
@@ -75,19 +77,25 @@ function Hero() {
                     </p>
 
                     <div className="hero-buttons">
+                    <button
+                        className="join-btn"
+                        onClick={() => navigate("/cta")}
+                    >
+                    JOIN NOW
+                    <i className="bi bi-arrow-right"></i>
+                    </button>
+                    <button
+                    className="join-btn"
+                    onClick={() => navigate("/cta")}
+                >
 
-                        <Link to="/cta" className="join-btn">
-  JOIN NOW
-  <i className="bi bi-arrow-right"></i>
-</Link>
-                        <Link to="/cta" className="join-btn">
-  Book Free Trial
-  <i className="bi bi-arrow-right"></i>
-</Link>
+                    Book Free Trial
 
-                        <button className="secondary-btn">
+                    </button>
+
+                        {/* <button className="secondary-btn">
                             
-                        </button>
+                        </button> */}
 
                     </div>
 
@@ -114,10 +122,15 @@ function Hero() {
                         OFF ON ALL MEMBERSHIPS
                     </p>
 
-                                           <Link to="/cta" className="join-btn">
-  JOIN TODAY
-  <i className="bi bi-arrow-right"></i>
-</Link>
+                    <button
+                        className="join-btn"
+                        onClick={() => navigate("/cta")}
+                    >
+
+                    Join Today
+                     <i className="bi bi-arrow-right"></i>
+
+                    </button>
 
                 </div>
 

@@ -6,8 +6,11 @@ import functional from "../../assets/yoga.jpg";
 import crossfit from "../../assets/crossfit.jpg";
 import boxing from "../../assets/boxing.jpg";
 import  personal from "../../assets/nutrition.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Programs() { 
+
+     const navigate = useNavigate();
 
     const programs = [
 
@@ -123,13 +126,13 @@ function Programs() {
 
                                     </p>
 
-                                    <button className="program-btn">
-
-                                        Learn More
-
-                                        <i className="bi bi-arrow-right"></i>
-
-                                    </button>
+                                        <button
+                                            className="program-btn"
+                                            onClick={() => navigate("/cta")}
+                                        >
+                                            Learn More
+                                            <i className="bi bi-arrow-right"></i>
+                                        </button>
 
                                 </div>
 
@@ -142,13 +145,11 @@ function Programs() {
                 </div>
 
                 <div className="programs-button">
-
-                    <button>
-
+                    <button
+                        onClick={() => navigate("/cta")}
+                    >
                         View All Programs
-
                         <i className="bi bi-arrow-right"></i>
-
                     </button>
 
                 </div>

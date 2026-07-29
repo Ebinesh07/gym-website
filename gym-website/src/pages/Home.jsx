@@ -19,16 +19,15 @@ function Home() {
       <Hero />
       <Aboutsec2/>
       
+      
       {/* <About />
       <Contact />
       <Fees />
       <Stats />
       <Programs />
       <SportsAcademy />
-      <Membership />
-      
-    
-      <CTA /> */}
+      <Membership /> */}
+       {/* <CTA /> */}
     </>
   );
 }

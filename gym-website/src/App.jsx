@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 
-
 // ================= USER PAGES =================
 import Home from "./pages/Home";
 import About from "./pages/About/About";
@@ -8,17 +7,23 @@ import Gym from "./pages/Gym";
 import SportsAcademy from "./pages/SportsAcademy";
 import Contact from "./pages/Contact/Contact";
 import Fees from "./pages/Fees/Fees";
-import CTA from "./components/CTA/CTA";
 
 // ================= ADMIN PAGES =================
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
-// ================= USER COMPONENTS =================
+// ================= COMPONENTS =================
 import TopBar from "./components/TopBar/TopBar";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+
+// ================= OPTIONAL =================
+// Create this page later
+import NotFound from "./pages/NotFound/NotFound";
+
+
+import CTA from "./components/CTA/CTA";
 
 // ================= USER LAYOUT =================
 function UserLayout({ children }) {
@@ -26,9 +31,7 @@ function UserLayout({ children }) {
     <>
       <TopBar />
       <Navbar />
-
-      {children}
-
+      <main>{children}</main>
       <Footer />
     </>
   );
@@ -77,14 +80,6 @@ function App() {
       />
 
       <Route
-        path="/contact"
-        element={
-          <UserLayout>
-            <Contact />
-          </UserLayout>
-        }
-      />
-      <Route
         path="/fees"
         element={
           <UserLayout>
@@ -93,18 +88,35 @@ function App() {
         }
       />
 
-        <Route
-        path="/cta"
-        element={<CTA />}
+      <Route
+        path="/contact"
+        element={
+          <UserLayout>
+            <Contact />
+          </UserLayout>
+        }
       />
+
+      <Route
+  path="/cta"
+  element={
+    <UserLayout>
+      <CTA />
+    </UserLayout>
+  }
+/>
 
       {/* ================= ADMIN ================= */}
 
       <Route path="/admin" element={<Login />} />
 
-       <Route path="/signup" element={<Signup />} />
+      <Route path="/signup" element={<Signup />} />
 
       <Route path="/admin/dashboard" element={<Dashboard />} />
+
+      {/* ================= 404 ================= */}
+
+      <Route path="*" element={<NotFound />} />
 
     </Routes>
   );

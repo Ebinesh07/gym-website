@@ -1,8 +1,10 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import f1 from '../../Asserts/f1.png'
+import { useNavigate } from "react-router-dom";
 
 const Fees1 = () => {
+  const navigate = useNavigate();
   const features = [
     {
       icon: "bi-shield-check",
@@ -132,7 +134,7 @@ const Fees1 = () => {
     transition-all
     duration-300
   "
->
+ onClick={() => navigate("/cta")}>
   Join Now
   <i className="bi bi-arrow-right"></i>
 </a>

@@ -188,7 +188,7 @@ className="
 
     <div>
 
-      <span className="inline-block bg-white/20 text-white text-xs uppercase tracking-widest px-3 py-2 rounded-full">
+      <span className="inline-block bg-white/20 text-white text-xs uppercase tracking-widest px-3 py-2 rounded-full"  onClick={() => navigate("/cta")}>
         Join Today
       </span>
 <h2 className="mt-6 text-3xl lg:text-4xl font-black uppercase leading-tight text-white">
@@ -233,7 +233,7 @@ className="
     hover:!text-white
     hover:!border-red-600
   "
->
+ onClick={() => navigate("/cta")}>
   JOIN NOW
 
   <i className="bi bi-arrow-right"></i>

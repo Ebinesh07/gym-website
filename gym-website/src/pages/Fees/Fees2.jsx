@@ -193,7 +193,7 @@ cursor-pointer
     gap-2
     ${plan.button}
   `}
->
+ onClick={() => navigate("/cta")}>
   Join Now
   <i className="bi bi-arrow-right"></i>
 </a>

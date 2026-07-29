@@ -129,7 +129,7 @@ const response = await fetch(
 };
 
   return (
-    <section className="cta" id="registration">
+   <section className="cta" id="cta">
       <div className="cta-container">
         {/* LEFT */}
 
