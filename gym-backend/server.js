@@ -13,7 +13,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:[ "http://localhost:5173","https://gym-website-1-fzl3.onrender.com/"],
+
     credentials: true,
   })
 );
