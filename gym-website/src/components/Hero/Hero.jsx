@@ -1,8 +1,8 @@
 import "./Hero.css";
 import heroDesktop from "../../assets/hero-bg.jpg";
 import heroMobile from "../../assets/hero-mobile.jpg";
-import { useEffect, useState,Link } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Hero() {
@@ -88,13 +88,9 @@ function Hero() {
   <i className="bi bi-arrow-right"></i>
 </Link>
 
-                        <button className="secondary-btn">
-                            
-                        </button>
+                        
 
-                        {/* <button className="secondary-btn">
-                            
-                        </button> */}
+                      
 
                     </div>
 
