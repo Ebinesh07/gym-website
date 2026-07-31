@@ -11,10 +11,15 @@ dotenv.config();
 
 const app = express();
 
+import cors from "cors";
+
 app.use(
   cors({
-    origin:[ "http://localhost:5173","https://gym-website-1-fzl3.onrender.com/"],
-
+    origin: [
+      "http://localhost:5173",
+      "https://gym-website-1-fzl3.onrender.com",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
