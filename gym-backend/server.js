@@ -11,8 +11,6 @@ dotenv.config();
 
 const app = express();
 
-import cors from "cors";
-
 app.use(
   cors({
     origin: [
@@ -34,7 +32,6 @@ app.get("/", (req, res) => {
   });
 });
 
-// Routes
 app.use("/api/contacts", contactRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/registrations", registrationRoutes);
