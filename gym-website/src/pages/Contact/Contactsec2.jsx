@@ -1,9 +1,7 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
-// require('dotenv').config()
 
 const Contactsec2 = () => {
-
     const [formData, setFormData] = useState({
   name: "",
   mobile: "",
@@ -13,10 +11,8 @@ const Contactsec2 = () => {
 });
 
 const [errors, setErrors] = useState({});
-
 const handleChange = (e) => {
   const { name, value } = e.target;
-
   setFormData((prev) => ({
     ...prev,
     [name]: value,
@@ -31,19 +27,16 @@ const handleChange = (e) => {
 const validateForm = () => {
   let newErrors = {};
 
-  // Name Validation
   if (!formData.name.trim()) {
     newErrors.name = "Name is required";
   }
 
-  // Mobile Validation
   if (!formData.mobile.trim()) {
     newErrors.mobile = "Mobile number is required";
   } else if (!/^[0-9]{10}$/.test(formData.mobile)) {
     newErrors.mobile = "Enter a valid 10 digit mobile number";
   }
 
-  // Email Validation
   if (!formData.email.trim()) {
     newErrors.email = "Email is required";
   } else if (
@@ -52,12 +45,10 @@ const validateForm = () => {
     newErrors.email = "Enter a valid email address";
   }
 
-  // Subject Validation
   if (!formData.subject.trim()) {
     newErrors.subject = "Subject is required";
   }
 
-  // Message Validation
   if (!formData.message.trim()) {
     newErrors.message = "Message is required";
   } else if (formData.message.length < 10) {
@@ -72,37 +63,29 @@ const validateForm = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  // Run your existing validation
-  
+  if (!validateForm()) return;
 
   try {
-    if (!validateForm()) {
-    console.log(formData);
-    return;
-  }
-const response = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/contacts`,
-  // `https://gym-website-8y7a.onrender.com/api/contacts`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  }
-);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/contacts`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
     const data = await response.json();
 
-    if (!data.ok) {
+    if (!response.ok || !data.success) {
       alert(data.message || "Something went wrong");
       return;
     }
 
-    // Success
     alert("Message sent successfully!");
 
-    // Clear form
     setFormData({
       name: "",
       mobile: "",
@@ -114,7 +97,6 @@ const response = await fetch(
     setErrors({});
   } catch (error) {
     console.error("Contact Form Error:", error);
-
     alert("Unable to send message. Please try again.");
   }
 };
@@ -125,10 +107,8 @@ const response = await fetch(
 
         <div className="grid lg:grid-cols-[2fr_1fr] rounded-[24px] overflow-hidden shadow-2xl">
 
-          {/* ================= LEFT SIDE ================= */}
           <div className="bg-white px-4 py-5  sm:px-8 lg:px-12  lg:py-10 ">
 
-            {/* Heading */}
             <div className="mb-2">
               <h2 className="text-3xl sm:text-4xl font-black uppercase text-black">
                 SEND US A{" "}
@@ -140,10 +120,8 @@ const response = await fetch(
 
             <form className="space-y-5" onSubmit={handleSubmit}>
 
-  {/* NAME + MOBILE */}
   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-    {/* NAME */}
     <div>
       <label
         htmlFor="name"
@@ -189,7 +167,7 @@ const response = await fetch(
       )}
     </div>
 
-    {/* MOBILE */}
+
     <div>
       <label
         htmlFor="mobile"
@@ -239,7 +217,6 @@ const response = await fetch(
 
   </div>
 
-  {/* EMAIL */}
   <div>
     <label
       htmlFor="email"
@@ -285,7 +262,6 @@ const response = await fetch(
     )}
   </div>
 
-  {/* SUBJECT */}
   <div>
     <label
       htmlFor="subject"
@@ -409,8 +385,6 @@ const response = await fetch(
 </form>
           </div>
 
-          {/* ================= RIGHT SIDE ================= */}
-          {/* ================= RIGHT SIDE ================= */}
 <div
   className="
     bg-[#0f0f0f]
@@ -421,7 +395,7 @@ const response = await fetch(
     h-full
   "
 >
-  {/* HEADING */}
+
   <div className="mb-8">
     <h2
       className="
@@ -443,10 +417,7 @@ const response = await fetch(
   </div>
 
 
-  {/* ================= CONTACT DETAILS ================= */}
   <div>
-
-    {/* ADDRESS */}
     <div
       className="
         flex
@@ -497,9 +468,6 @@ const response = await fetch(
         </p>
       </div>
     </div>
-
-
-    {/* PHONE */}
     <div
       className="
         flex
@@ -562,7 +530,6 @@ const response = await fetch(
     </div>
 
 
-    {/* EMAIL */}
     <div
       className="
         flex
@@ -612,8 +579,6 @@ const response = await fetch(
       </div>
     </div>
 
-
-    {/* OPENING HOURS */}
     <div
       className="
         flex
@@ -662,7 +627,6 @@ const response = await fetch(
     </div>
 
 
-    {/* FOLLOW US */}
     <div
       className="
         flex
@@ -694,7 +658,6 @@ const response = await fetch(
 
         <div className="flex items-center gap-3">
 
-          {/* WHATSAPP */}
           <a
             href="https://wa.me/919578852900"
             target="_blank"
@@ -720,7 +683,7 @@ const response = await fetch(
             <i className="bi bi-whatsapp"></i>
           </a>
 
-          {/* INSTAGRAM */}
+
           <a
             href="https://www.instagram.com/ochrefitnesscentre?utm_source=qr"
             target="_blank"
