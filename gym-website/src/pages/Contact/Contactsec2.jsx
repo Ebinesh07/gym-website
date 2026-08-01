@@ -79,6 +79,9 @@ const handleSubmit = async (e) => {
 
     const data = await response.json();
 
+console.log("Response Status:", response.status);
+console.log("Response:", data);
+
     if (!response.ok || !data.success) {
       alert(data.message || "Something went wrong");
       return;

@@ -32,7 +32,7 @@ const Fees3 = () => {
       prices: ["₹ 1,700", "₹ 4,500", "₹ 9,000", "₹ 15,000"],
     },
     {
-      icon: "bi-people-fill",
+      icon: "bi-people",
       color: "text-purple-700",
       plan: "FAMILY",
       sub: "(3 PERSON)",
