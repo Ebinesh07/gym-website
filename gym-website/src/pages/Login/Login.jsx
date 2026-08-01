@@ -79,10 +79,6 @@ const response = await fetch(
 
       <div className="w-full max-w-7xl min-h-screen lg:min-h-[760px] bg-[#111] lg:rounded-3xl overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,.45)] grid lg:grid-cols-2">
 
-        {/* ================================================= */}
-        {/* LEFT SIDE */}
-        {/* ================================================= */}
-
         <div className="relative hidden lg:flex flex-col justify-between min-h-[760px] overflow-hidden ">
 
           <img
@@ -91,11 +87,7 @@ const response = await fetch(
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          {/* Dark Overlay */}
-
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30"></div>
-
-          {/* Red Accent */}
 
           <div className="absolute -left-24 top-0 h-full w-64 bg-red-600 rotate-[12deg] opacity-25"></div>
 
@@ -205,10 +197,6 @@ const response = await fetch(
 
         </div>
 
-        {/* ================================================= */}
-        {/* RIGHT SIDE */}
-        {/* ================================================= */}
-
         <div className="flex items-center justify-center bg-[#181818] px-6 py-12 lg:px-16 m-2">
 
           <div className="w-full max-w-[430px]">
@@ -262,7 +250,7 @@ const response = await fetch(
 
                 <div className="flex items-center h-16 border border-gray-300 rounded-xl px-4 focus-within:border-red-600 focus-within:ring-2 focus-within:ring-red-100 transition-all m-2">
 
-                  <i className="bi bi-envelope text-red-600 text-xl mr-3"></i>
+                  <i className="bi bi-envelope text-red-600 text-xl mr-2 px-2"></i>
 
                  <input
   type="email"
@@ -276,7 +264,6 @@ const response = await fetch(
 
               </div>
 
-              {/* ================= PASSWORD ================= */}
 
               <div >
 
@@ -286,7 +273,7 @@ const response = await fetch(
 
                 <div className="flex items-center h-16 border border-gray-300 rounded-xl px-4 focus-within:border-red-600 focus-within:ring-2 focus-within:ring-red-100 transition-all m-2">
 
-                  <i className="bi bi-lock text-red-600 text-xl mr-3"></i>
+                  <i className="bi bi-lock text-red-600 text-xl mr-2 px-2"></i>
 
 <div className="flex items-center w-full">
   <input
@@ -310,14 +297,9 @@ const response = await fetch(
     ></i>
   </button>
 </div>
-
-
-
                 </div>
 
               </div>
-
-              {/* ================= REMEMBER & FORGOT ================= */}
 
               <div className="flex items-center justify-between text-sm my-3">
 
@@ -342,8 +324,6 @@ const response = await fetch(
                 </Link>
 
               </div>
-
-              {/* ================= LOGIN BUTTON ================= */}
 
                              <button
   type="submit"
@@ -434,13 +414,12 @@ const response = await fetch(
               </div>
             </form>
 
-          </div> {/* Login Card */}
+          </div> 
 
-        </div> {/* Right Side */}
+        </div> 
+      </div> 
 
-      </div> {/* Main Grid */}
-
-    </div> {/* max-w-7xl Container */}
+    </div> 
 
   </section>
 );

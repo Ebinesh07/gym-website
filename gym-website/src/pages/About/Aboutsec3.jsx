@@ -27,7 +27,7 @@ const facilities = [
   },
   {
     image: nutrition,
-    icon: "bi-apple",
+    icon: "bi bi-fork-knife",
     title: "NUTRITION CAFÉ",
     desc: "Healthy food and protein shakes to fuel your fitness journey.",
   },

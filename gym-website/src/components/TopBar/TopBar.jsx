@@ -32,21 +32,21 @@
           <div className="flex items-center gap-5">
 
             <a
-              href="#"
+              href="https://wa.me/919578852900"
               className="hover:text-black duration-300"
             >
-              <i className="bi bi-facebook"></i>
+              <i className="bi bi-whatsapp"></i>
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/ochrefitnesscentre"
               className="hover:text-black duration-300"
             >
               <i className="bi bi-instagram"></i>
             </a>
 
             <a
-              href="#"
+              href="https://youtube.com/@ochrefitnesscentresivakasi6017"
               className="hover:text-black duration-300"
             >
               <i className="bi bi-youtube"></i>

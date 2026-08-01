@@ -123,7 +123,7 @@ const Aboutsec2 = () => {
 
           {/* Community */}
           <div className="text-center lg:text-left border-t sm:border-t-0 lg:border-l border-gray-200 pt-10 lg:pt-0 lg:pl-10 ">
-           <i className="bi bi-people-fill text-6xl" style={{ color: "var(--primary-color)" }}></i>
+           <i className="bi bi-people text-6xl" style={{ color: "var(--primary-color)" }}></i>
 
             <h3 className="text-2xl font-bold mb-4">
               OUR COMMUNITY

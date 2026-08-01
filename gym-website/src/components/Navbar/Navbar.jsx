@@ -24,7 +24,7 @@ function Navbar() {
         {/* Navigation Menu */}
         <nav className={`nav-menu ${menuOpen ? "active" : ""}`}>
 
-          {/* Mobile Close Button */}
+
           <button
             className="close-menu"
             onClick={closeMenu}
@@ -81,11 +81,6 @@ function Navbar() {
               </ul>
             </li>
 
-            {/* <li>
-              <NavLink to="/trainers" onClick={closeMenu}>
-                Trainers
-              </NavLink>
-            </li> */}
 
             <li>
               <NavLink to="/fees" onClick={closeMenu}>

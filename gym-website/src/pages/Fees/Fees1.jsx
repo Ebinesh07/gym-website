@@ -1,14 +1,15 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import f1 from "../../Asserts/f1.png";
+import { Link } from "react-router-dom";
 
 const Fees1 = () => {
   const features = [
     {
-      icon: "bi-shield-check",
+      icon: "bi-shield-fill-check",
       text: "NO JOINING FEE",
     },
     {
-      icon: "bi-calendar-check",
+      icon: "bi-calendar-check-fill",
       text: "FLEXIBLE PLANS",
     },
     {
@@ -126,32 +127,32 @@ const Fees1 = () => {
       </p>
 
       {/* Button */}
-      <a
-        href="#registration"
-        className="
-          w-full
-          h-12
-          mt-5
-          bg-red-600
-          hover:!bg-red-700
-          text-white
-          hover:!text-white
-          no-underline
-          text-sm
-          font-bold
-          uppercase
-          rounded-lg
-          flex
-          items-center
-          justify-center
-          gap-3
-          transition-all
-          duration-300
-        "
-      >
-        Join Now
-        <i className="bi bi-arrow-right"></i>
-      </a>
+ <Link
+  to="/cta"
+  className="
+    w-full
+    h-12
+    mt-5
+    bg-red-600
+    hover:!bg-red-700
+    text-white
+    hover:!text-white
+    no-underline
+    text-sm
+    font-bold
+    uppercase
+    rounded-lg
+    flex
+    items-center
+    justify-center
+    gap-3
+    transition-all
+    duration-300
+  "
+>
+  Join Now
+  <i className="bi bi-arrow-right"></i>
+</Link>
     </div>
   );
 

@@ -261,31 +261,7 @@ const Fees2 = () => {
                   ))}
                 </div>
 
-                {/* Button */}
-<a
-  href="#registration"
-  className={`
-    w-full
-    mt-3
-    py-3
-    rounded-lg
-    text-white
-    font-bold
-    uppercase
-    transition-all
-    duration-300
-    hover:scale-105
-    hover:shadow-lg
-    flex
-    items-center
-    justify-center
-    gap-2
-    ${plan.button}
-  `}
->
-  Join Now
-  <i className="bi bi-arrow-right"></i>
-</a>
+
               </div>
             </div>
           ))}

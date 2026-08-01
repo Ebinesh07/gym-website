@@ -307,9 +307,6 @@ const handleSubmit = async (e) => {
   noValidate
 >
 
-            {/* Part 2 Starts Here */}
-
-            {/* ================= PERSONAL INFORMATION ================= */}
 
 <div className="grid md:grid-cols-2 gap-6">
 
@@ -321,7 +318,7 @@ const handleSubmit = async (e) => {
 
     <div className="flex items-center border border-gray-300 rounded-xl px-4 h-14 focus-within:border-red-600 transition">
 
-      <i className="bi bi-person-fill text-red-600 text-xl mr-3"></i>
+      <i className="bi bi-person-fill text-red-600 text-xl mr-2 px-2"></i>
 
       <input
   type="text"
@@ -349,7 +346,7 @@ const handleSubmit = async (e) => {
 
     <div className="flex items-center border border-gray-300 rounded-xl px-4 h-14 focus-within:border-red-600 transition">
 
-      <i className="bi bi-envelope-fill text-red-600 text-xl mr-3"></i>
+      <i className="bi bi-envelope-fill text-red-600 text-xl mr-2 px-2"></i>
 
      <input
   type="email"
@@ -377,7 +374,7 @@ const handleSubmit = async (e) => {
 
     <div className="flex items-center border border-gray-300 rounded-xl px-4 h-14 focus-within:border-red-600 transition">
 
-      <i className="bi bi-person-badge-fill text-red-600 text-xl mr-3"></i>
+      <i className="bi bi-person-badge-fill text-red-600 text-xl mr-2 px-2"></i>
 
      <input
   type="text"
@@ -405,7 +402,7 @@ const handleSubmit = async (e) => {
 
     <div className="flex items-center border border-gray-300 rounded-xl px-4 h-14 focus-within:border-red-600 transition">
 
-      <i className="bi bi-telephone-fill text-red-600 text-xl mr-3"></i>
+      <i className="bi bi-telephone-fill text-red-600 text-xl mr-2 px-2"></i>
 
     <input
   type="tel"
@@ -438,7 +435,7 @@ const handleSubmit = async (e) => {
 
   <div className="flex items-start border border-gray-300 rounded-xl p-4 focus-within:border-red-600 transition">
 
-    <i className="bi bi-geo-alt-fill text-red-600 text-xl mr-3 mt-1"></i>
+    <i className="bi bi-geo-alt-fill text-red-600 text-xl mr-3 mt-1 px-2"></i>
 
 <textarea
   name="address"
@@ -470,7 +467,7 @@ const handleSubmit = async (e) => {
 
     <div className="flex items-center border border-gray-300 rounded-xl px-4 h-14 focus-within:border-red-600 transition">
 
-      <i className="bi bi-lock-fill text-red-600 text-xl mr-3"></i>
+      <i className="bi bi-lock-fill text-red-600 text-xl mr-2 px-2"></i>
 
 <input
   type={showPassword ? "text" : "password"}
@@ -482,7 +479,7 @@ const handleSubmit = async (e) => {
 />
 
 {errors.password && (
-  <p className="text-red-600 text-sm mt-1">
+  <p className="text-red-600 text-sm mt-1 px-2">
     {errors.password}
   </p>
 )}
@@ -507,7 +504,7 @@ const handleSubmit = async (e) => {
 
     <div className="flex items-center border border-gray-300 rounded-xl px-4 h-14 focus-within:border-red-600 transition">
 
-      <i className="bi bi-shield-lock-fill text-red-600 text-xl mr-3"></i>
+      <i className="bi bi-shield-lock-fill text-red-600 text-xl mr-2 px-2"></i>
 <input
   type={showConfirmPassword ? "text" : "password"}
   name="confirmPassword"
@@ -538,7 +535,6 @@ const handleSubmit = async (e) => {
 
 </div>
 
-{/* ================= ADMIN ROLE ================= */}
 
 <div>
 
@@ -577,8 +573,6 @@ const handleSubmit = async (e) => {
   </div>
 
 </div>
-
-{/* ================= TERMS ================= */}
 
 <div className="flex items-start gap-3">
 
@@ -644,7 +638,6 @@ const handleSubmit = async (e) => {
   )}
 </button>
 
-{/* ================= LOGIN LINK ================= */}
 
 <div className="text-center">
 

@@ -1,5 +1,6 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import ctaImg from "../../Asserts/a8.png";
+import { Link } from "react-router-dom";
 
 const Aboutsec5 = () => {
   return (
@@ -96,8 +97,8 @@ const Aboutsec5 = () => {
               "
             >
               {/* Join Now */}
-<a
-  href="#registration"
+<Link
+  to="/cta"
   className="
     px-3 py-3
     border-2 border-red-300
@@ -113,15 +114,16 @@ const Aboutsec5 = () => {
     hover:text-red-500
     hover:border-red-500
     transition-all duration-300
+    no-underline
   "
 >
   JOIN NOW
   <i className="bi bi-arrow-right text-xl"></i>
-</a>
+</Link>
 
               {/* Book Trial */}
-             <a
-  href="#registration"
+            <Link
+  to="/cta"
   className="
     w-full
     sm:w-auto
@@ -137,12 +139,13 @@ const Aboutsec5 = () => {
     hover:bg-gray-100
     hover:scale-105
     transition-all duration-300
+    no-underline
   "
 >
   BOOK FREE TRIAL
 
   <i className="bi bi-arrow-right text-xl text-red-600"></i>
-</a>
+</Link>
             </div>
           </div>
 

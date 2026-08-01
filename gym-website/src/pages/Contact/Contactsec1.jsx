@@ -9,7 +9,7 @@ const Contactsec1 = () => {
       subtitle: "TIMINGS",
     },
     {
-      icon: "bi-person-heart",
+      icon: "bi-person",
       title: "FRIENDLY",
       subtitle: "SUPPORT",
     },

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CTA.css";
 
 import athlete from "../../assets/Sportsimages/cta-athlete.png";
@@ -13,6 +14,7 @@ import {
 } from "react-icons/fa";
 
 const CTA = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -90,26 +92,27 @@ const handleSubmit = async (e) => {
   try {
     setLoading(true);
 
-const response = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/registrations`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  }
-);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/registrations`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
     const data = await response.json();
 
-    if (!response.ok) {
+    if (!response.ok || !data.success) {
       alert(data.message || "Registration failed");
       return;
     }
 
-    alert("Free trial booked successfully!");
+    alert("🎉 Free Trial Booked Successfully!");
 
+    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -118,10 +121,16 @@ const response = await fetch(
       goal: "",
     });
 
+    // Clear validation errors
     setErrors({});
+
+    // Redirect to Home after 1 second
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+
   } catch (error) {
     console.error("Registration Error:", error);
-
     alert("Unable to connect to server");
   } finally {
     setLoading(false);
