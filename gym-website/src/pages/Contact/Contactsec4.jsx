@@ -16,13 +16,13 @@ const Contactsec4 = () => {
       value: "95788 52900",
       link: "https://wa.me/919578852900",
     },
-    {
-      icon: "bi-calendar-event-fill",
-      title: "BOOK A VISIT",
-      desc: "Schedule a free gym trial session",
-      value: "BOOK NOW",
-      link: "/book-visit",
-    },
+  {
+  icon: "bi-calendar-event-fill",
+  title: "BOOK A VISIT",
+  desc: "Schedule a free gym trial session",
+  value: "BOOK NOW",
+  link: "/cta",
+},
     {
       icon: "bi-envelope-fill",
       title: "EMAIL US",
