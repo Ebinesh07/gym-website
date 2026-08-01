@@ -22,7 +22,7 @@ const features = [
     desc: "Exciting group workouts like Zumba, Yoga, HIIT and many more.",
   },
   {
-    icon: "bi-apple",
+    icon: "bi-fork-knife",
     title: "NUTRITION SUPPORT",
     desc: "Healthy food and protein options to fuel your fitness journey.",
   },
