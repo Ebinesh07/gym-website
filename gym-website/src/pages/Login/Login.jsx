@@ -315,15 +315,7 @@ const response = await fetch(
                   </span>
 
                 </label>
-
-                <Link
-                  to="/forgot-password"
-                  className="text-red-600 font-semibold hover:underline"
-                >
-                  Forgot Password?
-                </Link>
-
-              </div>
+            </div>
 
                              <button
   type="submit"
