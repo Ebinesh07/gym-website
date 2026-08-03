@@ -583,7 +583,7 @@
 .form-group select:focus + label,
 .form-group select:valid + label{
 
-    top: -10px;
+    top: -25px;
 
     left: 0;
 
