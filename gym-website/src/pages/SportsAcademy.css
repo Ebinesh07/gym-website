@@ -2842,3 +2842,819 @@ border:1px solid #eee;
 border-color:#cf102d;
 
 }
+/*=========================================
+SPORTS ADMISSION SECTION
+=========================================*/
+
+.sports-admission{
+    padding:100px 7%;
+    background:linear-gradient(180deg,#f8f9fc 0%,#ffffff 100%);
+    position:relative;
+    overflow:hidden;
+}
+
+.sports-admission::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:rgba(220,20,60,.06);
+    border-radius:50%;
+    top:-180px;
+    right:-120px;
+}
+
+.sports-admission::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:rgba(13,110,253,.05);
+    border-radius:50%;
+    bottom:-150px;
+    left:-120px;
+}
+
+.admission-title{
+    text-align:center;
+    margin-bottom:70px;
+    position:relative;
+    z-index:2;
+}
+
+.admission-title span{
+    display:inline-block;
+    background:#dc143c;
+    color:#fff;
+    padding:10px 22px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.admission-title h2{
+    margin-top:25px;
+    font-size:52px;
+    font-weight:800;
+    color:#111827;
+    line-height:1.2;
+}
+
+.admission-title h2 span{
+    background:none;
+    color:#dc143c;
+    padding:0;
+    border-radius:0;
+}
+
+.admission-title p{
+    width:700px;
+    max-width:100%;
+    margin:20px auto 0;
+    color:#6b7280;
+    font-size:17px;
+    line-height:1.8;
+}
+
+.admission-container{
+    display:grid;
+    grid-template-columns:1.8fr 1fr;
+    gap:40px;
+    align-items:flex-start;
+    position:relative;
+    z-index:2;
+}
+
+/*=========================================
+LEFT FORM
+=========================================*/
+
+.registration-form{
+    background:#fff;
+    border-radius:24px;
+    padding:45px;
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+    border:1px solid #ececec;
+}
+
+.form-header{
+    margin-bottom:35px;
+    padding-bottom:20px;
+    border-bottom:1px solid #eee;
+}
+
+.form-header h3{
+    font-size:32px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:8px;
+}
+
+.form-header p{
+    color:#6b7280;
+    font-size:15px;
+}
+
+.photo-upload{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.photo-box{
+    width:120px;
+    height:120px;
+    border-radius:18px;
+    border:2px dashed #d1d5db;
+    overflow:hidden;
+    background:#f5f5f5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.photo-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.photo-upload input[type=file]{
+    flex:1;
+    border:2px dashed #d1d5db;
+    padding:18px;
+    border-radius:14px;
+    cursor:pointer;
+    background:#fafafa;
+    transition:.3s;
+}
+
+.photo-upload input[type=file]:hover{
+    border-color:#dc143c;
+    background:#fff5f7;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-bottom:22px;
+}
+
+.sa-form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.sa-form-group label{
+    margin-bottom:10px;
+    font-weight:600;
+    color:#1f2937;
+    font-size:15px;
+}
+
+.sa-form-group label span{
+    color:#dc143c;
+}
+
+.sa-form-group input,
+.sa-form-group select,
+.sa-form-group textarea{
+    width:100%;
+    padding:15px 18px;
+    border:1px solid #d9d9d9;
+    border-radius:14px;
+    background:#fff;
+    font-size:15px;
+    transition:.3s;
+    outline:none;
+}
+
+.sa-form-group input:focus,
+.sa-form-group select:focus,
+.sa-form-group textarea:focus{
+    border-color:#dc143c;
+    box-shadow:0 0 0 4px rgba(220,20,60,.08);
+}
+
+.sa-form-group textarea{
+    resize:none;
+    min-height:130px;
+}
+
+.error{
+    color:#dc143c;
+    font-size:13px;
+    margin-top:7px;
+    font-weight:600;
+}
+/*=========================================
+RIGHT SIDE FEE CARD
+=========================================*/
+
+.fee-card{
+    background:#ffffff;
+    border-radius:24px;
+    padding:35px;
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+    border:1px solid #ececec;
+    position:sticky;
+    top:110px;
+    transition:.35s ease;
+    height: 182vh;
+}
+
+.fee-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 25px 70px rgba(0,0,0,.12);
+}
+
+.fee-header{
+    text-align:center;
+    margin-bottom:30px;
+    padding-bottom:22px;
+    border-bottom:1px solid #ececec;
+}
+
+.fee-header h3{
+    font-size:30px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:8px;
+}
+
+.fee-header p{
+    color:#6b7280;
+    font-size:15px;
+}
+
+.payment-details{
+    margin-bottom:35px;
+}
+
+.payment-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1px dashed #e4e4e4;
+}
+
+.payment-item span{
+    color:#374151;
+    font-weight:600;
+    font-size:15px;
+}
+
+.payment-item strong{
+    color:#dc143c;
+    font-size:17px;
+    font-weight:700;
+}
+
+.payment-item.total{
+    margin-top:18px;
+    padding:18px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#dc143c,#ff3d68);
+    border:none;
+}
+
+.payment-item.total span,
+.payment-item.total strong{
+    color:#fff;
+}
+
+.fee-title{
+    font-size:22px;
+    color:#111827;
+    margin-bottom:18px;
+    font-weight:700;
+}
+
+.fee-list{
+    margin-bottom:35px;
+}
+
+.fee-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 18px;
+    margin-bottom:12px;
+    background:#f9fafb;
+    border-radius:14px;
+    transition:.3s;
+}
+
+.fee-row:hover{
+    background:#dc143c;
+    transform:translateX(5px);
+}
+
+.fee-row:hover span,
+.fee-row:hover strong{
+    color:#fff;
+}
+
+.fee-row span{
+    color:#374151;
+    font-weight:600;
+}
+
+.fee-row strong{
+    color:#dc143c;
+    font-weight:700;
+}
+
+.important-note{
+    margin-top:35px;
+    padding:25px;
+    border-radius:18px;
+    background:#fff8ea;
+    border-left:5px solid #f59e0b;
+}
+
+.important-note h4{
+    color:#111827;
+    margin-bottom:15px;
+    font-size:21px;
+    font-weight:700;
+}
+
+.important-note ul{
+    padding-left:18px;
+}
+
+.important-note li{
+    margin-bottom:12px;
+    color:#4b5563;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.register-btn{
+    width:100%;
+    height:58px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(135deg,#dc143c,#ff3d68);
+    color:#fff;
+    font-size:17px;
+    font-weight:700;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    transition:.35s ease;
+    margin-top:30px;
+}
+
+.register-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px rgba(220,20,60,.35);
+}
+
+.register-btn svg{
+    transition:.3s;
+}
+
+.register-btn:hover svg{
+    transform:translateX(6px);
+}
+/*=========================================
+ACADEMY VALUES
+=========================================*/
+
+.academy-values-bottom{
+    padding:100px 7%;
+    background:linear-gradient(180deg,#ffffff 0%,#f8f9fc 100%);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.academy-values-bottom .value-card{
+    background:#fff;
+    padding:45px 35px;
+    border-radius:24px;
+    text-align:center;
+    border:1px solid #ececec;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    transition:.35s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.academy-values-bottom .value-card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:rgba(220,20,60,.05);
+    border-radius:50%;
+    top:-90px;
+    right:-90px;
+}
+
+.academy-values-bottom .value-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 60px rgba(0,0,0,.15);
+}
+
+.academy-values-bottom .value-card span{
+    width:70px;
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(135deg,#dc143c,#ff3d68);
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.academy-values-bottom .value-card h3{
+    font-size:28px;
+    color:#111827;
+    margin-bottom:18px;
+    font-weight:700;
+}
+
+.academy-values-bottom .value-card p{
+    color:#6b7280;
+    line-height:1.8;
+    font-size:15px;
+}
+
+/*=========================================
+SMOOTH ANIMATION
+=========================================*/
+
+.registration-form,
+.fee-card,
+.value-card{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/*=========================================
+SCROLLBAR
+=========================================*/
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#dc143c;
+    border-radius:50px;
+}
+
+::-webkit-scrollbar-track{
+    background:#f1f1f1;
+}
+
+/*=========================================
+LARGE SCREEN
+=========================================*/
+
+@media(max-width:1200px){
+
+.admission-container{
+    grid-template-columns:1.5fr 1fr;
+    gap:30px;
+}
+
+.registration-form{
+    padding:35px;
+}
+
+.fee-card{
+    padding:28px;
+}
+
+.admission-title h2{
+    font-size:44px;
+}
+
+}
+
+/*=========================================
+TABLET
+=========================================*/
+
+@media(max-width:992px){
+
+.admission-container{
+    grid-template-columns:1fr;
+}
+
+.fee-card{
+    position:static;
+}
+
+.academy-values-bottom{
+    grid-template-columns:1fr;
+}
+
+.form-row{
+    grid-template-columns:1fr;
+}
+
+.registration-form{
+    padding:30px;
+}
+
+.photo-upload{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.photo-box{
+    width:130px;
+    height:130px;
+}
+
+}
+
+/*=========================================
+MOBILE
+=========================================*/
+
+@media(max-width:768px){
+
+.sports-admission{
+    padding:70px 20px;
+}
+
+.admission-title h2{
+    font-size:34px;
+}
+
+.admission-title p{
+    font-size:15px;
+}
+
+.registration-form{
+    padding:22px;
+    border-radius:18px;
+}
+
+.fee-card{
+    padding:22px;
+    border-radius:18px;
+}
+
+.form-header h3{
+    font-size:24px;
+}
+
+.fee-header h3{
+    font-size:24px;
+}
+
+.register-btn{
+    height:52px;
+    font-size:15px;
+}
+
+.academy-values-bottom{
+    padding:70px 20px;
+}
+
+.academy-values-bottom .value-card{
+    padding:30px 22px;
+}
+
+.academy-values-bottom .value-card h3{
+    font-size:22px;
+}
+
+}
+
+/*=========================================
+SMALL MOBILE
+=========================================*/
+
+@media(max-width:480px){
+
+.admission-title span{
+    font-size:11px;
+    padding:8px 18px;
+}
+
+.admission-title h2{
+    font-size:28px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    font-size:14px;
+    padding:13px 15px;
+}
+
+.photo-box{
+    width:110px;
+    height:110px;
+}
+
+.payment-item{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+}
+
+.fee-row{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+}
+
+.register-btn{
+    font-size:14px;
+}
+
+}
+
+/*=========================================
+320px DEVICES
+=========================================*/
+
+@media(max-width:360px){
+
+.sports-admission{
+    padding:60px 15px;
+}
+
+.registration-form,
+.fee-card{
+    padding:18px;
+}
+
+.admission-title h2{
+    font-size:24px;
+}
+
+.form-header h3,
+.fee-header h3{
+    font-size:21px;
+}
+
+.academy-values-bottom{
+    padding:60px 15px;
+}
+
+.academy-values-bottom .value-card{
+    padding:25px 18px;
+}
+
+.academy-values-bottom .value-card span{
+    width:60px;
+    height:60px;
+    font-size:20px;
+}
+
+}
+/*=========================================
+PREMIUM INPUT EFFECTS
+=========================================*/
+
+.form-group{
+    position:relative;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    transition:.35s ease;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover{
+    border-color:#dc143c;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    transform:translateY(-2px);
+}
+
+/*=========================================
+CARD HOVER
+=========================================*/
+
+.registration-form,
+.fee-card{
+    transition:.4s ease;
+}
+
+.registration-form:hover,
+.fee-card:hover{
+    transform:translateY(-8px);
+}
+
+/*=========================================
+PHOTO
+=========================================*/
+
+.photo-box{
+    position:relative;
+}
+
+.photo-box::after{
+    content:"Upload Photo";
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.45);
+    color:#fff;
+    opacity:0;
+    transition:.3s;
+    font-size:13px;
+    font-weight:600;
+}
+
+.photo-box:hover::after{
+    opacity:1;
+}
+
+/*=========================================
+BUTTON RIPPLE
+=========================================*/
+
+.register-btn{
+    overflow:hidden;
+    position:relative;
+}
+
+.register-btn::before{
+    content:"";
+    position:absolute;
+    width:0;
+    height:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    transition:.45s;
+}
+
+.register-btn:hover::before{
+    width:420px;
+    height:420px;
+}
+
+/*=========================================
+NOTE
+=========================================*/
+
+.important-note li::marker{
+    color:#dc143c;
+}
+
+.important-note li{
+    padding-left:5px;
+}
+
+/*=========================================
+PAYMENT
+=========================================*/
+
+.payment-item strong{
+    letter-spacing:.5px;
+}
+
+.payment-item.total{
+    box-shadow:0 12px 30px rgba(220,20,60,.25);
+}

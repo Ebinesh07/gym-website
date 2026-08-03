@@ -16,8 +16,147 @@ import Navbar from "../components/Navbar/Navbar";
 import TopBar from "../components/TopBar/TopBar";
 
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function SportsAcademy() {
+
+
+    const [formData, setFormData] = useState({
+    studentName: "",
+    guardianName: "",
+    mobile: "",
+    email: "",
+    dob: "",
+    age: "",
+    gender: "",
+    bloodGroup: "",
+    sport: "",
+    admissionDate: "",
+    address: ""
+});
+
+const [errors, setErrors] = useState({});
+
+const [previewImage, setPreviewImage] = useState(null);
+
+const handleChange = (e) => {
+
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+        ...prev,
+        [name]: value
+    }));
+
+};
+const handleDOB = (e) => {
+
+    const dob = e.target.value;
+
+    const birth = new Date(dob);
+
+    const today = new Date();
+
+    let age = today.getFullYear() - birth.getFullYear();
+
+    const month = today.getMonth() - birth.getMonth();
+
+    if (month < 0 || (month === 0 && today.getDate() < birth.getDate())) {
+
+        age--;
+
+    }
+
+    setFormData((prev) => ({
+        ...prev,
+        dob,
+        age
+    }));
+
+};
+
+const handleSportChange = (e) => {
+
+    setFormData((prev) => ({
+        ...prev,
+        sport: e.target.value
+    }));
+
+};
+
+const handleImageUpload = (e) => {
+
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    setPreviewImage(URL.createObjectURL(file));
+
+};
+
+const handleSubmit = (e) => {
+
+    e.preventDefault();
+
+    let newErrors = {};
+
+    if (!formData.studentName.trim()) {
+
+        newErrors.studentName = "Student name is required";
+
+    }
+
+    if (!formData.guardianName.trim()) {
+
+        newErrors.guardianName = "Father / Guardian name is required";
+
+    }
+
+    if (!/^[6-9]\d{9}$/.test(formData.mobile)) {
+
+        newErrors.mobile = "Enter a valid mobile number";
+
+    }
+
+    if (!formData.dob) {
+
+        newErrors.dob = "Select Date of Birth";
+
+    }
+
+    if (!formData.gender) {
+
+        newErrors.gender = "Select Gender";
+
+    }
+
+    if (!formData.bloodGroup) {
+
+        newErrors.bloodGroup = "Select Blood Group";
+
+    }
+
+    if (!formData.sport) {
+
+        newErrors.sport = "Select Sport";
+
+    }
+
+    if (!formData.address.trim()) {
+
+        newErrors.address = "Address is required";
+
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+
+        navigate("/cta");
+
+    }
+
+};
 
     const navigate = useNavigate();
 
@@ -247,7 +386,7 @@ description:"Professional shuttle coaching with tournament practice."
 
                         </p>
 
-                        <button  
+                        {/* <button  
                          onClick={() => navigate("/cta")}
                          >
 
@@ -255,7 +394,7 @@ description:"Professional shuttle coaching with tournament practice."
 
                             <FaArrowRight/>
 
-                        </button>
+                        </button> */}
 
                     </div>
 
@@ -384,6 +523,873 @@ description:"Professional shuttle coaching with tournament practice."
         </div>
 
     </div>
+
+</section>
+
+{/*=========================================
+ACADEMY VALUES
+=========================================*/}
+
+{/* <section className="academy-values">
+
+    <div className="values-heading">
+
+        <span>OUR CORE VALUES</span>
+
+        <h2>
+
+            Building Champions With
+
+            <span> Strong Values</span>
+
+        </h2>
+
+        <p>
+
+            Every athlete is trained with discipline,
+            dedication and determination to achieve
+            excellence both on and off the field.
+
+        </p>
+
+    </div>
+
+    <div className="values-grid">
+
+        <div className="value-card">
+
+            <div className="value-number">
+
+                01
+
+            </div>
+
+            <h3>
+
+                Discipline
+
+            </h3>
+
+            <p>
+
+                Discipline builds consistency,
+                respect and responsibility in
+                every athlete.
+
+            </p>
+
+        </div>
+
+        <div className="value-card">
+
+            <div className="value-number">
+
+                02
+
+            </div>
+
+            <h3>
+
+                Dedication
+
+            </h3>
+
+            <p>
+
+                We encourage athletes to stay
+                committed towards continuous
+                learning and improvement.
+
+            </p>
+
+        </div>
+
+        <div className="value-card">
+
+            <div className="value-number">
+
+                03
+
+            </div>
+
+            <h3>
+
+                Determination
+
+            </h3>
+
+            <p>
+
+                Every challenge becomes an
+                opportunity through hard work
+                and determination.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section> */}
+
+
+{/*=========================================
+ADMISSION SECTION
+=========================================*/}
+
+<section className="sports-admission">
+
+    <div className="admission-title">
+
+        <span>
+
+            ADMISSION OPEN 2026
+
+        </span>
+
+        <h2>
+
+            Sports Academy
+
+            <span> Registration</span>
+
+        </h2>
+
+        <p>
+
+            Complete the admission form below to join our academy.
+
+        </p>
+
+    </div>
+
+    <div className="admission-container">
+
+        {/* LEFT SIDE */}
+
+        <div className="registration-form">
+
+            <div className="form-header">
+
+                <h3>
+
+                    Student Admission Form
+
+                </h3>
+
+                <p>
+
+                    Fill all mandatory fields carefully.
+
+                </p>
+
+            </div>
+
+            <form onSubmit={handleSubmit}>
+
+                <div className="photo-upload">
+
+                    <div className="photo-box">
+
+                        <img
+                            src={previewImage || "/images/avatar.png"}
+                            alt="Student"
+                        />
+
+                    </div>
+
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                    />
+
+                </div>
+
+                <div className="form-row">
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Student Name <span>*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="studentName"
+                            value={formData.studentName}
+                            onChange={handleChange}
+                            placeholder="Enter Student Name"
+                        />
+
+                        {
+
+                            errors.studentName &&
+
+                            <p className="error">
+
+                                {errors.studentName}
+
+                            </p>
+
+                        }
+
+                    </div>
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Father / Guardian Name <span>*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="guardianName"
+                            value={formData.guardianName}
+                            onChange={handleChange}
+                            placeholder="Enter Father / Guardian Name"
+                        />
+
+                        {
+
+                            errors.guardianName &&
+
+                            <p className="error">
+
+                                {errors.guardianName}
+
+                            </p>
+
+                        }
+
+                    </div>
+
+                </div>
+
+                <div className="form-row">
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Mobile Number <span>*</span>
+
+                        </label>
+
+                        <input
+                            type="tel"
+                            name="mobile"
+                            value={formData.mobile}
+                            onChange={handleChange}
+                            placeholder="9876543210"
+                        />
+
+                        {
+
+                            errors.mobile &&
+
+                            <p className="error">
+
+                                {errors.mobile}
+
+                            </p>
+
+                        }
+
+                    </div>
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Email Address
+
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="example@gmail.com"
+                        />
+
+                    </div>
+
+                </div>
+                                <div className="form-row">
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Date Of Birth <span>*</span>
+
+                        </label>
+
+                        <input
+                            type="date"
+                            name="dob"
+                            value={formData.dob}
+                            onChange={handleDOB}
+                        />
+
+                        {
+
+                            errors.dob &&
+
+                            <p className="error">
+
+                                {errors.dob}
+
+                            </p>
+
+                        }
+
+                    </div>
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Age
+
+                        </label>
+
+                        <input
+                            type="text"
+                            value={formData.age}
+                            readOnly
+                        />
+
+                    </div>
+
+                </div>
+
+                <div className="form-row">
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Gender <span>*</span>
+
+                        </label>
+
+                        <select
+                            name="gender"
+                            value={formData.gender}
+                            onChange={handleChange}
+                        >
+
+                            <option value="">
+
+                                Select Gender
+
+                            </option>
+
+                            <option value="Male">
+
+                                Male
+
+                            </option>
+
+                            <option value="Female">
+
+                                Female
+
+                            </option>
+
+                            <option value="Other">
+
+                                Other
+
+                            </option>
+
+                        </select>
+
+                        {
+
+                            errors.gender &&
+
+                            <p className="error">
+
+                                {errors.gender}
+
+                            </p>
+
+                        }
+
+                    </div>
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Blood Group <span>*</span>
+
+                        </label>
+
+                        <select
+                            name="bloodGroup"
+                            value={formData.bloodGroup}
+                            onChange={handleChange}
+                        >
+
+                            <option value="">
+
+                                Select Blood Group
+
+                            </option>
+
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+
+                        </select>
+
+                        {
+
+                            errors.bloodGroup &&
+
+                            <p className="error">
+
+                                {errors.bloodGroup}
+
+                            </p>
+
+                        }
+
+                    </div>
+
+                </div>
+
+                <div className="form-row">
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Select Sport <span>*</span>
+
+                        </label>
+
+                        <select
+                            name="sport"
+                            value={formData.sport}
+                            onChange={handleSportChange}
+                        >
+
+                            <option value="">
+
+                                Choose Sport
+
+                            </option>
+
+                            <option value="Cricket">
+
+                                Cricket
+
+                            </option>
+
+                            <option value="Archery">
+
+                                Archery
+
+                            </option>
+
+                            <option value="Silambam">
+
+                                Silambam
+
+                            </option>
+
+                            <option value="Karate">
+
+                                Karate
+
+                            </option>
+                                                        <option value="Athletics">
+
+                                Athletics
+
+                            </option>
+
+                            <option value="Badminton">
+
+                                Badminton
+
+                            </option>
+
+                        </select>
+
+                        {
+
+                            errors.sport &&
+
+                            <p className="error">
+
+                                {errors.sport}
+
+                            </p>
+
+                        }
+
+                    </div>
+
+                    <div className="sa-form-group">
+
+                        <label>
+
+                            Admission Date
+
+                        </label>
+
+                        <input
+                            type="date"
+                            name="admissionDate"
+                            value={formData.admissionDate}
+                            onChange={handleChange}
+                        />
+
+                    </div>
+
+                </div>
+
+                <div className="sa-form-group">
+
+                    <label>
+
+                        Residential Address <span>*</span>
+
+                    </label>
+
+                    <textarea
+                        rows="4"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        placeholder="Enter Complete Address"
+                    ></textarea>
+
+                    {
+
+                        errors.address &&
+
+                        <p className="error">
+
+                            {errors.address}
+
+                        </p>
+
+                    }
+
+                </div>
+
+                <button
+                    type="submit"
+                    className="register-btn"
+                >
+
+                    Register Now
+
+                    <FaArrowRight />
+
+                </button>
+
+            </form>
+
+        </div>
+
+        {/* RIGHT SIDE */}
+
+        <div className="fee-card">
+
+            {/* <div className="fee-header">
+
+                <h3>
+
+                    Payment Details
+
+                </h3>
+
+                <p>
+
+                    Sports Academy Fee Structure
+
+                </p>
+
+            </div>
+
+            <div className="payment-details">
+
+                <div className="payment-item">
+
+                    <span>
+
+                        Registration Fee
+
+                    </span>
+
+                    <strong>
+
+                        ₹1000
+
+                    </strong>
+
+                </div>
+
+                <div className="payment-item">
+
+                    <span>
+
+                        Monthly Coaching Fee
+
+                    </span>
+
+                    <strong>
+
+                        ₹1500
+
+                    </strong>
+
+                </div>
+
+                <div className="payment-item">
+
+                    <span>
+
+                        Uniform / Jersey
+
+                    </span>
+
+                    <strong>
+
+                        ₹500
+
+                    </strong>
+
+                </div>
+
+                <div className="payment-item">
+
+                    <span>
+
+                        Academy ID Card
+
+                    </span>
+
+                    <strong>
+
+                        ₹100
+
+                    </strong>
+
+                </div>
+
+                <div className="payment-item total">
+
+                    <span>
+
+                        Total Amount
+
+                    </span>
+
+                    <strong>
+
+                        ₹3100
+
+                    </strong>
+
+                </div>
+
+            </div> */}
+
+                        <h4 className="fee-title">
+
+                Monthly Fee Structure
+
+            </h4>
+
+            <div className="fee-list">
+
+                <div className="fee-row">
+
+                    <span>🏏 Cricket</span>
+
+                    <strong>₹1500 / Month</strong>
+
+                </div>
+
+                <div className="fee-row">
+
+                    <span>🏹 Archery</span>
+
+                    <strong>₹1200 / Month</strong>
+
+                </div>
+
+                <div className="fee-row">
+
+                    <span>🥋 Silambam</span>
+
+                    <strong>₹700 / Month</strong>
+
+                </div>
+
+                <div className="fee-row">
+
+                    <span>🥋 Karate</span>
+
+                    <strong>₹700 / Month</strong>
+
+                </div>
+
+                <div className="fee-row">
+
+                    <span>🏃 Athletics</span>
+
+                    <strong>₹600 / Month</strong>
+
+                </div>
+
+                <div className="fee-row">
+
+                    <span>🏸 Badminton</span>
+
+                    <strong>₹800 / Month</strong>
+
+                </div>
+
+            </div>
+
+            <div className="important-note">
+
+                <h4>
+
+                    Important Instructions
+
+                </h4>
+
+                <ul>
+
+                    <li>
+
+                        Admission fee is payable only once during registration.
+
+                    </li>
+
+                    <li>
+
+                        Monthly coaching fee should be paid on or before the 5th of every month.
+
+                    </li>
+
+                    <li>
+
+                        Students should wear the academy uniform during every training session.
+
+                    </li>
+
+                    <li>
+
+                        Parents / Guardians should immediately inform the academy about any medical condition.
+
+                    </li>
+
+                    <li>
+
+                        Students must maintain discipline and regular attendance.
+
+                    </li>
+
+                    <li>
+
+                        Fees once paid are non-refundable and non-transferable.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{/*=========================================
+ACADEMY VALUES
+=========================================*/}
+
+<section className="academy-values-bottom">
+
+    <div className="value-card">
+
+        <span>01</span>
+
+        <h3>
+
+            Discipline
+
+        </h3>
+
+        <p>
+
+            Discipline is the foundation of every successful athlete.
+            We encourage punctuality, consistency and respect in every training session.
+
+        </p>
+
+    </div>
+
+    <div className="value-card">
+
+        <span>02</span>
+
+        <h3>
+
+            Dedication
+
+        </h3>
+
+        <p>
+
+            Dedicated athletes improve every day through continuous
+            learning, hard work and commitment towards their goals.
+
+        </p>
+
+    </div>
+
+    <div className="value-card">
+
+        <span>03</span>
+
+        <h3>
+
+            Determination
+
+        </h3>
+
+        <p>
+
+            Determination helps athletes overcome challenges,
+            build confidence and achieve excellence in every competition.
+
+        </p>
+
+       </div>
 
 </section>
     </>
