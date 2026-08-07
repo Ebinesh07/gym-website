@@ -738,6 +738,7 @@ TABLET LANDSCAPE
 .hero-left{
 
     max-width:700px;
+    margin: 0px;
 
 }
 
@@ -3064,7 +3065,8 @@ RIGHT SIDE FEE CARD
     position:sticky;
     top:110px;
     transition:.35s ease;
-    height: 182vh;
+    height:auto;
+    min-height:auto;
 }
 
 .fee-card:hover{
@@ -3657,4 +3659,282 @@ PAYMENT
 
 .payment-item.total{
     box-shadow:0 12px 30px rgba(220,20,60,.25);
+}
+/*==================================================
+ADMISSION SECTION RESPONSIVE FIX
+PASTE AT THE VERY END OF SportsAcademy.css
+==================================================*/
+
+/* Laptop */
+@media (max-width:1200px){
+
+.admission-container{
+    grid-template-columns:1fr;
+    gap:40px;
+}
+
+.registration-form,
+.fee-card{
+    width:100%;
+}
+
+.fee-card{
+    position:static;
+    height:auto !important;
+}
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+.sports-admission{
+    padding:80px 30px;
+}
+
+.registration-form{
+    padding:35px 25px;
+}
+
+.fee-card{
+    padding:30px 25px;
+}
+
+.form-row{
+    grid-template-columns:1fr;
+    gap:18px;
+}
+
+.photo-upload{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+
+.photo-box{
+    width:130px;
+    height:130px;
+}
+
+.admission-title h2{
+    font-size:42px;
+}
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+.sports-admission{
+    padding:60px 20px;
+}
+
+.admission-title{
+    margin-bottom:40px;
+}
+
+.admission-title h2{
+    font-size:32px;
+    line-height:1.2;
+}
+
+.admission-title p{
+    font-size:15px;
+}
+
+.registration-form{
+    padding:20px;
+    border-radius:18px;
+}
+
+.fee-card{
+    padding:20px;
+    border-radius:18px;
+    margin-top:25px;
+}
+
+.form-header h3{
+    font-size:24px;
+}
+
+.form-header p{
+    font-size:14px;
+}
+
+.photo-box{
+    width:110px;
+    height:110px;
+}
+
+.photo-upload input{
+    width:100%;
+}
+
+.sa-form-group label{
+    font-size:14px;
+}
+
+.sa-form-group input,
+.sa-form-group select,
+.sa-form-group textarea{
+    padding:13px 15px;
+    font-size:14px;
+}
+
+.sa-form-group textarea{
+    min-height:110px;
+}
+
+.register-btn{
+    height:50px;
+    font-size:15px;
+}
+
+.fee-title{
+    font-size:22px;
+}
+
+.fee-row{
+    padding:14px;
+}
+
+.important-note{
+    padding:18px;
+}
+
+.important-note h4{
+    font-size:18px;
+}
+
+.important-note li{
+    font-size:14px;
+}
+
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+
+.sports-admission{
+    padding:45px 15px;
+}
+
+.admission-title span{
+    font-size:11px;
+    padding:8px 16px;
+}
+
+.admission-title h2{
+    font-size:26px;
+}
+
+.admission-title p{
+    font-size:14px;
+}
+
+.registration-form,
+.fee-card{
+    padding:16px;
+    border-radius:16px;
+}
+
+.form-header{
+    margin-bottom:20px;
+}
+
+.form-header h3{
+    font-size:20px;
+}
+
+.photo-box{
+    width:90px;
+    height:90px;
+}
+
+.form-row{
+    gap:15px;
+}
+
+.sa-form-group input,
+.sa-form-group select,
+.sa-form-group textarea{
+    font-size:13px;
+    padding:12px;
+}
+
+.register-btn{
+    height:48px;
+    font-size:14px;
+}
+
+.fee-title{
+    font-size:20px;
+}
+
+.fee-row{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:5px;
+}
+
+.important-note{
+    padding:15px;
+}
+
+.important-note li{
+    font-size:13px;
+    line-height:1.6;
+}
+
+}
+
+/* 320px */
+@media (max-width:320px){
+
+.sports-admission{
+    padding:35px 12px;
+}
+
+.admission-title h2{
+    font-size:22px;
+}
+
+.registration-form,
+.fee-card{
+    padding:14px;
+}
+
+.photo-box{
+    width:80px;
+    height:80px;
+}
+
+.form-header h3{
+    font-size:18px;
+}
+
+.sa-form-group input,
+.sa-form-group select,
+.sa-form-group textarea{
+    padding:10px;
+    font-size:12px;
+}
+
+.register-btn{
+    height:45px;
+    font-size:13px;
+}
+
+.fee-title{
+    font-size:18px;
+}
+
+.important-note h4{
+    font-size:16px;
+}
+
+.important-note li{
+    font-size:12px;
+}
+
 }
