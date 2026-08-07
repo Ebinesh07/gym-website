@@ -126,13 +126,13 @@ function Programs() {
 
                                     </p>
 
-                                        <button
+                                        {/* <button
                                             className="program-btn"
                                             onClick={() => navigate("/cta")}
                                         >
                                             Learn More
                                             <i className="bi bi-arrow-right"></i>
-                                        </button>
+                                        </button> */}
 
                                 </div>
 
@@ -144,7 +144,7 @@ function Programs() {
 
                 </div>
 
-                <div className="programs-button">
+                {/* <div className="programs-button">
                     <button
                         onClick={() => navigate("/cta")}
                     >
@@ -152,7 +152,7 @@ function Programs() {
                         <i className="bi bi-arrow-right"></i>
                     </button>
 
-                </div>
+                </div> */}
 
             </div>
 
