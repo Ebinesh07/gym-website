@@ -527,6 +527,50 @@ description:"Professional shuttle coaching with tournament practice."
 </section>
 
 {/*=========================================
+ACADEMY LOCATION
+=========================================*/}
+
+<section className="academy-location">
+
+    <div className="location-container">
+
+        <div className="location-icon">
+            <i className="bi bi-geo-alt-fill"></i>
+        </div>
+
+        <div className="location-content">
+
+            <span className="location-tag">
+                VISIT OUR ACADEMY
+            </span>
+
+            <h2>
+                Ochre &90s
+                <span> Sports Academy</span>
+            </h2>
+
+            <p>
+                Nearby Old Kaliappanadar School,
+                56 Colony, Amman Nagar Road
+            </p>
+
+        </div>
+
+        <a
+            href="https://www.google.com/maps/search/?api=1&query=Ochre%20%2690s%20Sports%20Academy%20Nearby%20Old%20Kaliappanadar%20School%2056%20Colony%20Amman%20Nagar%20Road"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="location-btn"
+        >
+            <i className="bi bi-map"></i>
+            View Location
+        </a>
+
+    </div>
+
+</section>
+
+{/*=========================================
 ACADEMY VALUES
 =========================================*/}
 
@@ -1390,6 +1434,50 @@ ACADEMY VALUES
         </p>
 
        </div>
+
+</section>
+
+{/*=========================================
+ACADEMY LOCATION
+=========================================*/}
+
+<section className="academy-location">
+
+    <div className="location-container">
+
+        <div className="location-icon">
+            <i className="bi bi-geo-alt-fill"></i>
+        </div>
+
+        <div className="location-content">
+
+            <span className="location-tag">
+                VISIT OUR ACADEMY
+            </span>
+
+            <h2>
+                Ochre &90s
+                <span> Sports Academy</span>
+            </h2>
+
+            <p>
+                Nearby Old Kaliappanadar School,
+                56 Colony, Amman Nagar Road
+            </p>
+
+        </div>
+
+        <a
+            href="https://www.google.com/maps/search/?api=1&query=Ochre%20%2690s%20Sports%20Academy%20Nearby%20Old%20Kaliappanadar%20School%2056%20Colony%20Amman%20Nagar%20Road"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="location-btn"
+        >
+            <i className="bi bi-map"></i>
+            View Location
+        </a>
+
+    </div>
 
 </section>
     </>
