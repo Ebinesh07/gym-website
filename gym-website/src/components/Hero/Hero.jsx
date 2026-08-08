@@ -83,9 +83,10 @@ function Hero() {
   JOIN NOW
   <i className="bi bi-arrow-right"></i>
 </Link>
-                        <Link to="/cta" className="join-btn">
-  Book Free Trial
-  <i className="bi bi-arrow-right"></i>
+
+ <Link to="/cta" className="hero-cta-btn">
+    <span>Book Free Trial</span>
+    <i className="bi bi-arrow-right"></i>
 </Link>
 
                         
@@ -117,15 +118,13 @@ function Hero() {
                         OFF ON ALL MEMBERSHIPS
                     </p>
 
-                    <button
-                        className="join-btn"
-                        onClick={() => navigate("/cta")}
-                    >
-
-                    Join Today
-                     <i className="bi bi-arrow-right"></i>
-
-                    </button>
+                 <button
+    className="offer-join-btn"
+    onClick={() => navigate("/cta")}
+>
+    <span>Join Today</span>
+    <i className="bi bi-arrow-right"></i>
+</button>
 
                 </div>
 

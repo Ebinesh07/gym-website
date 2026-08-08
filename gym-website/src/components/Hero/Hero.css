@@ -1116,3 +1116,390 @@ html{
 }
 
 }
+/*=============================================
+ HERO CTA BUTTON
+=============================================*/
+
+.hero-cta-btn{
+
+    height:56px;
+
+    padding:0 32px;
+
+    border-radius:50px;
+
+    background:#cf102d;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    font-family:"Barlow",sans-serif;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    transition:.35s ease;
+
+    box-shadow:0 15px 35px rgba(207,16,45,.30);
+
+}
+
+.hero-cta-btn i{
+
+    font-size:20px;
+
+    transition:.35s ease;
+
+}
+
+.hero-cta-btn:hover{
+
+    color:#fff;
+
+    background:#a80822;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 20px 45px rgba(207,16,45,.45);
+
+}
+
+.hero-cta-btn:hover i{
+
+    transform:translateX(5px);
+
+}
+
+
+/*=============================================
+ OFFER JOIN BUTTON
+=============================================*/
+
+.offer-join-btn{
+
+    width:100%;
+
+    height:48px;
+
+    margin-top:20px;
+
+    padding:0 20px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#cf102d;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    font-family:"Barlow",sans-serif;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    position:relative;
+
+    z-index:5;
+
+    transition:.35s ease;
+
+}
+
+.offer-join-btn i{
+
+    font-size:17px;
+
+    transition:.35s ease;
+
+}
+
+.offer-join-btn:hover{
+
+    background:#fff;
+
+    color:#cf102d;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+}
+
+.offer-join-btn:hover i{
+
+    transform:translateX(5px);
+
+}
+
+
+/*=============================================
+ OFFER CARD SPACING FIX
+=============================================*/
+
+.offer-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+}
+
+.offer-card .offer-badge{
+
+    margin-bottom:16px;
+
+}
+
+.offer-card h3{
+
+    margin-bottom:8px;
+
+}
+
+.offer-card h2{
+
+    margin:8px 0;
+
+}
+
+.offer-card p{
+
+    margin:0;
+
+}
+
+.offer-join-btn{
+
+    margin-top:22px;
+
+}
+
+
+/*=============================================
+ TABLET
+=============================================*/
+
+@media(max-width:992px){
+
+    .hero-container{
+
+        justify-content:center;
+
+        padding-top:100px;
+
+        padding-bottom:60px;
+
+        gap:35px;
+
+    }
+
+    .hero-content{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+}
+
+
+/*=============================================
+ MOBILE
+=============================================*/
+
+@media(max-width:768px){
+
+    .hero{
+
+        min-height:100vh;
+
+    }
+
+    .hero-container{
+
+        width:90%;
+
+        padding-top:80px;
+
+        padding-bottom:50px;
+
+        gap:28px;
+
+    }
+
+    .hero-cta-btn{
+
+        width:100%;
+
+        max-width:280px;
+
+        height:52px;
+
+        font-size:17px;
+
+    }
+
+    .offer-card{
+
+        width:190px;
+
+        padding:18px 16px;
+
+    }
+
+    .offer-join-btn{
+
+        height:46px;
+
+        margin-top:18px;
+
+        font-size:15px;
+
+    }
+
+}
+
+
+/*=============================================
+SMALL MOBILE
+=============================================*/
+
+@media(max-width:480px){
+
+    .hero-container{
+
+        padding-top:70px;
+
+        padding-bottom:35px;
+
+        gap:24px;
+
+    }
+
+    .hero-cta-btn{
+
+        height:48px;
+
+        max-width:260px;
+
+        font-size:15px;
+
+    }
+
+    .offer-card{
+
+        width:180px;
+
+        padding:16px 14px;
+
+    }
+
+    .offer-badge{
+
+        padding:8px 15px;
+
+        font-size:10px;
+
+    }
+
+    .offer-card h3{
+
+        font-size:15px;
+
+    }
+
+    .offer-card h2{
+
+        font-size:40px;
+
+    }
+
+    .offer-card p{
+
+        font-size:10px;
+
+        line-height:1.5;
+
+    }
+
+    .offer-join-btn{
+
+        height:44px;
+
+        margin-top:16px;
+
+        font-size:14px;
+
+    }
+
+}
+
+
+/*=============================================
+320px
+=============================================*/
+
+@media(max-width:320px){
+
+    .hero-container{
+
+        padding-top:60px;
+
+        gap:20px;
+
+    }
+
+    .hero-cta-btn{
+
+        height:45px;
+
+        font-size:14px;
+
+    }
+
+    .offer-card{
+
+        width:165px;
+
+    }
+
+    .offer-join-btn{
+
+        height:42px;
+
+        font-size:13px;
+
+    }
+
+}
